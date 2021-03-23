@@ -53,7 +53,7 @@ ckpt_prefix="ed-$embedding_dim-u-$units"
 data_options="--max_length 300 --path_to_file $project_dir/encoder/data/clauses.txt"
 model_options="--embedding_dim $embedding_dim --units $units"
 training_options="--batch_size 128 --epochs 100"
-checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/training_checkpoints"
+checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/training_checkpoints --checkpoint_prefix $checkpoint_prefix"
 options="$data_options $model_options $training_options $checkpointing"
 echo $options
 
