@@ -35,7 +35,9 @@ unset OMP_NUM_THREADS
 . /etc/profile.d/modules.sh   # Leave this line (enables the module command)
 module purge                  # Removes all modules still loaded
 module load rhel7/default-gpu # REQUIRED - loads the basic environment
-. ~/testenv/bin/activate
+module unload cuda/8.0
+module load python/3.6 cuda/10.0 cudnn/7.5_cuda-10.0
+. ~/tensorflow-env/bin/activate
 #! Insert additional module load commands after this line if needed:
 
 #! Full path to application executable:
