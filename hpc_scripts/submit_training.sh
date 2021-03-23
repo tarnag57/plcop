@@ -54,14 +54,15 @@ data_options="--max_length 300 --path_to_file $project_dir/encoder/data/caluses.
 model_options="--embedding_dim $embedding_dim --units $units"
 training_options="--batch_size 128 --epochs 100"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/training_checkpoints"
-options = "$data_options $model_options $training_options $checkpointing"
+options="$data_options $model_options $training_options $checkpointing"
+echo $options
 
 #! Work directory (i.e. where the job will run):
 workdir="$SLURM_SUBMIT_DIR" # The value of SLURM_SUBMIT_DIR sets workdir to the directory
 # in which sbatch is run.
 
 #! Number of MPI tasks to be started by the application per node and in total (do not change):
-np=$((${numnodes} * ${mpi_tasks_per_node}))
+np=$((${numnodes}*${mpi_tasks_per_node}))
 
 #! Choose this for a pure shared-memory OpenMP parallel program on a single node:
 #! (OMP_NUM_THREADS threads will be created):
