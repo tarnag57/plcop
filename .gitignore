@@ -129,7 +129,7 @@ dmypy.json
 /results
 
 # Training data for autoencoder
-/encoder/data
+# /encoder/data
 
 # Outputs of the autoencoder
 /encoder/models
