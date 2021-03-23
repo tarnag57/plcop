@@ -4,7 +4,7 @@ Default params
 
 # Data Parameters
 MAX_LENGTH = 200
-NUM_EXAMPLES = 200
+NUM_EXAMPLES = None
 PATH_TO_FILE = './data/clauses.txt'
 
 # Model Parameters
