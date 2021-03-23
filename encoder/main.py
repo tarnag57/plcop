@@ -199,8 +199,7 @@ def main():
     init_context()
     context = ModelContext.get_context()
 
-    # training.perform_training()
-    print(context.args.path_to_file)
+    training.perform_training()
 
     # utils.restore_checkpoint(context.checkpoint)
     # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
