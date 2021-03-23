@@ -4,7 +4,6 @@ import re
 import io
 from sklearn.model_selection import train_test_split
 
-import params
 
 '''
 Utilities for creating and pre-processing a dataset
@@ -14,7 +13,8 @@ Utilities for creating and pre-processing a dataset
 def create_datasets(
     input_tensor,
     target_tensor,
-    buffer_size=None
+    batch_size,
+    buffer_size_mult
 ):
 
     # Creating training and validation sets using an 80-20 split
@@ -24,22 +24,21 @@ def create_datasets(
     train_size = len(input_tensor_train)
     eval_size = len(input_tensor_val)
 
-    if buffer_size is None:
-        buffer_size = len(input_tensor_train) * params.BUFFER_SIZE_MULT
+    buffer_size = len(input_tensor_train) * buffer_size_mult
 
     train_dataset = tf.data.Dataset.from_tensor_slices(
         (input_tensor_train, target_tensor_train)).shuffle(buffer_size)
     eval_dataset = tf.data.Dataset.from_tensor_slices(
         (input_tensor_val, target_tensor_val)).shuffle(buffer_size)
-    train_dataset = train_dataset.batch(params.BATCH_SIZE, drop_remainder=True)
-    eval_dataset = eval_dataset.batch(params.BATCH_SIZE, drop_remainder=True)
+    train_dataset = train_dataset.batch(batch_size, drop_remainder=True)
+    eval_dataset = eval_dataset.batch(batch_size, drop_remainder=True)
 
     return (train_dataset, eval_dataset, train_size, eval_size)
 
 
-def load_dataset(path, num_examples=None):
+def load_dataset(path, num_examples, max_length):
     # creating cleaned input, output pairs
-    targ_lang, inp_lang = create_raw_dataset(path, num_examples)
+    targ_lang, inp_lang = create_raw_dataset(path, num_examples, max_length)
 
     input_tensor, inp_lang_tokenizer = tokenize(inp_lang)
     target_tensor, targ_lang_tokenizer = tokenize(targ_lang)
@@ -62,11 +61,11 @@ def preprocess_sentence(w):
     # creating a space between a word and the punctuation following it
     # eg: "he is a boy." => "he is a boy ."
     # Reference:- https://stackoverflow.com/questions/3645931/python-padding-punctuation-with-white-spaces-keeping-punctuation
-    w = re.sub(r'([.,!?()])', r' \1 ', w)
+    w = re.sub(r'([.,!?()=-])', r' \1 ', w)
     w = re.sub(r'\s{2,}', ' ', w)
 
     # replacing everything with space except (a-z, A-Z, ".", "?", "!", ",")
-    w = re.sub(r"[^a-zA-Z0-9_(),]+", " ", w)
+    w = re.sub(r"[^a-zA-Z0-9_(),=-]+", " ", w)
 
     w = w.strip()
 
@@ -80,7 +79,8 @@ def num_tokens(w):
     return len(w.split(' '))
 
 
-def create_raw_dataset(path, num_examples):
+def create_raw_dataset(path, num_examples, max_length):
+
     # 1. Remove the accents
     # 2. Clean the sentences
     # 3. Return word pairs in the format: [ENGLISH, SPANISH]
@@ -92,7 +92,7 @@ def create_raw_dataset(path, num_examples):
 
     print(f"Original number of word_pairs: {len(word_pairs)}")
     word_pairs = [a for a in word_pairs if num_tokens(
-        a[0]) <= params.MAX_LENGTH]
+        a[0]) <= max_length]
     print(f"Filtered number of word_pairs: {len(word_pairs)}")
 
     return zip(*word_pairs)
@@ -121,6 +121,6 @@ def _test_preprocessing():
 
 def _test_dataset_compilation(path_to_file):
     # Testing dataset compilation
-    en, sp = create_raw_dataset(path_to_file, None)
+    en, sp = create_raw_dataset(path_to_file, None, max_length=100)
     print(en[-1])
     print(sp[-1])

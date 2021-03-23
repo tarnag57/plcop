@@ -1,6 +1,10 @@
+'''
+Default params
+'''
+
 # Data Parameters
 MAX_LENGTH = 200
-NUM_EXAMPLES = None
+NUM_EXAMPLES = 200
 PATH_TO_FILE = './data/clauses.txt'
 
 # Model Parameters
@@ -14,7 +18,7 @@ EPOCHS = 2
 
 # Checkpointing
 CHECKPOINT_FREQ = 2
-CHECKPOINT_DIR = './models'
+CHECKPOINT_DIR = './training_checkpoints'
 CHECKPOINT_PREFIX = 'ckpt'
 
 # Prediction

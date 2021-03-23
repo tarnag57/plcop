@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-import params
+from model_context import ModelContext
 
 '''
 Miscellaneous utility functions
@@ -28,6 +28,8 @@ def tensor_to_word_convert(lang, tensor):
 
 
 def print_network_stats(encoder, decoder, train_dataset):
+    context = ModelContext.get_context()
+
     # sample input
     example_input_batch, _example_target_batch = next(iter(train_dataset))
     sample_hidden = encoder.initialize_hidden_state()
@@ -39,8 +41,9 @@ def print_network_stats(encoder, decoder, train_dataset):
     print('Encoder Hidden state shape: (batch size, units) {}'.format(
         sample_hidden.shape))
 
-    sample_decoder_output, _, _ = decoder(tf.random.uniform((params.BATCH_SIZE, 1)),
-                                          sample_hidden, sample_output)
+    sample_decoder_output, _, _ = decoder(
+        tf.random.uniform((context.args.batch_size, 1)),
+        sample_hidden, sample_output)
 
     print('Decoder output shape: (batch_size, vocab size) {}'.format(
         sample_decoder_output.shape))
@@ -49,5 +52,7 @@ def print_network_stats(encoder, decoder, train_dataset):
     print(decoder.summary())
 
 
-def restore_checkpoint(checkpoint, checkpoint_dir=params.CHECKPOINT_DIR):
+def restore_checkpoint(checkpoint, checkpoint_dir=None):
+    context = ModelContext.get_context()
+    checkpoint_dir = context.args.checkpoint_dir if checkpoint_dir is None else checkpoint_dir
     checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))

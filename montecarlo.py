@@ -9,6 +9,15 @@ from scipy.sparse import dok_matrix
 import params
 import util
 
+'''
+This python script functions as the entry point for each solver run.
+It parses the solver parameters and prepares the environment.
+Any Python-defined function can be described here and then passed
+to plcop using pyswip.
+
+Note: This script is called separately for each problem file.
+'''
+
 # load parameters
 args = params.getArgs()
 # print("\n\n")
@@ -26,7 +35,7 @@ os.makedirs(policy_train_dir, exist_ok=True)
 os.makedirs(clause_dir, exist_ok=True)
 os.makedirs(proof_dir, exist_ok=True)
 
-
+# If a trained xgboost model is passed, we should load it
 if args.model_type == "xgboost" and args.guided > 0:
     assert args.guidance_dir is not None
     value_modelfile = "{}/value_xgb".format(args.guidance_dir)

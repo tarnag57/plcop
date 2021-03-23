@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-import params
+from model_context import ModelContext
 
 
 def create_dataset(
@@ -14,8 +14,9 @@ def create_dataset(
     embedding_dim=256,
     units=1024
 ):
+    context = ModelContext.get_context()
     if buffer_size is None:
-        buffer_size = len(x_tensor) * params.BUFFER_SIZE_MULT
+        buffer_size = len(x_tensor) * context.args.buffer_size_mult
 
     dataset = tf.data.Dataset.from_tensor_slices(
         (x_tensor, y_tensor)).shuffle(buffer_size)

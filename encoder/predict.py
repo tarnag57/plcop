@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 
-import params
 import preprocess
 from model_context import ModelContext
 
@@ -14,12 +13,12 @@ def encode_clause(clause):
     inputs = [context.inp_lang.word_index[i] for i in clause.split(' ')]
     inputs = tf.keras.preprocessing.sequence.pad_sequences(
         [inputs],
-        maxlen=params.PRED_MAX_LEN,
+        maxlen=context.args.pred_max_len,
         padding='post'
     )
     inputs = tf.convert_to_tensor(inputs)
 
-    hidden = [tf.zeros((1, params.UNITS))]
+    hidden = [tf.zeros((1, context.args.units))]
     enc_out, enc_hidden = context.encoder(inputs, hidden)
 
     return enc_out, enc_hidden
@@ -30,12 +29,12 @@ def decode_clause(enc_out, hidden, show_attention=False):
     context = ModelContext.get_context()
     result = ''
     attention_plot = np.zeros(
-        (params.PRED_MAX_LEN, params.PRED_MAX_LEN)) if show_attention else None
+        (context.args.pred_max_len, context.args.pred_max_len)) if show_attention else None
 
     dec_hidden = hidden
     dec_input = tf.expand_dims([context.targ_lang.word_index['<start>']], 0)
 
-    for t in range(params.PRED_MAX_LEN):
+    for t in range(context.args.pred_max_len):
         predictions, dec_hidden, attention_weights \
             = context.decoder(dec_input,
                               dec_hidden,

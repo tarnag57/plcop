@@ -24,9 +24,10 @@
 :- load_foreign_library('foreign/xgb.so').
 :- use_module(library(http/json)).
 
-:- dynamic mc_param/2.
+% Dynamic indicates that these assertaions can change over the execution of the program
+:- dynamic mc_param/2.      % Used as "ini" for the montecarlo
 :- dynamic xgb_handle/2.
-:- dynamic proof_found/1.
+:- dynamic proof_found/1.   
 :- dynamic clause_stream/1.
 :- dynamic proof_file/1.
 
@@ -37,6 +38,7 @@
 :- dynamic rootnode/1.
 rootnode(0).
 
+% Entry point
 mc_run:-
     % File= 'theorems/peano1plus2.p',
     % File= 'theorems/pelletier21.p',
@@ -68,7 +70,10 @@ mc_run(File,Params,ValueDir,PolicyDir,ClauseDir,ProofDir,ExecutionTime):-
             ), _
            ),
 
+    % Associate "file" with "File"
     b_setval(file, File),   %TODO super ugly
+
+    % Open "input" (clause) and "output" (proof) files
     get_clause_file(ClauseDir, File, ClauseFile),
     get_clause_file(ProofDir, File, ProofFile),
     open(ClauseFile, write, ClauseStream),
@@ -88,7 +93,7 @@ mc_run(File,Params,ValueDir,PolicyDir,ClauseDir,ProofDir,ExecutionTime):-
     
     mc_param(playout_count,PlayoutCount),
     mc_init(File,ChildHash,ParentHash,NodeHash,FHash), !,
-    op( 700, xfx, =), 
+    op( 700, xfx, =),   % Overwrite the precedence of equality (why?)
 
     %% impose time limit on mc playout
     mc_param(playout_time,Time),

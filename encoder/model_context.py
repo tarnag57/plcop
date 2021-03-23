@@ -15,6 +15,7 @@ class ModelContext():
 
     @staticmethod
     def create_context(
+        args,
         encoder,
         decoder,
         optimizer,
@@ -29,6 +30,7 @@ class ModelContext():
         val_steps_per_epoch
     ):
         ModelContext(
+            args,
             encoder,
             decoder,
             optimizer,
@@ -52,6 +54,7 @@ class ModelContext():
 
     def __init__(
         self,
+        args,
         encoder,
         decoder,
         optimizer,
@@ -69,6 +72,7 @@ class ModelContext():
             raise Exception(
                 "The context is a singleton; the constructor should never be called")
         else:
+            self.args = args
             self.encoder = encoder
             self.decoder = decoder
             self.optimizer = optimizer

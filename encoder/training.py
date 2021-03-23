@@ -2,14 +2,18 @@ import tensorflow as tf
 import time
 import os
 
-import params
 from model_context import ModelContext
 
 
 def perform_training():
 
     context = ModelContext.get_context()
-    checkpoint_prefix = os.path.join(params.CHECKPOINT_DIR, "ckpt")
+    checkpoint_prefix = os.path.join(
+        context.args.checkpoint_dir, context.args.checkpoint_prefix)
+    tain_log_name = checkpoint_prefix + "-train.txt"
+    val_log_name = checkpoint_prefix + "-val.txt"
+    train_log_file = open(tain_log_name, "w")
+    val_log_file = open(val_log_name, "w")
 
     print("Building train step")
     train_step = construct_train_step(
@@ -19,7 +23,7 @@ def perform_training():
         context.targ_lang
     )
 
-    for epoch in range(params.EPOCHS):
+    for epoch in range(context.args.epochs):
         start = time.time()
 
         enc_hidden = context.encoder.initialize_hidden_state()
@@ -37,16 +41,30 @@ def perform_training():
                                                              batch,
                                                              batch_loss.numpy()))
         # saving (checkpoint) the model every 2 epochs
-        if (epoch + 1) % params.CHECKPOINT_FREQ == 0:
+        if (epoch + 1) % context.args.checkpoint_freq == 0:
             context.checkpoint.save(file_prefix=checkpoint_prefix)
-            val_loss = perform_validation()
-            normalised_val_loss = val_loss / context.val_steps_per_epoch
-            print('Epoch {} Val Loss {:.4f}'.format(
-                epoch + 1, normalised_val_loss))
+
+        # Calculate overall epoch loss
+        normalised_tain_loss = total_loss / context.steps_per_epoch
+        print('Epoch {} Loss {:.4f}'.format(epoch + 1, normalised_tain_loss))
+        train_log_file.write(str(normalised_tain_loss))
+        train_log_file.flush()
+
+        # Perform validation step
+        val_loss = perform_validation()
+        normalised_val_loss = val_loss / context.val_steps_per_epoch
+        print('Epoch {} Val Loss {:.4f}'.format(
+            epoch + 1, normalised_val_loss))
+        val_log_file.write(str(normalised_val_loss))
+        val_log_file.flush()
 
         print('Epoch {} Loss {:.4f}'.format(epoch + 1,
                                             total_loss / context.steps_per_epoch))
         print('Time taken for 1 epoch {} sec\n'.format(time.time() - start))
+
+    # Cleaning up log files
+    val_log_file.close()
+    train_log_file.close()
 
 
 def perform_validation():
@@ -82,7 +100,9 @@ def loss_function(real, pred):
 
 def construct_validation_step(encoder, decoder, targ_lang):
 
-    @tf.function
+    context = ModelContext.get_context()
+
+    @ tf.function
     def val_step(inp, targ, enc_hidden):
         loss = 0
 
@@ -91,7 +111,7 @@ def construct_validation_step(encoder, decoder, targ_lang):
         dec_hidden = enc_hidden
 
         dec_input = tf.expand_dims(
-            [targ_lang.word_index['<start>']] * params.BATCH_SIZE, 1)
+            [targ_lang.word_index['<start>']] * context.args.batch_size, 1)
 
         # Teacher forcing - feeding the target as the next input
         for t in range(1, targ.shape[1]):
@@ -112,7 +132,9 @@ def construct_validation_step(encoder, decoder, targ_lang):
 
 def construct_train_step(encoder, decoder, optimizer, targ_lang):
 
-    @tf.function
+    context = ModelContext.get_context()
+
+    @ tf.function
     def train_step(inp, targ, enc_hidden):
         loss = 0
 
@@ -123,7 +145,7 @@ def construct_train_step(encoder, decoder, optimizer, targ_lang):
             dec_hidden = enc_hidden
 
             dec_input = tf.expand_dims(
-                [targ_lang.word_index['<start>']] * params.BATCH_SIZE, 1)
+                [targ_lang.word_index['<start>']] * context.args.batch_size, 1)
 
             print(f"Going through decoder, targ shape: {targ.shape}")
             # Teacher forcing - feeding the target as the next input

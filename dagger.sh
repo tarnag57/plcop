@@ -1,3 +1,6 @@
+# Runs the solver on all the problems in a given directory.
+# Finally, it performs training on the output.
+
 PROLOG=swi
 PROLOG_PATH=/usr/bin/swipl
 #PROLOG_OPTIONS='-nodebug -L120M -G120M -T100M -g '
@@ -5,20 +8,19 @@ PROLOG_OPTIONS='-nodebug -L0 -G0 -T0 -g '
 PROOF_LAYOUT=connect
 PROVER_PATH=.
 
-
 if [[ $# -ne 4 && $# -ne 6 ]]; then
- echo "Usage: $0 <ini file> <problem dir> <log dir> <corenum> [eval ini file] [eval problem dir]"
- exit 2
+    echo "Usage: $0 <ini file> <problem dir> <log dir> <corenum> [eval ini file] [eval problem dir]"
+    exit 2
 fi
 
 if [ ! -r "$1" ]; then
- echo "Error: File $1 not found" >&2
- exit 2
+    echo "Error: File $1 not found" >&2
+    exit 2
 fi
 
 if [ ! -r "$2" ]; then
- echo "Error: Directory $2 not found" >&2
- exit 2
+    echo "Error: Directory $2 not found" >&2
+    exit 2
 fi
 
 INI_FILE=$1
@@ -26,25 +28,24 @@ PROBLEM_DIR=$2
 OUT_DIR=$3
 CORENUM=$4
 
+SOLVER_TIMEOUT=1200
+ERROR_FILE = "/dev/null"
+
 mkdir -p "$OUT_DIR/$PROBLEM_DIR" # TODO make this more elegant
 
 if [[ $# -ne 4 ]]; then
- echo "EVALUATION MODE"
- EVAL_INI_FILE=$5
- EVAL_PROBLEM_DIR=$6
- mkdir -p "$OUT_DIR/$EVAL_PROBLEM_DIR" # TODO make this more elegant
+    echo "EVALUATION MODE"
+    EVAL_INI_FILE=$5
+    EVAL_PROBLEM_DIR=$6
+    mkdir -p "$OUT_DIR/$EVAL_PROBLEM_DIR" # TODO make this more elegant
 fi
-
-
 
 START=$(date +%s.%N)
 
 export OMP_NUM_THREADS=1
 echo "Building montecarlo tree for each problem in $PROBLEM_DIR"
-# SCRIPT="/usr/bin/timeout --preserve-status -k 5 600 python montecarlo.py ${INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> ${OUT_DIR}/{}.err"
-SCRIPT="/usr/bin/timeout --preserve-status -k 5 1200 python montecarlo.py ${INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> /dev/null"
-# SCRIPT="python montecarlo.py ${INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> ${OUT_DIR}/{}.err"
-# ls ${PROBLEM_DIR}/*.p | shuf | parallel -j 50 --no-notice $SCRIPT
+
+SCRIPT="/usr/bin/timeout --preserve-status -k 5 ${SOLVER_TIMEOUT} python montecarlo.py ${INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> ${ERROR_FILE}"
 find ${PROBLEM_DIR} -type f -name "*.p" | shuf | parallel -j $CORENUM --no-notice $SCRIPT
 
 END=$(date +%s.%N)
@@ -71,8 +72,6 @@ if [[ $# -ne 4 ]]; then
     echo "SUCCESS COUNT:"
     grep -rl "SUCCESS" $OUT_DIR/$EVAL_PROBLEM_DIR/*.out | wc -l
 fi
-
-    
 
 echo "Training xgboost"
 export OMP_NUM_THREADS=32
