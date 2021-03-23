@@ -50,7 +50,7 @@ units="256"
 ckpt_prefix="ed-$embedding_dim-u-$units"
 
 #! Run options for the application:
-data_options="--max_length 300 --path_to_file $project_dir/encoder/data/caluses.txt"
+data_options="--max_length 300 --path_to_file $project_dir/encoder/data/clauses.txt"
 model_options="--embedding_dim $embedding_dim --units $units"
 training_options="--batch_size 128 --epochs 100"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/training_checkpoints"
