@@ -1,26 +1,26 @@
 #!/bin/bash
 
 #! Name of the job:
-#SBATCH -J tf_training
+SBATCH -J tf_training
 #! Which project should be charged (NB Wilkes2 projects end in '-GPU'):
-#SBATCH -A HOLDEN-SL3-GPU
+SBATCH -A HOLDEN-SL3-GPU
 #! How many whole nodes should be allocated?
-#SBATCH --nodes=1
+SBATCH --nodes=1
 #! How many (MPI) tasks will there be in total?
 #! Note probably this should not exceed the total number of GPUs in use.
-#SBATCH --ntasks=1
+SBATCH --ntasks=1
 #! Specify the number of GPUs per node (between 1 and 4; must be 4 if nodes>1).
 #! Note that the job submission script will enforce no more than 3 cpus per GPU.
-#SBATCH --gres=gpu:1
+SBATCH --gres=gpu:1
 #! How much wallclock time will be required?
-#SBATCH --time=10:00:00
+SBATCH --time=10:00:00
 #! What types of email messages do you wish to receive?
-#SBATCH --mail-type=ALL
+SBATCH --mail-type=ALL
 #! Uncomment this to prevent the job from being requeued (e.g. if
 #! interrupted by node failure or system downtime):
-#SBATCH --no-requeue
+SBATCH --no-requeue
 #! Do not change:
-#SBATCH -p pascal
+SBATCH -p pascal
 
 #! Number of nodes and tasks per node allocated by SLURM (do not change):
 numnodes=$SLURM_JOB_NUM_NODES
