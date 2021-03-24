@@ -36,7 +36,7 @@ unset OMP_NUM_THREADS
 module purge                  # Removes all modules still loaded
 module load rhel7/default-gpu # REQUIRED - loads the basic environment
 module unload cuda/8.0
-module load python/3.6 cuda/10.0 cudnn/7.5_cuda-10.0
+module load python/3.6 cuda/11.0 cudnn/7.5_cuda-10.0
 . ~/tensorflow-env/bin/activate
 #! Insert additional module load commands after this line if needed:
 
@@ -62,7 +62,7 @@ workdir="$SLURM_SUBMIT_DIR" # The value of SLURM_SUBMIT_DIR sets workdir to the 
 # in which sbatch is run.
 
 #! Number of MPI tasks to be started by the application per node and in total (do not change):
-np=$((${numnodes} * ${mpi_tasks_per_node}))
+# np=$((${numnodes} * ${mpi_tasks_per_node}))
 
 #! Choose this for a pure shared-memory OpenMP parallel program on a single node:
 #! (OMP_NUM_THREADS threads will be created):
