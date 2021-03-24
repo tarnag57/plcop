@@ -62,14 +62,14 @@ workdir="$SLURM_SUBMIT_DIR" # The value of SLURM_SUBMIT_DIR sets workdir to the 
 # in which sbatch is run.
 
 #! Number of MPI tasks to be started by the application per node and in total (do not change):
-np=$((${numnodes}*${mpi_tasks_per_node}))
+np=$((${numnodes} * ${mpi_tasks_per_node}))
 
 #! Choose this for a pure shared-memory OpenMP parallel program on a single node:
 #! (OMP_NUM_THREADS threads will be created):
-#CMD="$application $options"
+CMD="$application $options"
 
 #! Choose this for a MPI code using OpenMPI:
-CMD="mpirun -npernode $mpi_tasks_per_node -np $np $application $options"
+# CMD="mpirun -npernode $mpi_tasks_per_node -np $np $application $options"
 
 ###############################################################
 ### You should not have to change anything below this line ####
