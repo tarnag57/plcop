@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+# os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import tensorflow as tf
 
 import matplotlib.pyplot as plt
@@ -235,9 +235,9 @@ def main():
     # tflite = model_compression.create_tflite()
 
     # utils.restore_checkpoint(context.checkpoint)
-    clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
-    result = predict.seq_to_seq_predict(clause)
-    print(result)
+    # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    # result = predict.seq_to_seq_predict(clause)
+    # print(result)
 
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)

@@ -13,7 +13,7 @@
 #! Note that the job submission script will enforce no more than 3 cpus per GPU.
 #SBATCH --gres=gpu:1
 #! How much wallclock time will be required?
-#SBATCH --time=10:00:00
+#SBATCH --time=00:02:00
 #! What types of email messages do you wish to receive?
 #SBATCH --mail-type=ALL
 #! Uncomment this to prevent the job from being requeued (e.g. if
@@ -36,7 +36,7 @@ unset OMP_NUM_THREADS
 module purge                  # Removes all modules still loaded
 module load rhel7/default-gpu # REQUIRED - loads the basic environment
 module unload cuda/8.0
-module load python/3.6 cuda/11.0 cudnn/7.5_cuda-10.0
+module load python/3.6 cuda/11.0 cudnn/8.0_cuda-11.0
 . ~/tensorflow-env/bin/activate
 #! Insert additional module load commands after this line if needed:
 
