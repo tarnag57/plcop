@@ -3,8 +3,8 @@ Default params
 '''
 
 # Data Parameters
-MAX_LENGTH = 200
-NUM_EXAMPLES = None
+MAX_LENGTH = 100
+NUM_EXAMPLES = 200
 PATH_TO_FILE = './data/clauses.txt'
 
 # Model Parameters
@@ -20,6 +20,11 @@ EPOCHS = 2
 CHECKPOINT_FREQ = 2
 CHECKPOINT_DIR = './training_checkpoints'
 CHECKPOINT_PREFIX = 'ckpt'
+
+# Model Save/Load Params
+SAVE_DIR = './saved_models/'
+SAVE_NAME = 'model'
+LANG_NAME = 'lang'
 
 # Prediction
 PRED_MAX_LEN = MAX_LENGTH

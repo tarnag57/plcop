@@ -36,14 +36,17 @@ def create_datasets(
     return (train_dataset, eval_dataset, train_size, eval_size)
 
 
-def load_dataset(path, num_examples, max_length):
+def load_dataset(path, num_examples, max_length, tokenizer=None):
     # creating cleaned input, output pairs
     targ_lang, inp_lang = create_raw_dataset(path, num_examples, max_length)
 
-    input_tensor, inp_lang_tokenizer = tokenize(inp_lang)
-    target_tensor, targ_lang_tokenizer = tokenize(targ_lang)
+    if tokenizer is None:
+        tokenizer = create_tokenizer(inp_lang)
 
-    return input_tensor, target_tensor, inp_lang_tokenizer, targ_lang_tokenizer
+    input_tensor = tokenize(inp_lang, tokenizer)
+    target_tensor = tokenize(targ_lang, tokenizer)
+
+    return input_tensor, target_tensor, tokenizer
 
 
 def unicode_to_ascii(s):
@@ -52,11 +55,13 @@ def unicode_to_ascii(s):
                    if unicodedata.category(c) != 'Mn')
 
 
-def preprocess_sentence(w):
+# Numbered indicates whether the input data has a line number as the first token
+def preprocess_sentence(w, numbered=True):
     w = unicode_to_ascii(w.lower().strip())
 
     # Remove the number at the beginning of the line
-    w = " ".join(w.split(' ')[1:])
+    first_token = 1 if numbered else 0
+    w = " ".join(w.split(' ')[first_token:])
 
     # creating a space between a word and the punctuation following it
     # eg: "he is a boy." => "he is a boy ."
@@ -69,9 +74,9 @@ def preprocess_sentence(w):
 
     w = w.strip()
 
-    # adding a start and an end token to the sentence
-    # so that the model know when to start and stop predicting.
-    w = '<start> ' + w + ' <end>'
+    # adding an end token to the sentence so that the model know when to
+    # stop predicting.
+    w = w + ' <end>'
     return w
 
 
@@ -98,17 +103,18 @@ def create_raw_dataset(path, num_examples, max_length):
     return zip(*word_pairs)
 
 
-def tokenize(lang):
+def create_tokenizer(lang):
     lang_tokenizer = tf.keras.preprocessing.text.Tokenizer(
         filters='')
     lang_tokenizer.fit_on_texts(lang)
+    return lang_tokenizer
 
-    tensor = lang_tokenizer.texts_to_sequences(lang)
 
+def tokenize(input_tokens, tokenizer):
+    tensor = tokenizer.texts_to_sequences(input_tokens)
     tensor = tf.keras.preprocessing.sequence.pad_sequences(tensor,
                                                            padding='post')
-
-    return tensor, lang_tokenizer
+    return tensor
 
 
 def _test_preprocessing():

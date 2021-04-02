@@ -26,14 +26,13 @@ def perform_training():
     for epoch in range(context.args.epochs):
         start = time.time()
 
-        enc_hidden = context.encoder.initialize_hidden_state()
         total_loss = 0
 
         for (batch, (inp, targ)) in enumerate(
             context.train_dataset.take(context.steps_per_epoch)
         ):
             print("starting training for batch")
-            batch_loss = train_step(inp, targ, enc_hidden)
+            batch_loss = train_step(inp, targ)
             total_loss += batch_loss
 
             if batch % 2 == 0:
@@ -73,13 +72,11 @@ def perform_validation():
     val_step = construct_validation_step(
         context.encoder, context.decoder, context.targ_lang)
 
-    enc_hidden = context.encoder.initialize_hidden_state()
-
     total_loss = 0
     for (_batch, (inp, targ)) in enumerate(
         context.val_dataset.take(context.steps_per_epoch)
     ):
-        batch_loss = val_step(inp, targ, enc_hidden)
+        batch_loss = val_step(inp, targ)
         total_loss += batch_loss
 
     return total_loss
@@ -103,10 +100,10 @@ def construct_validation_step(encoder, decoder, targ_lang):
     context = ModelContext.get_context()
 
     @ tf.function
-    def val_step(inp, targ, enc_hidden):
+    def val_step(inp, targ):
         loss = 0
 
-        enc_output, enc_hidden = encoder(inp, enc_hidden)
+        enc_output, enc_hidden = encoder(inp)
 
         dec_hidden = enc_hidden
 
@@ -135,11 +132,11 @@ def construct_train_step(encoder, decoder, optimizer, targ_lang):
     context = ModelContext.get_context()
 
     @ tf.function
-    def train_step(inp, targ, enc_hidden):
+    def train_step(inp, targ):
         loss = 0
 
         with tf.GradientTape() as tape:
-            enc_output, enc_hidden = encoder(inp, enc_hidden)
+            enc_output, enc_hidden = encoder(inp)
             print("Encoder calculated")
 
             dec_hidden = enc_hidden

@@ -52,7 +52,50 @@ def print_network_stats(encoder, decoder, train_dataset):
     print(decoder.summary())
 
 
+def shift_decoder_input(input_tensor):
+    context = ModelContext.get_context()
+    start_symbols = tf.repeat(
+        [context.tokenizer.word_index['<start>']], input_tensor.shape[0])
+    start_symbols = tf.reshape(start_symbols, [input_tensor.shape[0], 1])
+    input_tensor_reduced = input_tensor[:, :-1]
+    return tf.concat([start_symbols, input_tensor_reduced], axis=1)
+
+
 def restore_checkpoint(checkpoint, checkpoint_dir=None):
     context = ModelContext.get_context()
     checkpoint_dir = context.args.checkpoint_dir if checkpoint_dir is None else checkpoint_dir
     checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+
+
+def model_file_name(args):
+    return args.save_dir + args.save_name + '.h5'
+
+
+def lang_file_name(args):
+    return args.save_dir + args.lang_name + '.json'
+
+
+def save_model():
+    context = ModelContext.get_context()
+
+    # Writing the model
+    tf.keras.models.save_model(
+        context.seq_to_seq_model,
+        model_file_name(context.args)
+    )
+
+    # Writing the generated language
+    json_string = context.tokenizer.to_json()
+    lang_file = open(lang_file_name(context.args), 'w')
+    lang_file.write(json_string)
+    lang_file.close()
+
+
+def load_model(args):
+    return tf.keras.models.load_model(model_file_name(args))
+
+
+def load_lang(args):
+    json_file = open(lang_file_name(args), 'r')
+    json_string = json_file.read()
+    return tf.keras.preprocessing.text.tokenizer_from_json(json_string)

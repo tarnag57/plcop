@@ -1,6 +1,5 @@
 import tensorflow as tf
 
-from models import Encoder, Decoder
 
 '''
 This is a class containing all the information about the training process
@@ -16,34 +15,37 @@ class ModelContext():
     @staticmethod
     def create_context(
         args,
-        encoder,
-        decoder,
         optimizer,
-        train_dataset,
-        train_size,
-        val_dataset,
-        val_size,
         checkpoint,
-        inp_lang,
-        targ_lang,
-        steps_per_epoch,
-        val_steps_per_epoch
+        tokenizer,
+        seq_to_seq_model
     ):
         ModelContext(
             args,
-            encoder,
-            decoder,
             optimizer,
-            train_dataset,
-            train_size,
-            val_dataset,
-            val_size,
             checkpoint,
-            inp_lang,
-            targ_lang,
-            steps_per_epoch,
-            val_steps_per_epoch
+            tokenizer,
+            seq_to_seq_model
         )
+
+    @staticmethod
+    def add_datset(train_dataset, train_input, val_dataset, val_input):
+        if ModelContext.__instance == None:
+            raise Exception("Model context not yet initialised")
+
+        if ModelContext.__instance.train_dataset != None:
+            raise Exception("Datasets already added to the context")
+
+        else:
+            ctx = ModelContext.__instance
+            ctx.train_dataset = train_dataset
+            ctx.train_input = train_input
+            ctx.train_size = len(train_input)
+            ctx.val_dataset = val_dataset
+            ctx.val_input = val_input
+            ctx.val_size = len(val_input)
+            ctx.steps_per_epoch = len(train_input) // ctx.args.batch_size
+            ctx.val_steps_per_epoch = len(val_input) // ctx.args.batch_size
 
     @ staticmethod
     def get_context():
@@ -55,35 +57,27 @@ class ModelContext():
     def __init__(
         self,
         args,
-        encoder,
-        decoder,
         optimizer,
-        train_dataset,
-        train_size,
-        val_dataset,
-        val_size,
         checkpoint,
-        inp_lang,
-        targ_lang,
-        steps_per_epoch,
-        val_steps_per_epoch
+        tokenizer,
+        seq_to_seq_model
     ):
         if ModelContext.__instance != None:
             raise Exception(
                 "The context is a singleton; the constructor should never be called")
         else:
             self.args = args
-            self.encoder = encoder
-            self.decoder = decoder
             self.optimizer = optimizer
-            self.train_dataset = train_dataset
-            self.train_size = train_size
-            self.val_dataset = val_dataset
-            self.val_size = val_size
             self.checkpoint = checkpoint
-            self.inp_lang = inp_lang
-            self.targ_lang = targ_lang
-            self.steps_per_epoch = steps_per_epoch
-            self.val_steps_per_epoch = val_steps_per_epoch
+            self.tokenizer = tokenizer
+            self.seq_to_seq_model = seq_to_seq_model
+
+            # These might be initialised later
+            self.train_dataset = None
+            self.train_size = None
+            self.val_dataset = None
+            self.val_size = None
+            self.steps_per_epoch = None
+            self.val_steps_per_epoch = None
 
             ModelContext.__instance = self

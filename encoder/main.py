@@ -1,5 +1,5 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import tensorflow as tf
 
 import matplotlib.pyplot as plt
@@ -12,13 +12,15 @@ import io
 import time
 
 import dataset
+import model_compression
 import params
 import predict
 import preprocess
 import training
 import utils
 from model_context import ModelContext
-from models import Encoder, Decoder
+# from models import build_encoder, Decoder
+import models
 
 
 def build_parser():
@@ -118,6 +120,26 @@ def build_parser():
         type=str,
     )
 
+    # Model Save/Load
+    parser.add_argument(
+        '--save_dir',
+        default=params.SAVE_DIR,
+        help='The directory of the final output.',
+        type=str,
+    )
+    parser.add_argument(
+        '--save_name',
+        default=params.SAVE_NAME,
+        help='The name of the model file.',
+        type=str,
+    )
+    parser.add_argument(
+        '--lang_name',
+        default=params.LANG_NAME,
+        help='The name of the language file.',
+        type=str,
+    )
+
     # Prediction
     parser.add_argument(
         '--pred_max_len',
@@ -130,84 +152,99 @@ def build_parser():
     return parser
 
 
-def init_context():
+def init_context(prediction_phase=False):
+    # In prediction phase, we load the saved model and language tokenizer
+    # and do NOT use the training datset
 
     parser = build_parser()
     args = parser.parse_args()
 
-    # Need to know the input / target language size
+    tokenizer = None
+    model = None
+    input_tensor = None
+    target_tensor = None
+
     # Loading the dataset
-    input_tensor, target_tensor, inp_lang, targ_lang = preprocess.load_dataset(
-        args.path_to_file,
-        args.num_examples,
-        args.max_length
+    if prediction_phase:
+        tokenizer = utils.load_lang(args)
+        model = utils.load_model(args)
+    else:
+        input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
+            args.path_to_file,
+            args.num_examples,
+            args.max_length,
+            tokenizer
+        )
+
+        # Creating dataset
+        train_dataset, val_dataset, train_size, val_size = preprocess.create_datasets(
+            input_tensor,
+            target_tensor,
+            args.batch_size,
+            args.buffer_size_mult
+        )
+
+    vocab_size = len(tokenizer.word_index) + 1
+
+    if prediction_phase:
+        model = utils.load_model(args)
+    else:
+        model = seq_to_seq_model = models.build_models(
+            vocab_size,
+            args.embedding_dim,
+            args.units
+        )
+
+    optimizer = tf.optimizers.Adam()
+
+    ModelContext.create_context(
+        args=args,
+        optimizer=optimizer,
+        checkpoint=None,                    # TODO
+        tokenizer=tokenizer,
+        seq_to_seq_model=model
     )
 
-    # Creating dataset
-    train_dataset, val_dataset, train_size, val_size = preprocess.create_datasets(
-        input_tensor,
-        target_tensor,
-        args.batch_size,
-        args.buffer_size_mult
-    )
+    # Finally create the dataset
+    if not prediction_phase:
 
-    # Calculate steps per epoch
-    vocab_inp_size = len(inp_lang.word_index) + 1
-    vocab_tar_size = len(targ_lang.word_index) + 1
+        # Creating dataset
+        train_dataset, val_dataset, train_size, val_size = preprocess.create_datasets(
+            input_tensor,
+            target_tensor,
+            args.batch_size,
+            args.buffer_size_mult
+        )
+        ModelContext.add_datset(
+            train_dataset, train_size, val_dataset, val_size)
 
-    steps_per_epoch = train_size // args.batch_size
-    val_steps_per_epoch = val_size // args.batch_size
-
-    encoder = Encoder(
-        vocab_inp_size,
-        args.embedding_dim,
-        args.units,
-        args.batch_size
-    )
-    decoder = Decoder(
-        vocab_tar_size,
-        args.embedding_dim,
-        args.units,
-        args.batch_size
-    )
-
-    optimizer = tf.keras.optimizers.Adam()
-
-    # Checkpointing config
-    checkpoint = tf.train.Checkpoint(optimizer=optimizer,
-                                     encoder=encoder,
-                                     decoder=decoder)
-
-    encoder = ModelContext.create_context(
-        args,
-        encoder,
-        decoder,
-        optimizer,
-        train_dataset,
-        train_size,
-        val_dataset,
-        val_size,
-        checkpoint,
-        inp_lang,
-        targ_lang,
-        steps_per_epoch,
-        val_steps_per_epoch
-    )
+    return input_tensor
 
 
 def main():
-    init_context()
+    input_tensor = init_context(prediction_phase=True)
     context = ModelContext.get_context()
+    context.seq_to_seq_model.summary()
+    # models.lstm_training(context.seq_to_seq_model, input_tensor)
+    # utils.save_model()
 
-    training.perform_training()
+    # training.perform_training()
+
+    # print(context.encoder.summary())
+    # utils.save_model(output_dir='./saved_models/')
+    # tflite = model_compression.create_tflite()
 
     # utils.restore_checkpoint(context.checkpoint)
-    # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    result = predict.seq_to_seq_predict(clause)
+    print(result)
 
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
     # print(result)
 
+    # tf.keras.models.save_model(context.encoder, './saved_model/encoder')
+    # tf.keras.models.save_model(context.decoder, './saved_model/decoder')
     # res = preprocess.preprocess_sentence(
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)

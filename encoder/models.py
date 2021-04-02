@@ -1,4 +1,9 @@
 import tensorflow as tf
+import tensorflow.keras.layers as layers
+import os
+
+from model_context import ModelContext
+import utils
 
 
 class BahdanauAttention(tf.keras.layers.Layer):
@@ -31,6 +36,111 @@ class BahdanauAttention(tf.keras.layers.Layer):
         return context_vector, attention_weights
 
 
+# def build_gru_encoder(vocab_size, embedding_dim, enc_units, batch_sz):
+#     encoder_input = layers.Input(shape=(None,))
+#     encoder_embed = layers.Embedding(vocab_size, embedding_dim)(encoder_input)
+#     output, state = tf.keras.layers.GRU(
+#         enc_units,
+#         return_sequences=True,
+#         return_state=True,
+#         recurrent_initializer='glorot_uniform'
+#     )(encoder_embed)
+
+
+def build_models(vocab_size, embedding_dim, enc_units):
+
+    encoder_input = layers.Input(shape=(None, vocab_size))
+
+    # Note: encoder_output == state_h
+    _enc_output, state_h, state_c = layers.LSTM(
+        enc_units, return_state=True)(encoder_input)
+    encoder_states = [state_h, state_c]
+
+    decoder_input = tf.keras.Input(shape=(None, vocab_size))
+    decoder_output, _, _ = layers.LSTM(
+        enc_units,
+        return_sequences=True,
+        return_state=True
+    )(decoder_input, initial_state=encoder_states)
+
+    decoder_output = layers.Dense(
+        vocab_size, activation="softmax")(decoder_output)
+
+    print(f"Model output shape: {decoder_output.shape}")
+
+    seq_to_seq_model = tf.keras.Model(
+        [encoder_input, decoder_input], decoder_output)
+
+    return seq_to_seq_model
+
+
+def get_encoder_part(seq_to_seq_model):
+    encode_inputs = seq_to_seq_model.input[0]
+    encoder_outputs, state_h, state_c = seq_to_seq_model.layers[2].output
+    return tf.keras.models.Model(encode_inputs, [state_h, state_c])
+
+
+def get_decoder_part(seq_to_seq_model, units):
+    decoder_input = seq_to_seq_model.input[1]
+    state_input_h = tf.keras.Input(shape=(units,), name="input_3")
+    state_input_c = tf.keras.Input(shape=(units,), name="input_4")
+
+    decoder_lstm = seq_to_seq_model.layers[3]
+    decoder_output, state_h, state_c = decoder_lstm(
+        decoder_input, initial_state=[state_input_h, state_input_c]
+    )
+
+    decoder_dense = seq_to_seq_model.layers[4]
+    decoder_output = decoder_dense(decoder_output)
+
+    return tf.keras.models.Model(
+        [decoder_input, state_input_h, state_input_c],
+        [decoder_output, state_h, state_c]
+    )
+
+
+def lstm_training(model, input_tensor):
+
+    context = ModelContext.get_context()
+    checkpoint_prefix = os.path.join(
+        context.args.checkpoint_dir, context.args.checkpoint_prefix)
+    train_log_name = checkpoint_prefix + "-train.txt"
+
+    loss_function = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
+    logger = tf.keras.callbacks.CSVLogger(
+        train_log_name, separator=',', append=False)
+    checkpoint = tf.keras.callbacks.ModelCheckpoint(
+        context.args.checkpoint_dir,
+        save_freq=context.args.checkpoint_freq
+    )
+
+    decoder_input = utils.shift_decoder_input(input_tensor)
+
+    model.compile(
+        optimizer="adam", loss=loss_function, metrics=['accuracy'])
+
+    # One hot encode the input tensors
+    vocab_size = len(context.tokenizer.word_index) + 1
+    input_tensor = tf.one_hot(input_tensor, depth=vocab_size)
+    decoder_input = tf.one_hot(decoder_input, depth=vocab_size)
+
+    model.fit(
+        x=[input_tensor, decoder_input],
+        y=input_tensor,
+        batch_size=context.args.batch_size,
+        validation_split=0.2,
+        epochs=context.args.epochs,
+        callbacks=[logger, checkpoint]
+    )
+
+
+# def build_decoder(vocab_size, embedding_dim, enc_units, timesteps):
+#     decoder_input = layers.RepeatVector(timesteps)()
+#     decoder_input = layers.Input(shape=(None,))
+#     decoder_embed = layers.Embedding(vocab_size, embedding_dim)(decoder_input)
+#     decoder_output = layers.LSTM(decoder_embed, initial_state=)
+
+
 class Encoder(tf.keras.Model):
     def __init__(self, vocab_size, embedding_dim, enc_units, batch_sz):
         super(Encoder, self).__init__()
@@ -42,13 +152,16 @@ class Encoder(tf.keras.Model):
                                        return_state=True,
                                        recurrent_initializer='glorot_uniform')
 
-    def call(self, x, hidden):
+    def call(self, x):
+        print(x.shape)
+        hidden = self.initialize_hidden_state(x.shape[0])
         x = self.embedding(x)
         output, state = self.gru(x, initial_state=hidden)
         return output, state
 
-    def initialize_hidden_state(self):
-        return tf.zeros((self.batch_sz, self.enc_units))
+    # In order to perform prediction, we need to make the batch_size variable
+    def initialize_hidden_state(self, batch_sz):
+        return tf.zeros((batch_sz, self.enc_units))
 
 
 class Decoder(tf.keras.Model):
