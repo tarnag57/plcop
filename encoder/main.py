@@ -167,7 +167,7 @@ def init_context(prediction_phase=False):
     else:
         input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
             args.path_to_file,
-            args.num_examples,input_tensor
+            args.num_examples,input_tensor,
             args.max_length,
             tokenizer
         )
