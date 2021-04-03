@@ -82,8 +82,10 @@ class ModelContext():
             # These might be initialised later
             self.all_clauses_tensor = None
             self.train_dataset = None
+            self.train_input = None
             self.train_size = None
             self.val_dataset = None
+            self.val_input = None
             self.val_size = None
             self.steps_per_epoch = None
             self.val_steps_per_epoch = None

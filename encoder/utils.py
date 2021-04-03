@@ -1,6 +1,7 @@
 import tensorflow as tf
 
 from model_context import ModelContext
+import utils
 
 '''
 Miscellaneous utility functions
@@ -58,6 +59,24 @@ def remove_start_from_input(input_tensor):
 
 def remove_stop_from_input(input_tensor):
     return input_tensor[:, :-1]
+
+
+def generate_model_datset(clause_tensor, vocab_size, batch_size):
+
+    enc_input = clause_tensor
+    dec_input = utils.remove_stop_from_input(enc_input)
+    target = utils.remove_start_from_input(enc_input)
+
+    def one_hot_input(x, y):
+        enc_input = tf.one_hot(x["raw_input_1"], depth=vocab_size)
+        dec_input = tf.one_hot(x["raw_input_2"], depth=vocab_size)
+        target = tf.one_hot(y, depth=vocab_size)
+        return ({"input_1": enc_input, "input_2": dec_input}, target)
+
+    input_dataset = tf.data.Dataset.from_tensor_slices(
+        ({"raw_input_1": enc_input, "raw_input_2": dec_input}, target))
+    input_dataset = input_dataset.map(one_hot_input)
+    return input_dataset.batch(batch_size)
 
 
 def restore_checkpoint(checkpoint, checkpoint_dir=None):

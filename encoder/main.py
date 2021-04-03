@@ -221,8 +221,8 @@ def main():
     init_context(prediction_phase=False)
     context = ModelContext.get_context()
     context.seq_to_seq_model.summary()
-    # models.lstm_training(context.seq_to_seq_model)
-    # utils.save_model()
+    models.lstm_training(context.seq_to_seq_model)
+    utils.save_model()
 
     # training.perform_training()
 

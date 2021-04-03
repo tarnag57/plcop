@@ -114,24 +114,19 @@ def lstm_training(model):
         save_freq=context.args.checkpoint_freq
     )
 
-    encoder_input = context.all_clauses_tensor
-    decoder_input = utils.remove_stop_from_input(context.all_clauses_tensor)
-    decoder_target = utils.remove_start_from_input(context.all_clauses_tensor)
-
     model.compile(
         optimizer="adam", loss=loss_function, metrics=['accuracy'])
 
-    # One hot encode the input tensors
     vocab_size = len(context.tokenizer.word_index) + 1
-    encoder_input = tf.one_hot(encoder_input, depth=vocab_size)
-    decoder_input = tf.one_hot(decoder_input, depth=vocab_size)
-    decoder_target = tf.one_hot(decoder_target, depth=vocab_size)
+    train_dataset = utils.generate_model_datset(
+        context.train_input, vocab_size, context.args.batch_size)
+    val_dataset = utils.generate_model_datset(
+        context.val_input, vocab_size, context.args.batch_size)
 
     model.fit(
-        x=[encoder_input, decoder_input],
-        y=decoder_target,
+        x=train_dataset,
         batch_size=context.args.batch_size,
-        validation_split=0.2,
+        validation_data=val_dataset,
         epochs=context.args.epochs,
         callbacks=[logger, checkpoint]
     )
