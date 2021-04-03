@@ -1,0 +1,363 @@
+--max_length 500 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ckpt-u-256
+Changed directory to /rds/user/vt289/hpc-work/plcop/hpc_scripts.
+
+JobID: 37174219
+======
+Time: Sat  3 Apr 14:22:21 BST 2021
+Running on master node: gpu-e-33
+Current directory: /rds/user/vt289/hpc-work/plcop/hpc_scripts
+
+Nodes allocated:
+================
+gpu-e-33
+
+numtasks=1, numnodes=1, mpi_tasks_per_node=1
+
+Executing command:
+==================
+python3 ~/rds/hpc-work/plcop/encoder/main.py --max_length 500 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ckpt-u-256 
+
+2021-04-03 14:22:22.607677: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-03 14:22:25.172787: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-03 14:22:25.174796: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-04-03 14:22:25.199524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:06:00.0 name: Tesla P100-PCIE-16GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 681.88GiB/s
+2021-04-03 14:22:25.199596: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-03 14:22:25.973508: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-03 14:22:25.973644: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-03 14:22:26.210762: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-03 14:22:26.744096: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-03 14:22:27.434562: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-03 14:22:27.573642: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-03 14:22:27.783789: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-03 14:22:27.786428: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-03 14:22:27.786902: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-04-03 14:22:27.787089: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-03 14:22:27.788399: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:06:00.0 name: Tesla P100-PCIE-16GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 681.88GiB/s
+2021-04-03 14:22:27.788454: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-03 14:22:27.788496: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-03 14:22:27.788530: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-03 14:22:27.788563: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-03 14:22:27.788616: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-03 14:22:27.788653: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-03 14:22:27.788686: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-03 14:22:27.788719: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-03 14:22:27.791160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-03 14:22:27.791223: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-03 14:22:30.499902: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-03 14:22:30.499970: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-04-03 14:22:30.499994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-04-03 14:22:30.503858: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14957 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:06:00.0, compute capability: 6.0)
+2021-04-03 14:22:38.739227: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-04-03 14:22:38.739876: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2200050000 Hz
+2021-04-03 14:22:41.632861: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-03 14:22:43.479195: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-03 14:22:43.513247: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+Original number of word_pairs: 200
+Filtered number of word_pairs: 200
+Model output shape: (None, None, 117)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, None, 117)]  0                                            
+__________________________________________________________________________________________________
+input_2 (InputLayer)            [(None, None, 117)]  0                                            
+__________________________________________________________________________________________________
+lstm (LSTM)                     [(None, 256), (None, 382976      input_1[0][0]                    
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   [(None, None, 256),  382976      input_2[0][0]                    
+                                                                 lstm[0][1]                       
+                                                                 lstm[0][2]                       
+__________________________________________________________________________________________________
+dense (Dense)                   (None, None, 117)    30069       lstm_1[0][0]                     
+==================================================================================================
+Total params: 796,021
+Trainable params: 796,021
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Epoch 1/100
+1/2 [==============>...............] - ETA: 24s - loss: 4.7389 - accuracy: 0.00472/2 [==============================] - 26s 1s/step - loss: 4.7142 - accuracy: 0.1203 - val_loss: 4.3676 - val_accuracy: 0.8464
+Epoch 2/100
+1/2 [==============>...............] - ETA: 0s - loss: 4.3607 - accuracy: 0.86002/2 [==============================] - 0s 70ms/step - loss: 4.3214 - accuracy: 0.8626 - val_loss: 3.5033 - val_accuracy: 0.8489
+Epoch 3/100
+1/2 [==============>...............] - ETA: 0s - loss: 3.4783 - accuracy: 0.86512021-04-03 14:23:08.788635: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 3.3327 - accuracy: 0.86532/2 [==============================] - 9s 9s/step - loss: 3.2842 - accuracy: 0.8653 - val_loss: 1.0945 - val_accuracy: 0.8482
+Epoch 4/100
+1/2 [==============>...............] - ETA: 0s - loss: 1.0466 - accuracy: 0.85542/2 [==============================] - 0s 70ms/step - loss: 0.9898 - accuracy: 0.8611 - val_loss: 1.0097 - val_accuracy: 0.8426
+Epoch 5/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.8973 - accuracy: 0.8588WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.8958 - accuracy: 0.8595 - val_loss: 1.0231 - val_accuracy: 0.8443
+Epoch 6/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.9004 - accuracy: 0.86332/2 [==============================] - 0s 66ms/step - loss: 0.8973 - accuracy: 0.8643 - val_loss: 0.9544 - val_accuracy: 0.8569
+Epoch 7/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.8874 - accuracy: 0.86572/2 [==============================] - 0s 66ms/step - loss: 0.8515 - accuracy: 0.8693 - val_loss: 0.8697 - val_accuracy: 0.8489
+Epoch 8/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.7693 - accuracy: 0.8625WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.7740 - accuracy: 0.86182/2 [==============================] - 9s 9s/step - loss: 0.7755 - accuracy: 0.8616 - val_loss: 0.8202 - val_accuracy: 0.8502
+Epoch 9/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.7601 - accuracy: 0.85872/2 [==============================] - 0s 68ms/step - loss: 0.7373 - accuracy: 0.8626 - val_loss: 0.7837 - val_accuracy: 0.8554
+Epoch 10/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6749 - accuracy: 0.8729WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.6869 - accuracy: 0.8703 - val_loss: 0.7540 - val_accuracy: 0.8590
+Epoch 11/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.7005 - accuracy: 0.86682/2 [==============================] - 0s 68ms/step - loss: 0.6820 - accuracy: 0.8708 - val_loss: 0.7396 - val_accuracy: 0.8602
+Epoch 12/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6316 - accuracy: 0.88122/2 [==============================] - 0s 68ms/step - loss: 0.6503 - accuracy: 0.8768 - val_loss: 0.7330 - val_accuracy: 0.8607
+Epoch 13/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6642 - accuracy: 0.8721WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.6571 - accuracy: 0.87322/2 [==============================] - 9s 9s/step - loss: 0.6547 - accuracy: 0.8736 - val_loss: 0.7241 - val_accuracy: 0.8557
+Epoch 14/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6302 - accuracy: 0.87302/2 [==============================] - 0s 69ms/step - loss: 0.6317 - accuracy: 0.8720 - val_loss: 0.7146 - val_accuracy: 0.8563
+Epoch 15/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5894 - accuracy: 0.8798WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.6052 - accuracy: 0.8750 - val_loss: 0.7118 - val_accuracy: 0.8560
+Epoch 16/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6028 - accuracy: 0.87182/2 [==============================] - 0s 73ms/step - loss: 0.6007 - accuracy: 0.8722 - val_loss: 0.7121 - val_accuracy: 0.8560
+Epoch 17/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5804 - accuracy: 0.87602/2 [==============================] - 0s 65ms/step - loss: 0.5874 - accuracy: 0.8736 - val_loss: 0.7117 - val_accuracy: 0.8560
+Epoch 18/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5423 - accuracy: 0.8820WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5635 - accuracy: 0.87722/2 [==============================] - 9s 9s/step - loss: 0.5706 - accuracy: 0.8756 - val_loss: 0.7103 - val_accuracy: 0.8565
+Epoch 19/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6209 - accuracy: 0.86472/2 [==============================] - 0s 67ms/step - loss: 0.5940 - accuracy: 0.8705 - val_loss: 0.7102 - val_accuracy: 0.8598
+Epoch 20/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5771 - accuracy: 0.8766WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5770 - accuracy: 0.8757 - val_loss: 0.7120 - val_accuracy: 0.8608
+Epoch 21/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5510 - accuracy: 0.88032/2 [==============================] - 0s 66ms/step - loss: 0.5664 - accuracy: 0.8763 - val_loss: 0.7136 - val_accuracy: 0.8608
+Epoch 22/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5623 - accuracy: 0.87492/2 [==============================] - 0s 68ms/step - loss: 0.5681 - accuracy: 0.8736 - val_loss: 0.7132 - val_accuracy: 0.8611
+Epoch 23/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5750 - accuracy: 0.8711WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5717 - accuracy: 0.87212/2 [==============================] - 9s 9s/step - loss: 0.5705 - accuracy: 0.8725 - val_loss: 0.7108 - val_accuracy: 0.8616
+Epoch 24/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6056 - accuracy: 0.86662/2 [==============================] - 0s 65ms/step - loss: 0.5788 - accuracy: 0.8720 - val_loss: 0.7085 - val_accuracy: 0.8619
+Epoch 25/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5545 - accuracy: 0.8764WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5599 - accuracy: 0.8761 - val_loss: 0.7064 - val_accuracy: 0.8611
+Epoch 26/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5287 - accuracy: 0.88152/2 [==============================] - 0s 68ms/step - loss: 0.5491 - accuracy: 0.8785 - val_loss: 0.6994 - val_accuracy: 0.8602
+Epoch 27/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5886 - accuracy: 0.86972/2 [==============================] - 0s 66ms/step - loss: 0.5674 - accuracy: 0.8737 - val_loss: 0.6937 - val_accuracy: 0.8590
+Epoch 28/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5521 - accuracy: 0.8782WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5533 - accuracy: 0.87662/2 [==============================] - 9s 9s/step - loss: 0.5537 - accuracy: 0.8761 - val_loss: 0.6917 - val_accuracy: 0.8596
+Epoch 29/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5927 - accuracy: 0.86632/2 [==============================] - 0s 68ms/step - loss: 0.5644 - accuracy: 0.8727 - val_loss: 0.6932 - val_accuracy: 0.8593
+Epoch 30/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5537 - accuracy: 0.8748WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5501 - accuracy: 0.8754 - val_loss: 0.6906 - val_accuracy: 0.8596
+Epoch 31/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5412 - accuracy: 0.87742/2 [==============================] - 0s 66ms/step - loss: 0.5424 - accuracy: 0.8766 - val_loss: 0.6806 - val_accuracy: 0.8614
+Epoch 32/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5507 - accuracy: 0.87342/2 [==============================] - 0s 66ms/step - loss: 0.5434 - accuracy: 0.8754 - val_loss: 0.6816 - val_accuracy: 0.8596
+Epoch 33/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5303 - accuracy: 0.8767WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5318 - accuracy: 0.87642/2 [==============================] - 9s 9s/step - loss: 0.5323 - accuracy: 0.8762 - val_loss: 0.6714 - val_accuracy: 0.8620
+Epoch 34/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5328 - accuracy: 0.87732/2 [==============================] - 0s 68ms/step - loss: 0.5301 - accuracy: 0.8781 - val_loss: 0.6668 - val_accuracy: 0.8613
+Epoch 35/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4999 - accuracy: 0.8830WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5150 - accuracy: 0.8795 - val_loss: 0.6515 - val_accuracy: 0.8664
+Epoch 36/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5607 - accuracy: 0.87162/2 [==============================] - 0s 69ms/step - loss: 0.5322 - accuracy: 0.8782 - val_loss: 0.6654 - val_accuracy: 0.8628
+Epoch 37/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4952 - accuracy: 0.88702/2 [==============================] - 0s 68ms/step - loss: 0.5142 - accuracy: 0.8815 - val_loss: 0.6619 - val_accuracy: 0.8667
+Epoch 38/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5573 - accuracy: 0.8737WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5398 - accuracy: 0.87812/2 [==============================] - 9s 9s/step - loss: 0.5339 - accuracy: 0.8796 - val_loss: 0.6450 - val_accuracy: 0.8688
+Epoch 39/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4955 - accuracy: 0.88822/2 [==============================] - 0s 68ms/step - loss: 0.5049 - accuracy: 0.8844 - val_loss: 0.6467 - val_accuracy: 0.8652
+Epoch 40/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5125 - accuracy: 0.8791WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5081 - accuracy: 0.8800 - val_loss: 0.6399 - val_accuracy: 0.8652
+Epoch 41/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4887 - accuracy: 0.88252/2 [==============================] - 0s 69ms/step - loss: 0.4945 - accuracy: 0.8810 - val_loss: 0.6162 - val_accuracy: 0.8657
+Epoch 42/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4340 - accuracy: 0.89592/2 [==============================] - 0s 68ms/step - loss: 0.4689 - accuracy: 0.8858 - val_loss: 0.6027 - val_accuracy: 0.8664
+Epoch 43/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4652 - accuracy: 0.8887WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.4758 - accuracy: 0.88552/2 [==============================] - 9s 9s/step - loss: 0.4793 - accuracy: 0.8845 - val_loss: 0.5895 - val_accuracy: 0.8682
+Epoch 44/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5656 - accuracy: 0.86622/2 [==============================] - 0s 67ms/step - loss: 0.5352 - accuracy: 0.8738 - val_loss: 0.6019 - val_accuracy: 0.8694
+Epoch 45/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5125 - accuracy: 0.8739WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5178 - accuracy: 0.8768 - val_loss: 0.5991 - val_accuracy: 0.8696
+Epoch 46/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5227 - accuracy: 0.87732/2 [==============================] - 0s 65ms/step - loss: 0.5153 - accuracy: 0.8779 - val_loss: 0.5675 - val_accuracy: 0.8700
+Epoch 47/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5707 - accuracy: 0.86732/2 [==============================] - 0s 68ms/step - loss: 0.5833 - accuracy: 0.8668 - val_loss: 0.5681 - val_accuracy: 0.8697
+Epoch 48/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5551 - accuracy: 0.8715WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5925 - accuracy: 0.86642/2 [==============================] - 9s 9s/step - loss: 0.6049 - accuracy: 0.8647 - val_loss: 0.5465 - val_accuracy: 0.8693
+Epoch 49/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.7384 - accuracy: 0.84292/2 [==============================] - 0s 69ms/step - loss: 0.6867 - accuracy: 0.8512 - val_loss: 0.5586 - val_accuracy: 0.8646
+Epoch 50/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.7229 - accuracy: 0.8497WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.7035 - accuracy: 0.8489 - val_loss: 0.5426 - val_accuracy: 0.8741
+Epoch 51/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.6775 - accuracy: 0.85652/2 [==============================] - 0s 65ms/step - loss: 0.6863 - accuracy: 0.8562 - val_loss: 0.7086 - val_accuracy: 0.8630
+Epoch 52/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.9624 - accuracy: 0.82142/2 [==============================] - 0s 65ms/step - loss: 0.9264 - accuracy: 0.8267 - val_loss: 0.5939 - val_accuracy: 0.8721
+Epoch 53/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.8319 - accuracy: 0.8372WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.8251 - accuracy: 0.83922/2 [==============================] - 9s 9s/step - loss: 0.8228 - accuracy: 0.8398 - val_loss: 0.5673 - val_accuracy: 0.8813
+Epoch 54/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.8688 - accuracy: 0.84022/2 [==============================] - 0s 65ms/step - loss: 0.8298 - accuracy: 0.8449 - val_loss: 1.2327 - val_accuracy: 0.7736
+Epoch 55/100
+1/2 [==============>...............] - ETA: 0s - loss: 1.0336 - accuracy: 0.7958WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 1.0851 - accuracy: 0.7869 - val_loss: 1.5086 - val_accuracy: 0.7202
+Epoch 56/100
+1/2 [==============>...............] - ETA: 0s - loss: 1.3719 - accuracy: 0.73362/2 [==============================] - 0s 69ms/step - loss: 1.4078 - accuracy: 0.7259 - val_loss: 1.1916 - val_accuracy: 0.7578
+Epoch 57/100
+1/2 [==============>...............] - ETA: 0s - loss: 1.0488 - accuracy: 0.77902/2 [==============================] - 0s 67ms/step - loss: 0.9700 - accuracy: 0.7970 - val_loss: 0.6272 - val_accuracy: 0.8768
+Epoch 58/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5142 - accuracy: 0.8914WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.5115 - accuracy: 0.89112/2 [==============================] - 9s 9s/step - loss: 0.5107 - accuracy: 0.8909 - val_loss: 0.6210 - val_accuracy: 0.8630
+Epoch 59/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5363 - accuracy: 0.87182/2 [==============================] - 0s 65ms/step - loss: 0.5318 - accuracy: 0.8733 - val_loss: 0.6173 - val_accuracy: 0.8565
+Epoch 60/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5229 - accuracy: 0.8746WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.5386 - accuracy: 0.8705 - val_loss: 0.6557 - val_accuracy: 0.8459
+Epoch 61/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5770 - accuracy: 0.85922/2 [==============================] - 0s 67ms/step - loss: 0.5640 - accuracy: 0.8619 - val_loss: 0.6079 - val_accuracy: 0.8426
+Epoch 62/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.5145 - accuracy: 0.86622/2 [==============================] - 0s 67ms/step - loss: 0.5069 - accuracy: 0.8703 - val_loss: 0.5213 - val_accuracy: 0.8759
+Epoch 63/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4556 - accuracy: 0.8861WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.4462 - accuracy: 0.88832/2 [==============================] - 9s 9s/step - loss: 0.4431 - accuracy: 0.8891 - val_loss: 0.5912 - val_accuracy: 0.8678
+Epoch 64/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4432 - accuracy: 0.88672/2 [==============================] - 0s 68ms/step - loss: 0.4486 - accuracy: 0.8871 - val_loss: 0.5000 - val_accuracy: 0.8959
+Epoch 65/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4324 - accuracy: 0.9104WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 10s 10s/step - loss: 0.4289 - accuracy: 0.9069 - val_loss: 0.4995 - val_accuracy: 0.8649
+Epoch 66/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4244 - accuracy: 0.87662/2 [==============================] - 0s 71ms/step - loss: 0.4161 - accuracy: 0.8796 - val_loss: 0.4811 - val_accuracy: 0.8633
+Epoch 67/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3985 - accuracy: 0.88112/2 [==============================] - 0s 66ms/step - loss: 0.3991 - accuracy: 0.8821 - val_loss: 0.4715 - val_accuracy: 0.8839
+Epoch 68/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3840 - accuracy: 0.9055WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3917 - accuracy: 0.90352/2 [==============================] - 9s 9s/step - loss: 0.3943 - accuracy: 0.9028 - val_loss: 0.4638 - val_accuracy: 0.8733
+Epoch 69/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3988 - accuracy: 0.88562/2 [==============================] - 0s 65ms/step - loss: 0.3922 - accuracy: 0.8871 - val_loss: 0.5124 - val_accuracy: 0.8660
+Epoch 70/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.4069 - accuracy: 0.8799WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3974 - accuracy: 0.8863 - val_loss: 0.4592 - val_accuracy: 0.9029
+Epoch 71/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3593 - accuracy: 0.92592/2 [==============================] - 0s 65ms/step - loss: 0.3776 - accuracy: 0.9205 - val_loss: 0.4550 - val_accuracy: 0.8943
+Epoch 72/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3807 - accuracy: 0.90942/2 [==============================] - 0s 68ms/step - loss: 0.3807 - accuracy: 0.9079 - val_loss: 0.4614 - val_accuracy: 0.8748
+Epoch 73/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3844 - accuracy: 0.8869WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3815 - accuracy: 0.88792/2 [==============================] - 9s 9s/step - loss: 0.3805 - accuracy: 0.8882 - val_loss: 0.4491 - val_accuracy: 0.8926
+Epoch 74/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3496 - accuracy: 0.91432/2 [==============================] - 0s 69ms/step - loss: 0.3643 - accuracy: 0.9111 - val_loss: 0.4453 - val_accuracy: 0.9023
+Epoch 75/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3732 - accuracy: 0.9147WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3711 - accuracy: 0.9156 - val_loss: 0.4491 - val_accuracy: 0.8886
+Epoch 76/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3590 - accuracy: 0.91272/2 [==============================] - 0s 69ms/step - loss: 0.3640 - accuracy: 0.9094 - val_loss: 0.4461 - val_accuracy: 0.8961
+Epoch 77/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3776 - accuracy: 0.91182/2 [==============================] - 0s 70ms/step - loss: 0.3689 - accuracy: 0.9148 - val_loss: 0.4430 - val_accuracy: 0.9039
+Epoch 78/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3519 - accuracy: 0.9192WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3575 - accuracy: 0.91802/2 [==============================] - 9s 9s/step - loss: 0.3594 - accuracy: 0.9176 - val_loss: 0.4607 - val_accuracy: 0.8935
+Epoch 79/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3536 - accuracy: 0.91422/2 [==============================] - 0s 69ms/step - loss: 0.3578 - accuracy: 0.9135 - val_loss: 0.4425 - val_accuracy: 0.9006
+Epoch 80/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3584 - accuracy: 0.9140WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3585 - accuracy: 0.9141 - val_loss: 0.4472 - val_accuracy: 0.8961
+Epoch 81/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3292 - accuracy: 0.92052/2 [==============================] - 0s 72ms/step - loss: 0.3472 - accuracy: 0.9149 - val_loss: 0.4447 - val_accuracy: 0.8976
+Epoch 82/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3624 - accuracy: 0.91182/2 [==============================] - 0s 67ms/step - loss: 0.3567 - accuracy: 0.9135 - val_loss: 0.4416 - val_accuracy: 0.9014
+Epoch 83/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3521 - accuracy: 0.9172WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3526 - accuracy: 0.91672/2 [==============================] - 9s 9s/step - loss: 0.3528 - accuracy: 0.9166 - val_loss: 0.4577 - val_accuracy: 0.8961
+Epoch 84/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3591 - accuracy: 0.91362/2 [==============================] - 0s 68ms/step - loss: 0.3540 - accuracy: 0.9157 - val_loss: 0.4485 - val_accuracy: 0.9033
+Epoch 85/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3626 - accuracy: 0.9186WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3534 - accuracy: 0.9210 - val_loss: 0.4880 - val_accuracy: 0.8919
+Epoch 86/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3465 - accuracy: 0.92142/2 [==============================] - 0s 65ms/step - loss: 0.3491 - accuracy: 0.9219 - val_loss: 0.4381 - val_accuracy: 0.9123
+Epoch 87/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3638 - accuracy: 0.92172/2 [==============================] - 0s 65ms/step - loss: 0.3538 - accuracy: 0.9233 - val_loss: 0.4685 - val_accuracy: 0.8925
+Epoch 88/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3579 - accuracy: 0.9178WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3531 - accuracy: 0.91862/2 [==============================] - 9s 9s/step - loss: 0.3515 - accuracy: 0.9189 - val_loss: 0.4370 - val_accuracy: 0.9120
+Epoch 89/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3215 - accuracy: 0.93192/2 [==============================] - 0s 69ms/step - loss: 0.3367 - accuracy: 0.9290 - val_loss: 0.4380 - val_accuracy: 0.9142
+Epoch 90/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3131 - accuracy: 0.9339WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3333 - accuracy: 0.9299 - val_loss: 0.4384 - val_accuracy: 0.9130
+Epoch 91/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3409 - accuracy: 0.92962/2 [==============================] - 0s 70ms/step - loss: 0.3408 - accuracy: 0.9299 - val_loss: 0.4364 - val_accuracy: 0.9119
+Epoch 92/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3461 - accuracy: 0.92912/2 [==============================] - 0s 69ms/step - loss: 0.3419 - accuracy: 0.9299 - val_loss: 0.4421 - val_accuracy: 0.9075
+Epoch 93/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3476 - accuracy: 0.9284WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3434 - accuracy: 0.92942/2 [==============================] - 9s 9s/step - loss: 0.3419 - accuracy: 0.9297 - val_loss: 0.4351 - val_accuracy: 0.9114
+Epoch 94/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3407 - accuracy: 0.93322/2 [==============================] - 0s 67ms/step - loss: 0.3381 - accuracy: 0.9337 - val_loss: 0.4883 - val_accuracy: 0.9024
+Epoch 95/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3396 - accuracy: 0.9292WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3372 - accuracy: 0.9297 - val_loss: 0.4509 - val_accuracy: 0.9101
+Epoch 96/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3108 - accuracy: 0.93592/2 [==============================] - 0s 68ms/step - loss: 0.3263 - accuracy: 0.9328 - val_loss: 0.4425 - val_accuracy: 0.9119
+Epoch 97/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3270 - accuracy: 0.93102/2 [==============================] - 0s 70ms/step - loss: 0.3310 - accuracy: 0.9305 - val_loss: 0.4526 - val_accuracy: 0.9056
+Epoch 98/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3184 - accuracy: 0.9301WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - ETA: 0s - loss: 0.3254 - accuracy: 0.92932/2 [==============================] - 9s 9s/step - loss: 0.3277 - accuracy: 0.9290 - val_loss: 0.4378 - val_accuracy: 0.9111
+Epoch 99/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3356 - accuracy: 0.93412/2 [==============================] - 0s 65ms/step - loss: 0.3322 - accuracy: 0.9344 - val_loss: 0.5480 - val_accuracy: 0.8941
+Epoch 100/100
+1/2 [==============>...............] - ETA: 0s - loss: 0.3629 - accuracy: 0.9235WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+WARNING:absl:Found untraced functions such as lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_layer_call_fn while saving (showing 5 of 10). These functions will not be directly callable after loading.
+2/2 [==============================] - 9s 9s/step - loss: 0.3428 - accuracy: 0.9277 - val_loss: 0.4291 - val_accuracy: 0.9178

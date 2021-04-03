@@ -234,8 +234,8 @@ def main():
     # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
     # result = predict.seq_to_seq_predict(clause)
     # print(result)
-    tf.print("Num GPUs Available: ", len(
-        tf.config.list_physical_devices('GPU')))
+    # tf.print("Num GPUs Available: ", len(
+    #     tf.config.list_physical_devices('GPU')))
 
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
