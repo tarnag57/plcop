@@ -2,7 +2,6 @@ import tensorflow as tf
 import unicodedata
 import re
 import io
-from sklearn.model_selection import train_test_split
 
 
 '''
@@ -10,30 +9,18 @@ Utilities for creating and pre-processing a dataset
 '''
 
 
-def create_datasets(
+def create_dataset_from_tensor(
     input_tensor,
     target_tensor,
     batch_size,
     buffer_size_mult
 ):
+    buffer_size = len(input_tensor) * buffer_size_mult
+    dataset = tf.data.Dataset.from_tensor_slices(
+        (input_tensor, target_tensor)).shuffle(buffer_size)
+    dataset = dataset.batch(batch_size, drop_remainder=True)
 
-    # Creating training and validation sets using an 80-20 split
-    input_tensor_train, input_tensor_val, target_tensor_train, target_tensor_val \
-        = train_test_split(input_tensor, target_tensor, test_size=0.2)
-
-    train_size = len(input_tensor_train)
-    eval_size = len(input_tensor_val)
-
-    buffer_size = len(input_tensor_train) * buffer_size_mult
-
-    train_dataset = tf.data.Dataset.from_tensor_slices(
-        (input_tensor_train, target_tensor_train)).shuffle(buffer_size)
-    eval_dataset = tf.data.Dataset.from_tensor_slices(
-        (input_tensor_val, target_tensor_val)).shuffle(buffer_size)
-    train_dataset = train_dataset.batch(batch_size, drop_remainder=True)
-    eval_dataset = eval_dataset.batch(batch_size, drop_remainder=True)
-
-    return (train_dataset, eval_dataset, train_size, eval_size)
+    return dataset
 
 
 def load_dataset(path, num_examples, max_length, tokenizer=None):
@@ -74,9 +61,9 @@ def preprocess_sentence(w, numbered=True):
 
     w = w.strip()
 
-    # adding an end token to the sentence so that the model know when to
-    # stop predicting.
-    w = w + ' <end>'
+    # adding a start an end token to the sentence so that the model know
+    # when to start and stop predicting.
+    w = '<start> ' + w + ' <end>'
     return w
 
 

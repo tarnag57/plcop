@@ -52,13 +52,12 @@ def print_network_stats(encoder, decoder, train_dataset):
     print(decoder.summary())
 
 
-def shift_decoder_input(input_tensor):
-    context = ModelContext.get_context()
-    start_symbols = tf.repeat(
-        [context.tokenizer.word_index['<start>']], input_tensor.shape[0])
-    start_symbols = tf.reshape(start_symbols, [input_tensor.shape[0], 1])
-    input_tensor_reduced = input_tensor[:, :-1]
-    return tf.concat([start_symbols, input_tensor_reduced], axis=1)
+def remove_start_from_input(input_tensor):
+    return input_tensor[:, 1:]
+
+
+def remove_stop_from_input(input_tensor):
+    return input_tensor[:, :-1]
 
 
 def restore_checkpoint(checkpoint, checkpoint_dir=None):

@@ -29,7 +29,13 @@ class ModelContext():
         )
 
     @staticmethod
-    def add_datset(train_dataset, train_input, val_dataset, val_input):
+    def add_datset(
+        all_clauses_tensor,
+        train_dataset,
+        train_input,
+        val_dataset,
+        val_input
+    ):
         if ModelContext.__instance == None:
             raise Exception("Model context not yet initialised")
 
@@ -38,6 +44,7 @@ class ModelContext():
 
         else:
             ctx = ModelContext.__instance
+            ctx.all_clauses_tensor = all_clauses_tensor
             ctx.train_dataset = train_dataset
             ctx.train_input = train_input
             ctx.train_size = len(train_input)
@@ -73,6 +80,7 @@ class ModelContext():
             self.seq_to_seq_model = seq_to_seq_model
 
             # These might be initialised later
+            self.all_clauses_tensor = None
             self.train_dataset = None
             self.train_size = None
             self.val_dataset = None

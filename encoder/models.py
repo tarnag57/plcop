@@ -99,7 +99,7 @@ def get_decoder_part(seq_to_seq_model, units):
     )
 
 
-def lstm_training(model, input_tensor):
+def lstm_training(model):
 
     context = ModelContext.get_context()
     checkpoint_prefix = os.path.join(
@@ -114,19 +114,22 @@ def lstm_training(model, input_tensor):
         save_freq=context.args.checkpoint_freq
     )
 
-    decoder_input = utils.shift_decoder_input(input_tensor)
+    encoder_input = context.all_clauses_tensor
+    decoder_input = utils.remove_stop_from_input(context.all_clauses_tensor)
+    decoder_target = utils.remove_start_from_input(context.all_clauses_tensor)
 
     model.compile(
         optimizer="adam", loss=loss_function, metrics=['accuracy'])
 
     # One hot encode the input tensors
     vocab_size = len(context.tokenizer.word_index) + 1
-    input_tensor = tf.one_hot(input_tensor, depth=vocab_size)
+    encoder_input = tf.one_hot(encoder_input, depth=vocab_size)
     decoder_input = tf.one_hot(decoder_input, depth=vocab_size)
+    decoder_target = tf.one_hot(decoder_target, depth=vocab_size)
 
     model.fit(
-        x=[input_tensor, decoder_input],
-        y=input_tensor,
+        x=[encoder_input, decoder_input],
+        y=decoder_target,
         batch_size=context.args.batch_size,
         validation_split=0.2,
         epochs=context.args.epochs,

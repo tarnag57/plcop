@@ -1,26 +1,21 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"]="-1"
-import tensorflow as tf
-
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-from sklearn.model_selection import train_test_split
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
-import io
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
 import time
+import utils
 
 import dataset
+import models
 import model_compression
+from model_context import ModelContext
 import params
 import predict
 import preprocess
 import training
-import utils
-from model_context import ModelContext
-# from models import build_encoder, Decoder
-import models
 
 
 def build_parser():
@@ -161,27 +156,20 @@ def init_context(prediction_phase=False):
 
     tokenizer = None
     model = None
+
     input_tensor = None
     target_tensor = None
 
-    # Loading the dataset
+    # Loading / Constructing the tokenizer
     if prediction_phase:
         tokenizer = utils.load_lang(args)
         model = utils.load_model(args)
     else:
         input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
             args.path_to_file,
-            args.num_examples,
+            args.num_examples,input_tensor
             args.max_length,
             tokenizer
-        )
-
-        # Creating dataset
-        train_dataset, val_dataset, train_size, val_size = preprocess.create_datasets(
-            input_tensor,
-            target_tensor,
-            args.batch_size,
-            args.buffer_size_mult
         )
 
     vocab_size = len(tokenizer.word_index) + 1
@@ -208,24 +196,32 @@ def init_context(prediction_phase=False):
     # Finally create the dataset
     if not prediction_phase:
 
-        # Creating dataset
-        train_dataset, val_dataset, train_size, val_size = preprocess.create_datasets(
-            input_tensor,
-            target_tensor,
+        # Creating training and validation sets using an 80-20 split
+        train_input, val_input, train_target, val_target = train_test_split(
+            input_tensor, target_tensor, test_size=0.2)
+
+        # Creating datasets
+        train_dataset = preprocess.create_dataset_from_tensor(
+            train_input,
+            train_target,
+            args.batch_size,
+            args.buffer_size_mult
+        )
+        val_dataset = preprocess.create_dataset_from_tensor(
+            val_input,
+            val_target,
             args.batch_size,
             args.buffer_size_mult
         )
         ModelContext.add_datset(
-            train_dataset, train_size, val_dataset, val_size)
-
-    return input_tensor
+            input_tensor, train_dataset, train_input, val_dataset, val_input)
 
 
 def main():
-    input_tensor = init_context(prediction_phase=False)
+    init_context(prediction_phase=False)
     context = ModelContext.get_context()
     context.seq_to_seq_model.summary()
-    # models.lstm_training(context.seq_to_seq_model, input_tensor)
+    # models.lstm_training(context.seq_to_seq_model)
     # utils.save_model()
 
     # training.perform_training()
@@ -238,8 +234,8 @@ def main():
     # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
     # result = predict.seq_to_seq_predict(clause)
     # print(result)
-    tf.print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-
+    tf.print("Num GPUs Available: ", len(
+        tf.config.list_physical_devices('GPU')))
 
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
