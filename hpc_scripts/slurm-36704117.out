@@ -1,0 +1,45 @@
+cudnn(16):ERROR:105: Unable to locate a modulefile for 'cudnn/8.0_cuda-11.0'
+--max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --embedding_dim 1024 --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ed-1024-u-256
+Changed directory to /rds/user/vt289/hpc-work/plcop/hpc_scripts.
+
+JobID: 36704117
+======
+Time: Thu 25 Mar 02:51:46 GMT 2021
+Running on master node: gpu-e-83
+Current directory: /rds/user/vt289/hpc-work/plcop/hpc_scripts
+
+Nodes allocated:
+================
+gpu-e-83
+
+numtasks=1, numnodes=1, mpi_tasks_per_node=1
+
+Executing command:
+==================
+python3 ~/rds/hpc-work/plcop/encoder/main.py --max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --embedding_dim 1024 --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ed-1024-u-256
+
+2021-03-25 02:51:51.007302: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-25 02:53:05.024239: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-25 02:53:05.035190: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-03-25 02:53:05.131483: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:07:00.0 name: Tesla P100-PCIE-16GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 681.88GiB/s
+2021-03-25 02:53:05.131562: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-25 02:53:06.045162: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-03-25 02:53:06.045303: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-03-25 02:53:06.487959: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-03-25 02:53:07.221579: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-03-25 02:53:08.003782: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-03-25 02:53:08.246110: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-03-25 02:53:08.456204: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/software/cuda/11.0/lib64:/usr/local/software/cuda/11.0/lib:/usr/local/software/cuda/11.0/nvvm/lib64:/usr/local/software/archive/linux-scientific7-x86_64/gcc-9/intel-mkl-2020.1.217-daoabwrh3hmki2sfkvbm34nozs6ehxy5/compilers_and_libraries_2020.1.217/linux/tbb/lib/intel64_lin/gcc4.7:/usr/local/software/archive/linux-scientific7-x86_64/gcc-9/intel-mkl-2020.1.217-daoabwrh3hmki2sfkvbm34nozs6ehxy5/compilers_and_libraries_2020.1.217/linux/compiler/lib/intel64_lin:/usr/local/software/archive/linux-scientific7-x86_64/gcc-9/intel-mkl-2020.1.217-daoabwrh3hmki2sfkvbm34nozs6ehxy5/compilers_and_libraries_2020.1.217/linux/mkl/lib/intel64_lin:/usr/local/software/master/python/3.6/lib64:/usr/local/software/master/python/3.6/lib:/usr/local/software/spack/spack-0.11.2/opt/spack/linux-rhel7-x86_64/gcc-5.4.0/openmpi-1.10.7-jdc7f4fjdq5roxhadufd6h66xkwuytss/lib:/usr/local/software/spack/spack-0.11.2/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-5.4.0-fis24ggupugiobii56fesif2y3qulpdr/lib64:/usr/local/software/spack/spack-0.11.2/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-5.4.0-fis24ggupugiobii56fesif2y3qulpdr/lib:/usr/local/software/global/lib:/usr/local/Cluster-Apps/vgl/2.5.1/64/lib:/usr/local/software/slurm/current/lib
+2021-03-25 02:53:08.456285: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1757] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-03-25 02:53:08.456756: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-03-25 02:53:08.457029: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-25 02:53:08.457099: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-03-25 02:53:08.457123: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      
+Original number of word_pairs: 61688
+Filtered number of word_pairs: 61532
+2.4.1
+Num GPUs Available:  0

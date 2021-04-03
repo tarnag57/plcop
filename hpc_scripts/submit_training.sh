@@ -36,7 +36,7 @@ unset OMP_NUM_THREADS
 module purge                  # Removes all modules still loaded
 module load rhel7/default-gpu # REQUIRED - loads the basic environment
 module unload cuda/8.0
-module load python/3.6 cuda/11.0 cudnn/8.0_cuda-11.0
+module load python/3.6 cuda/11.0 cudnn/8.0_cuda-11.1
 . ~/tensorflow-env/bin/activate
 #! Insert additional module load commands after this line if needed:
 
