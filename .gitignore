@@ -131,6 +131,6 @@ dmypy.json
 # Training data for autoencoder
 # /encoder/data
 
-# Outputs of the autoencoder
-/encoder/models
-/encoder/training_checkpoints
+# Intermediate checkpoint data
+**/variables.*
+**.h5

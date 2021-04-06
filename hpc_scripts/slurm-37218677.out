@@ -1,0 +1,98 @@
+--max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --units 256 --batch_size 128 --epochs 50 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/u-256/training_checkpoints --checkpoint_prefix ckpt-u-256 --save_dir ~/rds/hpc-work/plcop/encoder/saved_models --save_name u-256 --lang_name len-300-lang
+Changed directory to /rds/user/vt289/hpc-work/plcop/hpc_scripts.
+
+JobID: 37218677
+======
+Time: Sun Apr  4 16:13:34 BST 2021
+Running on master node: gpu-e-8
+Current directory: /rds/user/vt289/hpc-work/plcop/hpc_scripts
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+Nodes allocated:
+================
+gpu-e-8
+
+numtasks=1, numnodes=1, mpi_tasks_per_node=1
+
+Executing command:
+==================
+python3 ~/rds/hpc-work/plcop/encoder/main.py --max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --units 256 --batch_size 128 --epochs 50 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/u-256/training_checkpoints --checkpoint_prefix ckpt-u-256 --save_dir ~/rds/hpc-work/plcop/encoder/saved_models --save_name u-256 --lang_name len-300-lang
+
+2021-04-04 16:13:39.291187: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-04 16:14:04.196343: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-04 16:14:04.199820: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-04-04 16:14:04.221689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-16GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 681.88GiB/s
+2021-04-04 16:14:04.221771: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-04 16:14:04.833103: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-04 16:14:04.833253: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-04 16:14:05.163280: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-04 16:14:05.767510: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-04 16:14:06.354086: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-04 16:14:06.539298: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-04 16:14:06.757031: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-04 16:14:06.759675: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-04 16:14:06.760134: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-04-04 16:14:06.760337: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-04 16:14:06.761654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-16GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 681.88GiB/s
+2021-04-04 16:14:06.761709: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-04 16:14:06.761766: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-04 16:14:06.761801: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-04 16:14:06.761832: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-04 16:14:06.761862: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-04 16:14:06.761892: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-04 16:14:06.761922: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-04 16:14:06.761953: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-04 16:14:06.764401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-04 16:14:06.764463: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-04 16:14:09.399949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-04 16:14:09.400034: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-04-04 16:14:09.400057: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-04-04 16:14:09.403812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14957 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:05:00.0, compute capability: 6.0)
+Original number of word_pairs: 61688
+Filtered number of word_pairs: 61532
+Model output shape: (None, None, 6838)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, None, 6838)] 0                                            
+__________________________________________________________________________________________________
+input_2 (InputLayer)            [(None, None, 6838)] 0                                            
+__________________________________________________________________________________________________
+lstm (LSTM)                     [(None, 256), (None, 7265280     input_1[0][0]                    
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   [(None, None, 256),  7265280     input_2[0][0]                    
+                                                                 lstm[0][1]                       
+                                                                 lstm[0][2]                       
+__________________________________________________________________________________________________
+dense (Dense)                   (None, None, 6838)   1757366     lstm_1[0][0]                     
+==================================================================================================
+Total params: 16,287,926
+Trainable params: 16,287,926
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "/home/vt289/rds/hpc-work/plcop/encoder/main.py", line 254, in <module>
+    main()
+  File "/home/vt289/rds/hpc-work/plcop/encoder/main.py", line 224, in main
+    models.lstm_training(context.seq_to_seq_model)
+  File "/rds/user/vt289/hpc-work/plcop/encoder/models.py", line 131, in lstm_training
+    callbacks=[logger, checkpoint]
+  File "/home/vt289/tensorflow-env/lib/python3.6/site-packages/tensorflow/python/keras/engine/training.py", line 1080, in fit
+    callbacks.on_train_begin()
+  File "/home/vt289/tensorflow-env/lib/python3.6/site-packages/tensorflow/python/keras/callbacks.py", line 515, in on_train_begin
+    callback.on_train_begin(numpy_logs)
+  File "/home/vt289/tensorflow-env/lib/python3.6/site-packages/tensorflow/python/keras/callbacks.py", line 2603, in on_train_begin
+    **self._open_args)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/vt289/rds/hpc-work/plcop/encoder/u-256/training_checkpoints/ckpt-u-256-train.txt'

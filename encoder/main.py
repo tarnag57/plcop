@@ -222,6 +222,8 @@ def main():
     context = ModelContext.get_context()
     context.seq_to_seq_model.summary()
     models.lstm_training(context.seq_to_seq_model)
+
+    print(f"Trining is complete, saving the model...")
     utils.save_model()
 
     # training.perform_training()
