@@ -1,0 +1,28 @@
+--max_length 500 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --embedding_dim --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ckpt-u-256
+Changed directory to /rds/user/vt289/hpc-work/plcop/hpc_scripts.
+
+JobID: 37174017
+======
+Time: Sat  3 Apr 14:11:57 BST 2021
+Running on master node: gpu-e-33
+Current directory: /rds/user/vt289/hpc-work/plcop/hpc_scripts
+
+Nodes allocated:
+================
+gpu-e-33
+
+numtasks=1, numnodes=1, mpi_tasks_per_node=1
+
+Executing command:
+==================
+python3 ~/rds/hpc-work/plcop/encoder/main.py --max_length 500 --path_to_file ~/rds/hpc-work/plcop/encoder/data/clauses.txt --embedding_dim  --units 256 --batch_size 128 --epochs 100 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/training_checkpoints --checkpoint_prefix ckpt-u-256 
+
+2021-04-03 14:12:02.847912: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+usage: main.py [-h] [--max_length len] [--num_examples num]
+               [--path_to_file file] [--embedding_dim dim] [--units units]
+               [--buffer_size_mult buff] [--batch_size batch]
+               [--epochs epochs] [--checkpoint_freq freq]
+               [--checkpoint_dir ckpt_dir] [--checkpoint_prefix ckpt_prefix]
+               [--save_dir SAVE_DIR] [--save_name SAVE_NAME]
+               [--lang_name LANG_NAME] [--pred_max_len pred_len]
+main.py: error: argument --embedding_dim/-d: expected one argument

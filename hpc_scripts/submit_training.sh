@@ -13,7 +13,7 @@
 #! Note that the job submission script will enforce no more than 3 cpus per GPU.
 #SBATCH --gres=gpu:1
 #! How much wallclock time will be required?
-#SBATCH --time=00:02:00
+#SBATCH --time=10:00:00
 #! What types of email messages do you wish to receive?
 #SBATCH --mail-type=ALL
 #! Uncomment this to prevent the job from being requeued (e.g. if
@@ -44,17 +44,22 @@ module load python/3.6 cuda/11.0 cudnn/8.0_cuda-11.1
 project_dir="~/rds/hpc-work/plcop"
 application="python3 $project_dir/encoder/main.py"
 
-embedding_dim="1024"
 units="256"
+max_len="500"
+epochs="2"
 
-ckpt_prefix="ed-$embedding_dim-u-$units"
+prefix="u-$units"
+ckpt_prefix="ckpt-$prefix"
+save_name="$prefix"
+lang_name="len-$max_len-lang"
 
 #! Run options for the application:
-data_options="--max_length 300 --path_to_file $project_dir/encoder/data/clauses.txt"
-model_options="--embedding_dim $embedding_dim --units $units"
-training_options="--batch_size 128 --epochs 100"
+data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/clauses.txt"
+model_options="--units $units"
+training_options="--batch_size 128 --epochs 2"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/training_checkpoints --checkpoint_prefix $ckpt_prefix"
-options="$data_options $model_options $training_options $checkpointing"
+saving_options="--save_dir $project_dir/encoder/saved_models --save_name $save_name --lang_name $lang_name"
+options="$data_options $model_options $training_options $checkpointing $saving_options"
 echo $options
 
 #! Work directory (i.e. where the job will run):
