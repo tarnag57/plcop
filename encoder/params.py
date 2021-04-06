@@ -22,7 +22,7 @@ CHECKPOINT_DIR = './training_checkpoints'
 CHECKPOINT_PREFIX = 'ckpt'
 
 # Model Save/Load Params
-SAVE_DIR = './saved_models/'
+SAVE_DIR = './saved_models'
 SAVE_NAME = 'model'
 LANG_NAME = 'lang'
 
