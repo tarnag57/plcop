@@ -134,3 +134,7 @@ dmypy.json
 # Intermediate checkpoint data
 **/variables.*
 **.h5
+
+# Tensorflow cpp interface
+encoder/cpp_interface/include
+encoder/cpp_interface/lib

@@ -1,0 +1,5 @@
+test: test.cpp
+	g++ test.cpp -I/usr/lib/swi-prolog/include/ -I/home/viktor/install/xgboost/include/ -I/home/viktor/install/xgboost/dmlc-core/include/ -I/home/viktor/install/xgboost/rabit/include/ -I/home/viktor/install/xgboost/include/ -o test
+
+xgb: xgb.cpp
+	swipl-ld -shared  --std=c++11 -cc-options,-std=c++11 -ld g++ -I/usr/lib/swi-prolog/include/ -I/home/viktor/install/xgboost/include/ -I/home/viktor/install/xgboost/dmlc-core/include/ -I/home/viktor/install/xgboost/rabit/include/ -I/home/viktor/install/xgboost/include/  -Wl,-rpath -Wl,/tmp/ -L/tmp/ -lxgboost  -o xgb xgb.cpp

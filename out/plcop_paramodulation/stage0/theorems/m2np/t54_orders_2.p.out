@@ -1,0 +1,28 @@
+Prolog query: 
+ mc_run("theorems/m2np/t54_orders_2.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t54_orders_2.p...
+Successfully opened file theorems/m2np/t54_orders_2.p
+200000 playouts remaining
+Moving root from 0 to 263
+Moving root from 263 to 1931
+195000 playouts remaining
+Moving root from 1931 to 1932
+Moving root from 1932 to 1933
+Moving root from 1933 to 1951
+190000 playouts remaining
+Moving root from 1951 to 2304
+Moving root from 2304 to 6143
+185000 playouts remaining
+Moving root from 6143 to 8223
+Moving root from 8223 to 8224
+Moving root from 8224 to 8227
+180000 playouts remaining
+Moving root from 8227 to 16498
+Moving root from 16498 to 16981
+175000 playouts remaining
+Moving root from 16981 to 16986
+Moving root from 16986 to 22023
+Moving root from 22023 to 22786
+170000 playouts remaining
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t54_orders_2.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

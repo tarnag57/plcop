@@ -1,0 +1,10 @@
+Experiment plcop_paramodulation
+STAGE 0
+Building montecarlo tree for each problem in theorems/m2np
+/usr/bin/timeout --preserve-status -k 5 1200 python montecarlo.py ini/plcop_paramodulation0.ini --problem_file {} > out/plcop_paramodulation/stage0/{}.out 2> /dev/null
+MCTS time: 6.128405509 sec
+FAILURE COUNT:
+0
+SUCCESS COUNT:
+6
+Training xgboost

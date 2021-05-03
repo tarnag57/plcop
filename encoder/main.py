@@ -1,5 +1,5 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
@@ -184,11 +184,12 @@ def init_context(prediction_phase=False):
         )
 
     optimizer = tf.optimizers.Adam()
+    checkpoint = tf.train.Checkpoint(model)
 
     ModelContext.create_context(
         args=args,
         optimizer=optimizer,
-        checkpoint=None,                    # TODO
+        checkpoint=checkpoint,                    # TODO
         tokenizer=tokenizer,
         seq_to_seq_model=model
     )
@@ -218,13 +219,19 @@ def init_context(prediction_phase=False):
 
 
 def main():
-    init_context(prediction_phase=False)
-    context = ModelContext.get_context()
-    context.seq_to_seq_model.summary()
-    models.lstm_training(context.seq_to_seq_model)
 
-    print(f"Trining is complete, saving the model...")
-    utils.save_model()
+    # For consistency throughout test runs
+    tf.random.set_seed(987654)
+
+    # init_context(prediction_phase=False)
+    # context = ModelContext.get_context()
+    # print(f"Training example shape: {context.train_input[0].shape}")
+    # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
+    # context.seq_to_seq_model.summary()
+    # models.lstm_training(context.seq_to_seq_model)
+
+    # print(f"Trining is complete, saving the model...")
+    # utils.save_model()
 
     # training.perform_training()
 
@@ -233,21 +240,36 @@ def main():
     # tflite = model_compression.create_tflite()
 
     # utils.restore_checkpoint(context.checkpoint)
+    # clause = "16 [-(k7_xcmplx_0(VAR,VAR)=k7_xcmplx_0(VAR,VAR)), VAR=VAR]"
     # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
     # result = predict.seq_to_seq_predict(clause)
     # print(result)
     # tf.print("Num GPUs Available: ", len(
     #     tf.config.list_physical_devices('GPU')))
 
-    # enc_out, enc_hidden = predict.encode_clause(clause)
-    # result = predict.decode_clause(enc_out, enc_hidden)
-    # print(result)
+    init_context(prediction_phase=True)
+    context = ModelContext.get_context()
+    context.seq_to_seq_model.summary()
+    clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    enc_out, enc_hidden = predict.encode_clause(clause)
+    print(f"Enc output:")
+    print(enc_out.shape)
+    result = predict.decode_clause(enc_out, enc_hidden)
+    print(result)
 
     # tf.keras.models.save_model(context.encoder, './saved_model/encoder')
     # tf.keras.models.save_model(context.decoder, './saved_model/decoder')
     # res = preprocess.preprocess_sentence(
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)
+
+
+    # init_context(prediction_phase=True)
+    # context = ModelContext.get_context()
+    # encoder = models.get_encoder_part(context.seq_to_seq_model)
+    # encoder.summary()
+    # tflite = model_compression.create_tflite(encoder)
+    # model_compression.export_tflite(tflite)
 
 
 if __name__ == "__main__":

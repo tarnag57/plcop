@@ -1,0 +1,164 @@
+Prolog query: 
+ mc_run("theorems/m2np/t50_enumset1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t50_enumset1.p...
+Successfully opened file theorems/m2np/t50_enumset1.p
+200000 playouts remaining
+SUCCESS
+   Init: 	-#
+   Extension: 	[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]
+   Extension: 	[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (A=B),A=C,C=B]]
+   Extension: 	[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_,[- (k6_enumset1(A,A,A,A,B,C,D,E)=k3_enumset1(A,B,C,D,E))]]
+   Extension: 	[k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k3_enumset1(A,A,B,C,D)=k2_enumset1(A,B,C,D))]]
+Created leancop proof
+
+FIRST PROOF FOUND AFTER 6 STEPS
+
+Moving root from 0 to 1
+Moving root from 1 to 4
+195000 playouts remaining
+Moving root from 4 to 5
+Moving root from 5 to 6
+Unable to move root from 6
+190000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+185000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+180000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+175000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+170000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+165000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+160000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+155000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+150000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+145000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+140000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+135000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+130000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+125000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+120000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+115000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+110000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+105000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+100000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+95000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+90000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+85000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+80000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+75000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+70000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+65000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+60000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+55000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+50000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+45000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+40000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+35000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+30000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+25000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+20000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+15000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+10000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+5000 playouts remaining
+Unable to move root from 6
+Unable to move root from 6
+Unable to move root from 6
+Created 7 nodes
+Performed 19990 inferences
+Bigstep Nodes: 5, [0,1,4,5,6]
+Training data collected
+state([success],[],[],[],[],[ext([k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k3_enumset1(_4106,_4106,_4110,_4112,_4114)=k2_enumset1(_4106,_4110,_4112,_4114))]]-[k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]))]]),ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_3920,[- (k6_enumset1(_3946,_3946,_3946,_3946,_3954,_3956,_3958,_3960)=k3_enumset1(_3946,_3954,_3956,_3958,_3960))]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]))]]),ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (_4014=_4016),_4014=_4028,_4028=_4016]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])),k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],1)state([k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),- #],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[])],[ext(- (k3_enumset1(_3560,_3560,_3564,_3566,_3568)=k2_enumset1(_3560,_3564,_3566,_3568)),[],n),ext(- (_3524=_3526),[_3526=_3524],n),ext(- (_3482=_3484),[_3482=_3496,_3496=_3484],n),para([0],k3_enumset1(_3688,_3688,_3692,_3694,_3696),k2_enumset1(_3688,_3692,_3694,_3696),[],l2r),para([1],k3_enumset1(_3648,_3648,_3652,_3654,_3656),k2_enumset1(_3648,_3652,_3654,_3656),[],r2l),para([0],k6_enumset1(_3600,_3600,_3600,_3600,_3608,_3610,_3612,_3614),k3_enumset1(_3600,_3608,_3610,_3612,_3614),[],r2l)],[],[ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_3392,[- (k6_enumset1(_3418,_3418,_3418,_3418,_3426,_3428,_3430,_3432)=k3_enumset1(_3418,_3426,_3428,_3430,_3432))]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]))]]),ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (_3302=_3304),_3302=_3316,_3316=_3304]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])),k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_2586,_2586=k2_enumset1(1^[],2^[],3^[],4^[])],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),- #],[],[ext(- (k6_enumset1(_2968,_2968,_2968,_2968,_2976,_2978,_2980,_2982)=k3_enumset1(_2968,_2976,_2978,_2980,_2982)),[],n),ext(- (_2944=_2944),[],n),ext(- (_2914=_2916),[_2916=_2914],n),ext(- (_2872=_2874),[_2872=_2886,_2886=_2874],n),ext(- (k6_enumset1(_2728,_2730,_2732,_2734,_2736,_2738,_2740,_2742)=k6_enumset1(_2746,_2748,_2750,_2752,_2754,_2756,_2758,_2760)),[_2728=_2746,_2730=_2748,_2732=_2750,_2734=_2752,_2736=_2754,_2738=_2756,_2740=_2758,_2742=_2760],n),para([0],k6_enumset1(_3016,_3016,_3016,_3016,_3024,_3026,_3028,_3030),k3_enumset1(_3016,_3024,_3026,_3028,_3030),[],l2r)],[],[ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (_2658=_2660),_2658=_2672,_2672=_2660]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])),k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_2586,_2586=k2_enumset1(1^[],2^[],3^[],4^[])]]),ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],[- #],[],[ext(- (_1666=_1668),[_1668=_1666],n),ext(- (_1624=_1626),[_1624=_1638,_1638=_1626],n),para([1],k3_enumset1(_1750,_1750,_1754,_1756,_1758),k2_enumset1(_1750,_1754,_1756,_1758),[],r2l),para([0],k6_enumset1(_1702,_1702,_1702,_1702,_1710,_1712,_1714,_1716),k3_enumset1(_1702,_1710,_1712,_1714,_1716),[],l2r)],[],[ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],g)],[],[init(-# - -#)],0)Value data saved
+state([k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),- #],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[])],[ext(- (k3_enumset1(_3560,_3560,_3564,_3566,_3568)=k2_enumset1(_3560,_3564,_3566,_3568)),[],n),ext(- (_3524=_3526),[_3526=_3524],n),ext(- (_3482=_3484),[_3482=_3496,_3496=_3484],n),para([0],k3_enumset1(_3688,_3688,_3692,_3694,_3696),k2_enumset1(_3688,_3692,_3694,_3696),[],l2r),para([1],k3_enumset1(_3648,_3648,_3652,_3654,_3656),k2_enumset1(_3648,_3652,_3654,_3656),[],r2l),para([0],k6_enumset1(_3600,_3600,_3600,_3600,_3608,_3610,_3612,_3614),k3_enumset1(_3600,_3608,_3610,_3612,_3614),[],r2l)],[],[ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_3392,[- (k6_enumset1(_3418,_3418,_3418,_3418,_3426,_3428,_3430,_3432)=k3_enumset1(_3418,_3426,_3428,_3430,_3432))]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]))]]),ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (_3302=_3304),_3302=_3316,_3316=_3304]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])),k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k3_enumset1(1^[],1^[],2^[],3^[],4^[]),k3_enumset1(1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_2586,_2586=k2_enumset1(1^[],2^[],3^[],4^[])],[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),- #],[],[ext(- (k6_enumset1(_2968,_2968,_2968,_2968,_2976,_2978,_2980,_2982)=k3_enumset1(_2968,_2976,_2978,_2980,_2982)),[],n),ext(- (_2944=_2944),[],n),ext(- (_2914=_2916),[_2916=_2914],n),ext(- (_2872=_2874),[_2872=_2886,_2886=_2874],n),ext(- (k6_enumset1(_2728,_2730,_2732,_2734,_2736,_2738,_2740,_2742)=k6_enumset1(_2746,_2748,_2750,_2752,_2754,_2756,_2758,_2760)),[_2728=_2746,_2730=_2748,_2732=_2750,_2734=_2752,_2736=_2754,_2738=_2756,_2740=_2758,_2742=_2760],n),para([0],k6_enumset1(_3016,_3016,_3016,_3016,_3024,_3026,_3028,_3030),k3_enumset1(_3016,_3024,_3026,_3028,_3030),[],l2r)],[],[ext([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (_2658=_2660),_2658=_2672,_2672=_2660]]-[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[]),[- (k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])),k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=_2586,_2586=k2_enumset1(1^[],2^[],3^[],4^[])]]),ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],[- #],[],[ext(- (_1602=_1604),[_1604=_1602],n),ext(- (_1560=_1562),[_1560=_1574,_1574=_1562],n),para([1],k3_enumset1(_1686,_1686,_1690,_1692,_1694),k2_enumset1(_1686,_1690,_1692,_1694),[],r2l),para([0],k6_enumset1(_1638,_1638,_1638,_1638,_1646,_1648,_1650,_1652),k3_enumset1(_1638,_1646,_1648,_1650,_1652),[],l2r)],[],[ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],[- #],[],[ext(- (_1602=_1604),[_1604=_1602],n),ext(- (_1560=_1562),[_1560=_1574,_1574=_1562],n),para([1],k3_enumset1(_1686,_1686,_1690,_1692,_1694),k2_enumset1(_1686,_1690,_1692,_1694),[],r2l),para([0],k6_enumset1(_1638,_1638,_1638,_1638,_1646,_1648,_1650,_1652),k3_enumset1(_1638,_1646,_1648,_1650,_1652),[],l2r)],[],[ext([- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]-[- #,[#,k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[k6_enumset1(1^[],1^[],1^[],1^[],1^[],2^[],3^[],4^[])=k2_enumset1(1^[],2^[],3^[],4^[])],g)],[],[init(-# - -#)],0)Policy data saved
+Training data saved
+Execution time: 9.474 sec
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t50_enumset1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

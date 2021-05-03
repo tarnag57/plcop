@@ -1,0 +1,166 @@
+Prolog query: 
+ mc_run("theorems/m2np/t88_xboole_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t88_xboole_1.p...
+Successfully opened file theorems/m2np/t88_xboole_1.p
+200000 playouts remaining
+SUCCESS
+   Init: 	-#
+   Extension: 	[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]
+   Extension: 	[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (A=B),A=C,C=B]]
+   Extension: 	[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_,[- (k4_xboole_0(k2_xboole_0(A,B),B)=k4_xboole_0(A,B))]]
+   Extension: 	[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(A,B)=A),r1_xboole_0(A,B)]]
+   Extension: 	[r1_xboole_0(1^[],2^[]),[-r1_xboole_0(1^[],2^[]),#]]
+   Reduction: 	[#,- #]
+Created leancop proof
+
+FIRST PROOF FOUND AFTER 18 STEPS
+
+Moving root from 0 to 4
+Moving root from 4 to 12
+195000 playouts remaining
+Moving root from 12 to 14
+Moving root from 14 to 15
+Moving root from 15 to 16
+190000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+185000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+180000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+175000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+170000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+165000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+160000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+155000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+150000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+145000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+140000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+135000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+130000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+125000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+120000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+115000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+110000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+105000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+100000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+95000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+90000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+85000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+80000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+75000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+70000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+65000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+60000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+55000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+50000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+45000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+40000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+35000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+30000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+25000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+20000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+15000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+10000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+5000 playouts remaining
+Unable to move root from 16
+Unable to move root from 16
+Unable to move root from 16
+Created 21 nodes
+Performed 29963 inferences
+Bigstep Nodes: 6, [0,4,12,14,15,16]
+Training data collected
+state([success],[],[],[],[],[red([#,- #]-[#,- #]),ext([r1_xboole_0(1^[],2^[]),[-r1_xboole_0(1^[],2^[]),#]]-[r1_xboole_0(1^[],2^[]),[-r1_xboole_0(1^[],2^[]),#]]),ext([k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(_10224,_10226)=_10224),r1_xboole_0(_10224,_10226)]]-[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(1^[],2^[])=1^[]),r1_xboole_0(1^[],2^[])]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_10266,[- (k4_xboole_0(k2_xboole_0(_10298,_10300),_10300)=k4_xboole_0(_10298,_10300))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_10348=_10350),_10348=_10362,_10362=_10350]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],1)state([r1_xboole_0(1^[],2^[])],[k4_xboole_0(1^[],2^[])=1^[],k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(-r1_xboole_0(1^[],2^[]),[#],g),ext(-r1_xboole_0(_9994,_9996),[k4_xboole_0(_9994,_9996)=_9994],n),ext(-r1_xboole_0(_9940,_9942),[r1_xboole_0(_9952,_9954),_9952=_9940,_9954=_9942],n)],[],[ext([k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(_9888,_9890)=_9888),r1_xboole_0(_9888,_9890)]]-[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(1^[],2^[])=1^[]),r1_xboole_0(1^[],2^[])]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_9714,[- (k4_xboole_0(k2_xboole_0(_9746,_9748),_9748)=k4_xboole_0(_9746,_9748))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_9796=_9798),_9796=_9810,_9810=_9798]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(1^[],2^[])=1^[]],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(- (k4_xboole_0(_9414,_9420)=_9414),[r1_xboole_0(_9414,_9420)],n),ext(- (_9382=_9384),[_9384=_9382],n),ext(- (_9340=_9342),[_9340=_9354,_9354=_9342],n),para([0],k4_xboole_0(k2_xboole_0(_9496,_9492),_9492),k4_xboole_0(_9496,_9492),[],r2l),para([0],k4_xboole_0(_9440,_9456),_9440,[r1_xboole_0(_9440,_9456)],l2r)],[],[ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_9262,[- (k4_xboole_0(k2_xboole_0(_9294,_9296),_9296)=k4_xboole_0(_9294,_9296))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_9172=_9174),_9172=_9186,_9186=_9174]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_6704,_6704=1^[]],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[],[ext(- (k4_xboole_0(k2_xboole_0(_7032,_7028),_7028)=k4_xboole_0(_7032,_7028)),[],n),ext(- (k4_xboole_0(_6986,_6992)=_6986),[r1_xboole_0(_6986,_6992)],n),ext(- (k4_xboole_0(_6936,_6938)=k4_xboole_0(_6942,_6944)),[_6936=_6942,_6938=_6944],n),ext(- (_6912=_6912),[],n),ext(- (_6882=_6884),[_6884=_6882],n),ext(- (_6840=_6842),[_6840=_6854,_6854=_6842],n),para([0],k4_xboole_0(k2_xboole_0(_7140,_7136),_7136),k4_xboole_0(_7140,_7136),[],l2r),para([0],k4_xboole_0(k2_xboole_0(_7104,_7100),_7100),k4_xboole_0(_7104,_7100),[],r2l),para([0],k4_xboole_0(_7048,_7064),_7048,[r1_xboole_0(_7048,_7064)],l2r)],[],[ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_6776=_6778),_6776=_6790,_6790=_6778]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_6704,_6704=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],[- #],[],[ext(- (_2878=_2880),[_2880=_2878],n),ext(- (_2836=_2838),[_2836=_2850,_2850=_2838],n),para([0],k4_xboole_0(k2_xboole_0(_2992,_2988),_2988),k4_xboole_0(_2992,_2988),[],l2r),para([0],k4_xboole_0(k2_xboole_0(_2956,_2952),_2952),k4_xboole_0(_2956,_2952),[],r2l),para([0],k4_xboole_0(_2900,_2916),_2900,[r1_xboole_0(_2900,_2916)],l2r)],[],[ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(1^[],2^[])],g),ext(#,[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],g)],[],[init(-# - -#)],0)Value data saved
+state([r1_xboole_0(1^[],2^[])],[k4_xboole_0(1^[],2^[])=1^[],k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(-r1_xboole_0(1^[],2^[]),[#],g),ext(-r1_xboole_0(_9662,_9664),[k4_xboole_0(_9662,_9664)=_9662],n),ext(-r1_xboole_0(_9608,_9610),[r1_xboole_0(_9620,_9622),_9620=_9608,_9622=_9610],n)],[],[ext([k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(_9556,_9558)=_9556),r1_xboole_0(_9556,_9558)]]-[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(1^[],2^[])=1^[]),r1_xboole_0(1^[],2^[])]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_9382,[- (k4_xboole_0(k2_xboole_0(_9414,_9416),_9416)=k4_xboole_0(_9414,_9416))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_9464=_9466),_9464=_9478,_9478=_9466]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([r1_xboole_0(1^[],2^[])],[k4_xboole_0(1^[],2^[])=1^[],k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(-r1_xboole_0(1^[],2^[]),[#],g),ext(-r1_xboole_0(_9662,_9664),[k4_xboole_0(_9662,_9664)=_9662],n),ext(-r1_xboole_0(_9608,_9610),[r1_xboole_0(_9620,_9622),_9620=_9608,_9622=_9610],n)],[],[ext([k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(_9556,_9558)=_9556),r1_xboole_0(_9556,_9558)]]-[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(1^[],2^[])=1^[]),r1_xboole_0(1^[],2^[])]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_9382,[- (k4_xboole_0(k2_xboole_0(_9414,_9416),_9416)=k4_xboole_0(_9414,_9416))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_9464=_9466),_9464=_9478,_9478=_9466]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([r1_xboole_0(1^[],2^[])],[k4_xboole_0(1^[],2^[])=1^[],k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(-r1_xboole_0(1^[],2^[]),[#],g),ext(-r1_xboole_0(_9662,_9664),[k4_xboole_0(_9662,_9664)=_9662],n),ext(-r1_xboole_0(_9608,_9610),[r1_xboole_0(_9620,_9622),_9620=_9608,_9622=_9610],n)],[],[ext([k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(_9556,_9558)=_9556),r1_xboole_0(_9556,_9558)]]-[k4_xboole_0(1^[],2^[])=1^[],[- (k4_xboole_0(1^[],2^[])=1^[]),r1_xboole_0(1^[],2^[])]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_9382,[- (k4_xboole_0(k2_xboole_0(_9414,_9416),_9416)=k4_xboole_0(_9414,_9416))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_9464=_9466),_9464=_9478,_9478=_9466]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(1^[],2^[])=1^[]],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[])],[ext(- (k4_xboole_0(_9100,_9106)=_9100),[r1_xboole_0(_9100,_9106)],n),ext(- (_9068=_9070),[_9070=_9068],n),ext(- (_9026=_9028),[_9026=_9040,_9040=_9028],n),para([0],k4_xboole_0(k2_xboole_0(_9182,_9178),_9178),k4_xboole_0(_9182,_9178),[],r2l),para([0],k4_xboole_0(_9126,_9142),_9126,[r1_xboole_0(_9126,_9142)],l2r)],[],[ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_8948,[- (k4_xboole_0(k2_xboole_0(_8980,_8982),_8982)=k4_xboole_0(_8980,_8982))]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]))]]),ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_8858=_8860),_8858=_8872,_8872=_8860]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=k4_xboole_0(1^[],2^[]),k4_xboole_0(1^[],2^[])=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_6704,_6704=1^[]],[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],- #],[],[ext(- (k4_xboole_0(k2_xboole_0(_7032,_7028),_7028)=k4_xboole_0(_7032,_7028)),[],n),ext(- (k4_xboole_0(_6986,_6992)=_6986),[r1_xboole_0(_6986,_6992)],n),ext(- (k4_xboole_0(_6936,_6938)=k4_xboole_0(_6942,_6944)),[_6936=_6942,_6938=_6944],n),ext(- (_6912=_6912),[],n),ext(- (_6882=_6884),[_6884=_6882],n),ext(- (_6840=_6842),[_6840=_6854,_6854=_6842],n),para([0],k4_xboole_0(k2_xboole_0(_7140,_7136),_7136),k4_xboole_0(_7140,_7136),[],l2r),para([0],k4_xboole_0(k2_xboole_0(_7104,_7100),_7100),k4_xboole_0(_7104,_7100),[],r2l),para([0],k4_xboole_0(_7048,_7064),_7048,[r1_xboole_0(_7048,_7064)],l2r)],[],[ext([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (_6776=_6778),_6776=_6790,_6790=_6778]]-[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[],[- (k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]),k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=_6704,_6704=1^[]]]),ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],[- #],[],[ext(- (_2814=_2816),[_2816=_2814],n),ext(- (_2772=_2774),[_2772=_2786,_2786=_2774],n),para([0],k4_xboole_0(k2_xboole_0(_2928,_2924),_2924),k4_xboole_0(_2928,_2924),[],l2r),para([0],k4_xboole_0(k2_xboole_0(_2892,_2888),_2888),k4_xboole_0(_2892,_2888),[],r2l),para([0],k4_xboole_0(_2836,_2852),_2836,[r1_xboole_0(_2836,_2852)],l2r)],[],[ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],[- #],[],[ext(- (_2814=_2816),[_2816=_2814],n),ext(- (_2772=_2774),[_2772=_2786,_2786=_2774],n),para([0],k4_xboole_0(k2_xboole_0(_2928,_2924),_2924),k4_xboole_0(_2928,_2924),[],l2r),para([0],k4_xboole_0(k2_xboole_0(_2892,_2888),_2888),k4_xboole_0(_2892,_2888),[],r2l),para([0],k4_xboole_0(_2836,_2852),_2836,[r1_xboole_0(_2836,_2852)],l2r)],[],[ext([- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]-[- #,[#,k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(1^[],2^[])],g),ext(#,[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],g)],[],[init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(1^[],2^[])],g),ext(#,[k4_xboole_0(k2_xboole_0(1^[],2^[]),2^[])=1^[]],g)],[],[init(-# - -#)],0)Policy data saved
+Training data saved
+Execution time: 10.821 sec
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t88_xboole_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

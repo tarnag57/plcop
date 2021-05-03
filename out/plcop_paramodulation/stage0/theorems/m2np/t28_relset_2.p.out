@@ -1,0 +1,168 @@
+Prolog query: 
+ mc_run("theorems/m2np/t28_relset_2.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t28_relset_2.p...
+Successfully opened file theorems/m2np/t28_relset_2.p
+200000 playouts remaining
+SUCCESS
+   Init: 	-#
+   Extension: 	[- #,[#,v1_xboole_0(1^[])]]
+   Extension: 	[v1_xboole_0(1^[]),[-v1_xboole_0(A),-m1_subset_1(a_4_2_relset_2(A,B,C,D),k1_zfmisc_1(k1_zfmisc_1(B))),m1_subset_1(C,k1_zfmisc_1(k1_zfmisc_1(A))),m1_subset_1(D,k1_zfmisc_1(k2_zfmisc_1(A,B)))]]
+   Extension: 	[-m1_subset_1(a_4_2_relset_2(1^[],A,_,_),k1_zfmisc_1(k1_zfmisc_1(A))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]
+   Reduction: 	[#,- #]
+   Extension: 	[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]
+   Reduction: 	[#,- #]
+   Extension: 	[m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),[-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),#]]
+   Reduction: 	[#,- #]
+Created leancop proof
+
+FIRST PROOF FOUND AFTER 4 STEPS
+
+Moving root from 0 to 1
+Moving root from 1 to 2
+195000 playouts remaining
+Moving root from 2 to 3
+Moving root from 3 to 4
+Moving root from 4 to 5
+190000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+185000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+180000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+175000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+170000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+165000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+160000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+155000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+150000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+145000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+140000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+135000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+130000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+125000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+120000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+115000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+110000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+105000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+100000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+95000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+90000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+85000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+80000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+75000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+70000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+65000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+60000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+55000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+50000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+45000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+40000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+35000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+30000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+25000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+20000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+15000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+10000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+5000 playouts remaining
+Unable to move root from 5
+Unable to move root from 5
+Unable to move root from 5
+Created 9 nodes
+Performed 29987 inferences
+Bigstep Nodes: 6, [0,1,2,3,4,5]
+Training data collected
+state([success],[],[],[],[],[red([#,- #]-[#,- #]),ext([m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),[-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),#]]-[m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),[-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),#]]),red([#,- #]-[#,- #]),ext([m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]-[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]),red([#,- #]-[#,- #]),ext([-m1_subset_1(a_4_2_relset_2(1^[],_2924,_2926,_2928),k1_zfmisc_1(k1_zfmisc_1(_2924))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]-[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]),ext([v1_xboole_0(1^[]),[-v1_xboole_0(_2978),-m1_subset_1(a_4_2_relset_2(_2978,_3000,_3002,_3004),k1_zfmisc_1(k1_zfmisc_1(_3000))),m1_subset_1(_3002,k1_zfmisc_1(k1_zfmisc_1(_2978))),m1_subset_1(_3004,k1_zfmisc_1(k2_zfmisc_1(_2978,_3000)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],1)state([m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],[v1_xboole_0(1^[]),- #],[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],[ext(-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),[#],g)],[],[red([#,- #]-[#,- #]),ext([m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]-[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]),red([#,- #]-[#,- #]),ext([-m1_subset_1(a_4_2_relset_2(1^[],_2520,_2522,_2524),k1_zfmisc_1(k1_zfmisc_1(_2520))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]-[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]),ext([v1_xboole_0(1^[]),[-v1_xboole_0(_2574),-m1_subset_1(a_4_2_relset_2(_2574,_2596,_2598,_2600),k1_zfmisc_1(k1_zfmisc_1(_2596))),m1_subset_1(_2598,k1_zfmisc_1(k1_zfmisc_1(_2574))),m1_subset_1(_2600,k1_zfmisc_1(k2_zfmisc_1(_2574,_2596)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],[v1_xboole_0(1^[]),- #],[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],[ext(-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[#],g)],[],[red([#,- #]-[#,- #]),ext([-m1_subset_1(a_4_2_relset_2(1^[],_2176,_2178,_2180),k1_zfmisc_1(k1_zfmisc_1(_2176))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]-[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]),ext([v1_xboole_0(1^[]),[-v1_xboole_0(_2026),-m1_subset_1(a_4_2_relset_2(_2026,_2048,_2050,_2052),k1_zfmisc_1(k1_zfmisc_1(_2048))),m1_subset_1(_2050,k1_zfmisc_1(k1_zfmisc_1(_2026))),m1_subset_1(_2052,k1_zfmisc_1(k2_zfmisc_1(_2026,_2048)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))],[v1_xboole_0(1^[]),- #],[],[ext(m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[#],g),ext(m1_subset_1(_1688,k1_zfmisc_1(k1_zfmisc_1(_1698))),[-m1_subset_1(a_4_2_relset_2(_1698,_1720,_1688,_1724),k1_zfmisc_1(k1_zfmisc_1(_1720))),-v1_xboole_0(_1698),m1_subset_1(_1724,k1_zfmisc_1(k2_zfmisc_1(_1698,_1720)))],n)],[],[ext([v1_xboole_0(1^[]),[-v1_xboole_0(_1578),-m1_subset_1(a_4_2_relset_2(_1578,_1600,_1602,_1604),k1_zfmisc_1(k1_zfmisc_1(_1600))),m1_subset_1(_1602,k1_zfmisc_1(k1_zfmisc_1(_1578))),m1_subset_1(_1604,k1_zfmisc_1(k2_zfmisc_1(_1578,_1600)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([v1_xboole_0(1^[])],[- #],[],[ext(-v1_xboole_0(_1302),[-m1_subset_1(a_4_2_relset_2(_1302,_1324,_1326,_1328),k1_zfmisc_1(k1_zfmisc_1(_1324))),m1_subset_1(_1326,k1_zfmisc_1(k1_zfmisc_1(_1302))),m1_subset_1(_1328,k1_zfmisc_1(k2_zfmisc_1(_1302,_1324)))],n)],[],[ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[v1_xboole_0(1^[])],g),ext(#,[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[])))],g),ext(#,[-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],g),ext(#,[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],g)],[],[init(-# - -#)],0)Value data saved
+state([m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],[v1_xboole_0(1^[]),- #],[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],[ext(-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[]))),[#],g)],[],[red([#,- #]-[#,- #]),ext([m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]-[m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),#]]),red([#,- #]-[#,- #]),ext([-m1_subset_1(a_4_2_relset_2(1^[],_2386,_2388,_2390),k1_zfmisc_1(k1_zfmisc_1(_2386))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]-[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]),ext([v1_xboole_0(1^[]),[-v1_xboole_0(_2440),-m1_subset_1(a_4_2_relset_2(_2440,_2462,_2464,_2466),k1_zfmisc_1(k1_zfmisc_1(_2462))),m1_subset_1(_2464,k1_zfmisc_1(k1_zfmisc_1(_2440))),m1_subset_1(_2466,k1_zfmisc_1(k2_zfmisc_1(_2440,_2462)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],[v1_xboole_0(1^[]),- #],[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],[ext(-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),[#],g)],[],[red([#,- #]-[#,- #]),ext([-m1_subset_1(a_4_2_relset_2(1^[],_2176,_2178,_2180),k1_zfmisc_1(k1_zfmisc_1(_2176))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]-[-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),#]]),ext([v1_xboole_0(1^[]),[-v1_xboole_0(_2026),-m1_subset_1(a_4_2_relset_2(_2026,_2048,_2050,_2052),k1_zfmisc_1(k1_zfmisc_1(_2048))),m1_subset_1(_2050,k1_zfmisc_1(k1_zfmisc_1(_2026))),m1_subset_1(_2052,k1_zfmisc_1(k2_zfmisc_1(_2026,_2048)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))],[v1_xboole_0(1^[]),- #],[],[ext(m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[#],g),ext(m1_subset_1(_1688,k1_zfmisc_1(k1_zfmisc_1(_1698))),[-m1_subset_1(a_4_2_relset_2(_1698,_1720,_1688,_1724),k1_zfmisc_1(k1_zfmisc_1(_1720))),-v1_xboole_0(_1698),m1_subset_1(_1724,k1_zfmisc_1(k2_zfmisc_1(_1698,_1720)))],n)],[],[ext([v1_xboole_0(1^[]),[-v1_xboole_0(_1578),-m1_subset_1(a_4_2_relset_2(_1578,_1600,_1602,_1604),k1_zfmisc_1(k1_zfmisc_1(_1600))),m1_subset_1(_1602,k1_zfmisc_1(k1_zfmisc_1(_1578))),m1_subset_1(_1604,k1_zfmisc_1(k2_zfmisc_1(_1578,_1600)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))],[v1_xboole_0(1^[]),- #],[],[ext(m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[]))),[#],g),ext(m1_subset_1(_1688,k1_zfmisc_1(k1_zfmisc_1(_1698))),[-m1_subset_1(a_4_2_relset_2(_1698,_1720,_1688,_1724),k1_zfmisc_1(k1_zfmisc_1(_1720))),-v1_xboole_0(_1698),m1_subset_1(_1724,k1_zfmisc_1(k2_zfmisc_1(_1698,_1720)))],n)],[],[ext([v1_xboole_0(1^[]),[-v1_xboole_0(_1578),-m1_subset_1(a_4_2_relset_2(_1578,_1600,_1602,_1604),k1_zfmisc_1(k1_zfmisc_1(_1600))),m1_subset_1(_1602,k1_zfmisc_1(k1_zfmisc_1(_1578))),m1_subset_1(_1604,k1_zfmisc_1(k2_zfmisc_1(_1578,_1600)))]]-[v1_xboole_0(1^[]),[-v1_xboole_0(1^[]),-m1_subset_1(a_4_2_relset_2(1^[],_1464,_1466,_1468),k1_zfmisc_1(k1_zfmisc_1(_1464))),m1_subset_1(_1466,k1_zfmisc_1(k1_zfmisc_1(1^[]))),m1_subset_1(_1468,k1_zfmisc_1(k2_zfmisc_1(1^[],_1464)))]]),ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([v1_xboole_0(1^[])],[- #],[],[ext(-v1_xboole_0(_1302),[-m1_subset_1(a_4_2_relset_2(_1302,_1324,_1326,_1328),k1_zfmisc_1(k1_zfmisc_1(_1324))),m1_subset_1(_1326,k1_zfmisc_1(k1_zfmisc_1(_1302))),m1_subset_1(_1328,k1_zfmisc_1(k2_zfmisc_1(_1302,_1324)))],n)],[],[ext([- #,[#,v1_xboole_0(1^[])]]-[- #,[#,v1_xboole_0(1^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[v1_xboole_0(1^[])],g),ext(#,[-m1_subset_1(3^[],k1_zfmisc_1(k1_zfmisc_1(1^[])))],g),ext(#,[-m1_subset_1(4^[],k1_zfmisc_1(k2_zfmisc_1(1^[],2^[])))],g),ext(#,[m1_subset_1(a_4_2_relset_2(1^[],2^[],3^[],4^[]),k1_zfmisc_1(k1_zfmisc_1(2^[])))],g)],[],[init(-# - -#)],0)Policy data saved
+Training data saved
+Execution time: 5.909 sec
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t28_relset_2.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

@@ -146,6 +146,8 @@ mc_init(File,ChildHash,ParentHash,NodeHash,FHash):-
     flag(nodecount, _, 1).
 
 % Wrapper around mc_playout with condition checking
+% We stop if we exceed the maximum number of playouts,
+% the max time, or the inference limit.
 mc_playout_times(0,_,_,_,_,_):- !.
 mc_playout_times(N,_,_,_,_,Time):-
     Time < 0, !,
@@ -155,6 +157,8 @@ mc_playout_times(N,_,_,_,_,_):-
     mc_param(inference_limit, IL),
     IC >= IL, !,
     format("Inference limit reached with ~d playouts remaining\n", [N]).
+
+% If no condition was exceeded.
 mc_playout_times(N,ChildHash,ParentHash,NodeHash,FHash,Time):-
     statistics(runtime, [_ | [_]]),
     
@@ -164,6 +168,7 @@ mc_playout_times(N,ChildHash,ParentHash,NodeHash,FHash,Time):-
     ( (N rem 5000) =:= 0 -> format("~w playouts remaining\n",[N]) ; true ),
     N1 is N-1,
 
+    % proof_found(ChildId) is a dynamic predicate indicating successful proof
     ( FoundBefore=0, proof_found(_) ->
       mc_param(playout_count,TotalPlayouts),
       Steps is TotalPlayouts - N,
@@ -171,7 +176,7 @@ mc_playout_times(N,ChildHash,ParentHash,NodeHash,FHash,Time):-
     ; true
     ),
 
-    
+    % Perform bigstep move (a.k.a. move the root of the MCTS)
     ( mc_param(bigstep_frequency,BF), (N1 rem BF) =:= 0 ->
       rootnode(CurrentRoot), !,
       ( mc_find_bigstep(CurrentRoot,ChildHash,NodeHash,NextRoot) ->
@@ -189,11 +194,12 @@ mc_playout_times(N,ChildHash,ParentHash,NodeHash,FHash,Time):-
     mc_playout_times(N1,ChildHash,ParentHash,NodeHash,FHash,Time2).
 
 
-% The meat of the solver
+% Performs one playout according to UCT guidance: always selecting the max UCT
 mc_playout(ChildHash,ParentHash,NodeHash,FHash):-
 
     %% vis_mc(NodeHash,ChildHash),
-    
+
+    % Start from the latest root (it is moved by bigstep moves) 
     rootnode(StartId), !,
     mc_find_unexpanded(StartId,ChildHash,NodeHash,ExpandId,UnexpandedActionIds),
     nb_hashtbl_get(NodeHash,ExpandId,[State,_,_,_,ChildProbs]),
@@ -230,6 +236,7 @@ mc_backpropagate(Id,Reward,ParentHash,NodeHash):-
     ).
 
 
+% Perform a single node expansion
 mc_expand_node(ParentId,ChildHash,ParentHash,NodeHash,FHash,ActionIndex,ChildValue):-
     nb_hashtbl_get(NodeHash,ParentId,[ParentState,_,_,_,ChildProbs]),
     copy_term(ParentState,ParentState2),

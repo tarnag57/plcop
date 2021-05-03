@@ -13,6 +13,15 @@
 #include <xgboost/c_api.h>
 
 #define max_fea (262139 * 3 + 18)
+#define safe_xgboost(call)                                                                       \
+  {                                                                                              \
+    int err = (call);                                                                            \
+    if (err != 0)                                                                                \
+    {                                                                                            \
+      fprintf(stderr, "%s:%d: error in %s: %s\n", __FILE__, __LINE__, #call, XGBGetLastError()); \
+      exit(1);                                                                                   \
+    }                                                                                            \
+  }
 
 static int max_nr_attr = 64;
 static unsigned int *indices;
@@ -21,19 +30,22 @@ static float *data;
 
 // these three are just to learn what works - not needed
 NAMED_PREDICATE("#", hash, 2)
-    { A2 = (wchar_t*)A1;
-    }
+{
+  A2 = (wchar_t *)A1;
+}
 
 PREDICATE(pi, 1)
-{ A1 = M_PI;
+{
+  A1 = M_PI;
 }
 
 PREDICATE(write_list, 1)
-{ PlTail tail(A1);
+{
+  PlTail tail(A1);
   PlTerm e;
 
-  while(tail.next(e))
-     std::cout << (char *)e << std::endl;
+  while (tail.next(e))
+    std::cout << (char *)e << std::endl;
 
   return TRUE;
 }
@@ -43,12 +55,17 @@ PREDICATE(predictor, 2)
 {
   BoosterHandle b;
   XGBoosterCreate(NULL, 0, &b);
-  if (XGBoosterLoadModel(b, (char*)A1) != 0)
-  { A2 = "failXGBoosterLoadModel"; return TRUE;}
-  indices = (unsigned int*)malloc(max_nr_attr*sizeof(unsigned int));
-  data = (float*)malloc(max_nr_attr*sizeof(float));
+  auto model_name = (char *)A1;
+  auto status = XGBoosterLoadModel(b, (char *)A1);
+  if (status != 0)
+  {
+    A2 = "failXGBoosterLoadModel";
+    return TRUE;
+  }
+  indices = (unsigned int *)malloc(max_nr_attr * sizeof(unsigned int));
+  data = (float *)malloc(max_nr_attr * sizeof(float));
   A2 = b;
-//  A3 = indices;
+  //  A3 = indices;
   return TRUE;
 }
 
@@ -65,33 +82,38 @@ PREDICATE(predictor, 2)
 
 PREDICATE(xpredict, 3)
 {
-   PlTail tail(A2);
-   PlTerm e,e1,e2,e3;
-	int i = 0;
-  while(tail.next(e))
+  PlTail tail(A2);
+  PlTerm e, e1, e2, e3;
+  int i = 0;
+
+  // Reading prolog input into flat array
+  while (tail.next(e))
   {
-    if (i>=max_nr_attr-2) {
+    if (i >= max_nr_attr - 2)
+    {
       max_nr_attr *= 2;
-      indices = (unsigned int*)realloc(indices, max_nr_attr*sizeof(unsigned int));
-      data = (float*)realloc(data, max_nr_attr*sizeof(float));
+      indices = (unsigned int *)realloc(indices, max_nr_attr * sizeof(unsigned int));
+      data = (float *)realloc(data, max_nr_attr * sizeof(float));
     }
-    indices[i] =  (long) e[1];
-    data[i] = (long) e[2][1];
-    // printf ("@%i: %i:%.0f\n", i, indices[i], data[i]);
-         ++i;
+    indices[i] = (long)e[1];
+    data[i] = (long)e[2][1];
+    // printf("@%i: %i:%.0f\n", i, indices[i], data[i]);
+    ++i;
   }
-  indptr[0] = 0; indptr[1] = i;
-//  printf ("@%i: %i:%.0f\n", i, indices[i], data[i]);
+  indptr[0] = 0;
+  indptr[1] = i;
+  // printf("@%i: %i:%.0f\n", i, indices[i], data[i]);
+
+  // Crteating matrix
+  bst_ulong num_features;
+  safe_xgboost(XGBoosterGetNumFeature(A1, &num_features));
   DMatrixHandle h_predict;
-  if (XGDMatrixCreateFromCSREx(indptr, indices, data, 2, i, max_fea, &h_predict) != 0)
-  { A3 = "XGDMatrixCreateFromCSREx"; return TRUE;}
-  else {
-     //   printf("created\n");
-  }
+  safe_xgboost(XGDMatrixCreateFromCSREx(indptr, indices, data, 2, i, num_features, &h_predict));
+
+  // Performing prediction
   bst_ulong out_len;
   const float *res;
-  if (XGBoosterPredict(A1, h_predict, 0, 0, 0, &out_len, &res) != 0)
-  { A3 = "XGBoosterPredict"; return TRUE;}
+  safe_xgboost(XGBoosterPredict(A1, h_predict, 0, 0, false, &out_len, &res) != 0);
   XGDMatrixFree(h_predict);
   A3 = res[0];
 }

@@ -1,0 +1,25 @@
+Prolog query: 
+ mc_run("theorems/m2np/t75_funct_3.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t75_funct_3.p...
+Successfully opened file theorems/m2np/t75_funct_3.p
+200000 playouts remaining
+Moving root from 0 to 275
+Moving root from 275 to 2352
+195000 playouts remaining
+Moving root from 2352 to 2353
+Moving root from 2353 to 2369
+Moving root from 2369 to 2413
+190000 playouts remaining
+Moving root from 2413 to 2739
+Moving root from 2739 to 3110
+185000 playouts remaining
+Moving root from 3110 to 3173
+Moving root from 3173 to 3174
+Moving root from 3174 to 3177
+180000 playouts remaining
+Moving root from 3177 to 3396
+Moving root from 3396 to 9621
+175000 playouts remaining
+Moving root from 9621 to 13484
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t75_funct_3.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

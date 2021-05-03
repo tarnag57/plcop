@@ -1,0 +1,26 @@
+Prolog query: 
+ mc_run("theorems/m2np/t105_zfmisc_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t105_zfmisc_1.p...
+Successfully opened file theorems/m2np/t105_zfmisc_1.p
+200000 playouts remaining
+Moving root from 0 to 4
+Moving root from 4 to 59
+195000 playouts remaining
+Moving root from 59 to 244
+Moving root from 244 to 2058
+Moving root from 2058 to 2757
+190000 playouts remaining
+Moving root from 2757 to 4072
+Moving root from 4072 to 4073
+185000 playouts remaining
+Moving root from 4073 to 10378
+Moving root from 10378 to 10379
+Moving root from 10379 to 10588
+180000 playouts remaining
+Moving root from 10588 to 13292
+Inference limit reached with 177762 playouts remaining
+Created 20272 nodes
+Performed 200010 inferences
+Bigstep Nodes: 12, [0,4,59,244,2058,2757,4072,4073,10378,10379,10588,13292]
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t105_zfmisc_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

@@ -1,0 +1,169 @@
+Prolog query: 
+ mc_run("theorems/m2np/t49_zfmisc_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t49_zfmisc_1.p...
+Successfully opened file theorems/m2np/t49_zfmisc_1.p
+200000 playouts remaining
+SUCCESS
+   Init: 	-#
+   Extension: 	[- #,[#,-r2_hidden(3^[],5^[])]]
+   Extension: 	[-r2_hidden(3^[],5^[]),[r2_hidden(A,B),r1_xboole_0(C,B),r2_hidden(A,C)]]
+   Extension: 	[r1_xboole_0(_,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]
+   Reduction: 	[#,- #]
+   Extension: 	[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(A,B),B=k2_tarski(C,_),A=C]]
+   Extension: 	[k2_tarski(3^[],4^[])=k2_tarski(_,_),[- (k2_tarski(A,B)=k2_tarski(C,D)),A=C,B=D]]
+   Extension: 	[3^[]=_,[- (A=A)]]
+   Extension: 	[4^[]=_,[- (A=A)]]
+   Extension: 	[3^[]=3^[],[- (A=A)]]
+Created leancop proof
+
+FIRST PROOF FOUND AFTER 44 STEPS
+
+Moving root from 0 to 5
+Moving root from 5 to 25
+195000 playouts remaining
+Moving root from 25 to 26
+Moving root from 26 to 32
+Moving root from 32 to 39
+190000 playouts remaining
+Moving root from 39 to 40
+Moving root from 40 to 41
+185000 playouts remaining
+Moving root from 41 to 42
+Unable to move root from 42
+Unable to move root from 42
+180000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+175000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+170000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+165000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+160000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+155000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+150000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+145000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+140000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+135000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+130000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+125000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+120000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+115000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+110000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+105000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+100000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+95000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+90000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+85000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+80000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+75000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+70000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+65000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+60000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+55000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+50000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+45000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+40000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+35000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+30000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+25000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+20000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+15000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+10000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+5000 playouts remaining
+Unable to move root from 42
+Unable to move root from 42
+Unable to move root from 42
+Created 43 nodes
+Performed 71852 inferences
+Bigstep Nodes: 9, [0,5,25,26,32,39,40,41,42]
+Training data collected
+state([success],[],[],[],[],[ext([3^[]=3^[],[- (_53758=_53758)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([4^[]=_53362,[- (_53382=_53382)]]-[4^[]=4^[],[- (4^[]=4^[])]]),ext([3^[]=_53412,[- (_53432=_53432)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([k2_tarski(3^[],4^[])=k2_tarski(_53466,_53468),[- (k2_tarski(_53494,_53496)=k2_tarski(_53500,_53502)),_53494=_53500,_53496=_53502]]-[k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),[- (k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[])),3^[]=3^[],4^[]=4^[]]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_53568,_53570),_53570=k2_tarski(_53586,_53588),_53568=_53586]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),3^[]=3^[]]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_53632,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_53672,_53674),r1_xboole_0(_53684,_53674),r2_hidden(_53672,_53684)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],1)state([3^[]=3^[]],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_53160=_53160),[],n),ext(- (_53130=_53132),[_53132=_53130],n),ext(- (_53088=_53090),[_53088=_53102,_53102=_53090],n),ext(- (_53024=_53026),[_53036=k2_tarski(_53026,_53044),r2_hidden(_53024,_53036),- (_53024=_53044)],n),ext(- (_52960=_52962),[_52972=k2_tarski(_52978,_52962),r2_hidden(_52960,_52972),- (_52960=_52978)],n)],[],[ext([4^[]=_52906,[- (_52926=_52926)]]-[4^[]=4^[],[- (4^[]=4^[])]]),ext([3^[]=_52510,[- (_52530=_52530)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([k2_tarski(3^[],4^[])=k2_tarski(_52564,_52566),[- (k2_tarski(_52592,_52594)=k2_tarski(_52598,_52600)),_52592=_52598,_52594=_52600]]-[k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),[- (k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[])),3^[]=3^[],4^[]=4^[]]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_52706,_52708),_52708=k2_tarski(_52724,_52726),_52706=_52724]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),3^[]=3^[]]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_52794,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_52834,_52836),r1_xboole_0(_52846,_52836),r2_hidden(_52834,_52846)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([4^[]=_50874],[k2_tarski(3^[],4^[])=k2_tarski(3^[],_50874),r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[3^[]=3^[],r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_51908=_51908),[],n),ext(- (_51878=_51880),[_51880=_51878],n),ext(- (_51836=_51838),[_51836=_51850,_51850=_51838],n),ext(- (_51772=_51774),[_51784=k2_tarski(_51774,_51792),r2_hidden(_51772,_51784),- (_51772=_51792)],n),ext(- (_51708=_51710),[_51720=k2_tarski(_51726,_51710),r2_hidden(_51708,_51720),- (_51708=_51726)],n),ext(- (_51612=k2_tarski(_51618,_51620)),[r2_hidden(1^[_51612,_51620,_51618],_51612),1^[_51612,_51620,_51618]=_51618],n),ext(- (_51516=k2_tarski(_51522,_51524)),[r2_hidden(1^[_51516,_51524,_51522],_51516),1^[_51516,_51524,_51522]=_51524],n),ext(- (_51372=k2_tarski(_51378,_51380)),[-r2_hidden(1^[_51372,_51380,_51378],_51372),- (1^[_51372,_51380,_51378]=_51378),- (1^[_51372,_51380,_51378]=_51380)],n),para([1],1^[_52082,_52088,_52062],_52062,[- (_52082=k2_tarski(_52062,_52088)),-r2_hidden(1^[_52082,_52088,_52062],_52082),- (1^[_52082,_52088,_52062]=_52088)],l2r),para([1],1^[_51938,_51918,_51950],_51918,[- (_51938=k2_tarski(_51950,_51918)),-r2_hidden(1^[_51938,_51918,_51950],_51938),- (1^[_51938,_51918,_51950]=_51950)],l2r)],[[[3^[]=3^[]],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(3^[],_50874),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])]]],[ext([3^[]=_51312,[- (_51332=_51332)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([k2_tarski(3^[],4^[])=k2_tarski(_50976,_50978),[- (k2_tarski(_51004,_51006)=k2_tarski(_51010,_51012)),_51004=_51010,_51006=_51012]]-[k2_tarski(3^[],4^[])=k2_tarski(3^[],_50874),[- (k2_tarski(3^[],4^[])=k2_tarski(3^[],_50874)),3^[]=3^[],4^[]=_50874]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_51112,_51114),_51114=k2_tarski(_51130,_51132),_51112=_51130]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(3^[],_50874),3^[]=3^[]]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_51200,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_51240,_51242),r1_xboole_0(_51252,_51242),r2_hidden(_51240,_51252)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([3^[]=_49352,4^[]=_49354],[k2_tarski(3^[],4^[])=k2_tarski(_49352,_49354),r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_50316=_50316),[],n),ext(- (_50286=_50288),[_50288=_50286],n),ext(- (_50244=_50246),[_50244=_50258,_50258=_50246],n),ext(- (_50180=_50182),[_50192=k2_tarski(_50182,_50200),r2_hidden(_50180,_50192),- (_50180=_50200)],n),ext(- (_50116=_50118),[_50128=k2_tarski(_50134,_50118),r2_hidden(_50116,_50128),- (_50116=_50134)],n),ext(- (_50020=k2_tarski(_50026,_50028)),[r2_hidden(1^[_50020,_50028,_50026],_50020),1^[_50020,_50028,_50026]=_50026],n),ext(- (_49924=k2_tarski(_49930,_49932)),[r2_hidden(1^[_49924,_49932,_49930],_49924),1^[_49924,_49932,_49930]=_49932],n),ext(- (_49780=k2_tarski(_49786,_49788)),[-r2_hidden(1^[_49780,_49788,_49786],_49780),- (1^[_49780,_49788,_49786]=_49786),- (1^[_49780,_49788,_49786]=_49788)],n),para([1],1^[_50490,_50496,_50470],_50470,[- (_50490=k2_tarski(_50470,_50496)),-r2_hidden(1^[_50490,_50496,_50470],_50490),- (1^[_50490,_50496,_50470]=_50496)],l2r),para([1],1^[_50346,_50326,_50358],_50326,[- (_50346=k2_tarski(_50358,_50326)),-r2_hidden(1^[_50346,_50326,_50358],_50346),- (1^[_50346,_50326,_50358]=_50358)],l2r)],[[[3^[]=_49352],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(_49352,_49354),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])]]],[ext([k2_tarski(3^[],4^[])=k2_tarski(_49652,_49654),[- (k2_tarski(_49680,_49682)=k2_tarski(_49686,_49688)),_49680=_49686,_49682=_49688]]-[k2_tarski(3^[],4^[])=k2_tarski(_49352,_49354),[- (k2_tarski(3^[],4^[])=k2_tarski(_49352,_49354)),3^[]=_49352,4^[]=_49354]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_49454,_49456),_49456=k2_tarski(_49472,_49474),_49454=_49472]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(_49352,_49354),3^[]=_49352]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_49536,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_49576,_49578),r1_xboole_0(_49588,_49578),r2_hidden(_49576,_49588)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([k2_tarski(3^[],4^[])=k2_tarski(_37160,_37162),3^[]=_37160],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (k2_tarski(_37962,_37964)=k2_tarski(_37968,_37970)),[_37962=_37968,_37964=_37970],n),ext(- (_37938=_37938),[],n),ext(- (_37908=_37910),[_37910=_37908],n),ext(- (_37866=_37868),[_37866=_37880,_37880=_37868],n),ext(- (_37802=_37804),[_37814=k2_tarski(_37804,_37822),r2_hidden(_37802,_37814),- (_37802=_37822)],n),ext(- (_37738=_37740),[_37750=k2_tarski(_37756,_37740),r2_hidden(_37738,_37750),- (_37738=_37756)],n),ext(- (_37642=k2_tarski(_37648,_37650)),[r2_hidden(1^[_37642,_37650,_37648],_37642),1^[_37642,_37650,_37648]=_37648],n),ext(- (_37546=k2_tarski(_37552,_37554)),[r2_hidden(1^[_37546,_37554,_37552],_37546),1^[_37546,_37554,_37552]=_37554],n),ext(- (_37402=k2_tarski(_37408,_37410)),[-r2_hidden(1^[_37402,_37410,_37408],_37402),- (1^[_37402,_37410,_37408]=_37408),- (1^[_37402,_37410,_37408]=_37410)],n),para([1,0],1^[_38478,_38484,_38452],_38452,[- (_38478=k2_tarski(_38452,_38484)),-r2_hidden(1^[_38478,_38484,_38452],_38478),- (1^[_38478,_38484,_38452]=_38484)],l2r),para([1,1],1^[_38328,_38334,_38302],_38302,[- (_38328=k2_tarski(_38302,_38334)),-r2_hidden(1^[_38328,_38334,_38302],_38328),- (1^[_38328,_38334,_38302]=_38334)],l2r),para([1,0],1^[_38178,_38152,_38190],_38152,[- (_38178=k2_tarski(_38190,_38152)),-r2_hidden(1^[_38178,_38152,_38190],_38178),- (1^[_38178,_38152,_38190]=_38190)],l2r),para([1,1],1^[_38028,_38002,_38040],_38002,[- (_38028=k2_tarski(_38040,_38002)),-r2_hidden(1^[_38028,_38002,_38040],_38028),- (1^[_38028,_38002,_38040]=_38040)],l2r)],[],[ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_37332,_37334),_37334=k2_tarski(_37350,_37352),_37332=_37350]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(_37160,_37162),3^[]=_37160]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_37206,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_37246,_37248),r1_xboole_0(_37258,_37248),r2_hidden(_37246,_37258)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([r2_hidden(3^[],k2_tarski(3^[],4^[]))],[-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(-r2_hidden(_31768,_31770),[r2_hidden(_31780,_31782),_31780=_31768,_31782=_31770],n),ext(-r2_hidden(_31720,_31722),[_31722=k2_tarski(_31738,_31740),_31720=_31738],n),ext(-r2_hidden(_31672,_31674),[_31674=k2_tarski(_31690,_31692),_31672=_31692],n)],[],[red([#,- #]-[#,- #]),ext([r1_xboole_0(_31600,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_31512,_31514),r1_xboole_0(_31524,_31514),r2_hidden(_31512,_31524)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([r1_xboole_0(_30702,5^[]),r2_hidden(3^[],_30702)],[-r2_hidden(3^[],5^[]),- #],[],[ext(-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[#],g),ext(-r1_xboole_0(_30940,_30942),[r1_xboole_0(_30952,_30954),_30952=_30940,_30954=_30942],n),ext(-r1_xboole_0(_30888,_30890),[-r2_hidden(2^[_30890,_30888],_30888)],n),ext(-r1_xboole_0(_30836,_30838),[-r2_hidden(2^[_30838,_30836],_30838)],n),para([0],1^[_31198,_31204,_31178],_31178,[- (_31198=k2_tarski(_31178,_31204)),-r2_hidden(1^[_31198,_31204,_31178],_31198),- (1^[_31198,_31204,_31178]=_31204)],l2r),para([0],1^[_31054,_31034,_31066],_31034,[- (_31054=k2_tarski(_31066,_31034)),-r2_hidden(1^[_31054,_31034,_31066],_31054),- (1^[_31054,_31034,_31066]=_31066)],l2r)],[],[ext([-r2_hidden(3^[],5^[]),[r2_hidden(_30772,_30774),r1_xboole_0(_30784,_30774),r2_hidden(_30772,_30784)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(_30702,5^[]),r2_hidden(3^[],_30702)]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([-r2_hidden(3^[],5^[])],[- #],[],[ext(r2_hidden(_5450,_5452),[-r2_hidden(_5466,_5468),_5450=_5466,_5452=_5468],n),ext(r2_hidden(_5412,_5414),[r1_xboole_0(_5414,_5426),r2_hidden(_5412,_5426)],n),ext(r2_hidden(_5374,_5376),[r1_xboole_0(_5386,_5376),r2_hidden(_5374,_5386)],n),ext(r2_hidden(_5310,_5312),[_5312=k2_tarski(_5328,_5330),- (_5310=_5328),- (_5310=_5330)],n)],[],[ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],g),ext(#,[-r2_hidden(3^[],5^[])],g)],[],[init(-# - -#)],0)Value data saved
+state([3^[]=3^[]],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_53160=_53160),[],n),ext(- (_53130=_53132),[_53132=_53130],n),ext(- (_53088=_53090),[_53088=_53102,_53102=_53090],n),ext(- (_53024=_53026),[_53036=k2_tarski(_53026,_53044),r2_hidden(_53024,_53036),- (_53024=_53044)],n),ext(- (_52960=_52962),[_52972=k2_tarski(_52978,_52962),r2_hidden(_52960,_52972),- (_52960=_52978)],n)],[],[ext([4^[]=_52906,[- (_52926=_52926)]]-[4^[]=4^[],[- (4^[]=4^[])]]),ext([3^[]=_52510,[- (_52530=_52530)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([k2_tarski(3^[],4^[])=k2_tarski(_52564,_52566),[- (k2_tarski(_52592,_52594)=k2_tarski(_52598,_52600)),_52592=_52598,_52594=_52600]]-[k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),[- (k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[])),3^[]=3^[],4^[]=4^[]]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_52706,_52708),_52708=k2_tarski(_52724,_52726),_52706=_52724]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(3^[],4^[]),3^[]=3^[]]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_52794,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_52834,_52836),r1_xboole_0(_52846,_52836),r2_hidden(_52834,_52846)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([4^[]=_49964],[k2_tarski(3^[],4^[])=k2_tarski(3^[],_49964),r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[3^[]=3^[],r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_50998=_50998),[],n),ext(- (_50968=_50970),[_50970=_50968],n),ext(- (_50926=_50928),[_50926=_50940,_50940=_50928],n),ext(- (_50862=_50864),[_50874=k2_tarski(_50864,_50882),r2_hidden(_50862,_50874),- (_50862=_50882)],n),ext(- (_50798=_50800),[_50810=k2_tarski(_50816,_50800),r2_hidden(_50798,_50810),- (_50798=_50816)],n),ext(- (_50702=k2_tarski(_50708,_50710)),[r2_hidden(1^[_50702,_50710,_50708],_50702),1^[_50702,_50710,_50708]=_50708],n),ext(- (_50606=k2_tarski(_50612,_50614)),[r2_hidden(1^[_50606,_50614,_50612],_50606),1^[_50606,_50614,_50612]=_50614],n),ext(- (_50462=k2_tarski(_50468,_50470)),[-r2_hidden(1^[_50462,_50470,_50468],_50462),- (1^[_50462,_50470,_50468]=_50468),- (1^[_50462,_50470,_50468]=_50470)],n),para([1],1^[_51172,_51178,_51152],_51152,[- (_51172=k2_tarski(_51152,_51178)),-r2_hidden(1^[_51172,_51178,_51152],_51172),- (1^[_51172,_51178,_51152]=_51178)],l2r),para([1],1^[_51028,_51008,_51040],_51008,[- (_51028=k2_tarski(_51040,_51008)),-r2_hidden(1^[_51028,_51008,_51040],_51028),- (1^[_51028,_51008,_51040]=_51040)],l2r)],[[[3^[]=3^[]],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(3^[],_49964),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])]]],[ext([3^[]=_50402,[- (_50422=_50422)]]-[3^[]=3^[],[- (3^[]=3^[])]]),ext([k2_tarski(3^[],4^[])=k2_tarski(_50066,_50068),[- (k2_tarski(_50094,_50096)=k2_tarski(_50100,_50102)),_50094=_50100,_50096=_50102]]-[k2_tarski(3^[],4^[])=k2_tarski(3^[],_49964),[- (k2_tarski(3^[],4^[])=k2_tarski(3^[],_49964)),3^[]=3^[],4^[]=_49964]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_50202,_50204),_50204=k2_tarski(_50220,_50222),_50202=_50220]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(3^[],_49964),3^[]=3^[]]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_50290,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_50330,_50332),r1_xboole_0(_50342,_50332),r2_hidden(_50330,_50342)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([3^[]=_48460,4^[]=_48462],[k2_tarski(3^[],4^[])=k2_tarski(_48460,_48462),r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (_49424=_49424),[],n),ext(- (_49394=_49396),[_49396=_49394],n),ext(- (_49352=_49354),[_49352=_49366,_49366=_49354],n),ext(- (_49288=_49290),[_49300=k2_tarski(_49290,_49308),r2_hidden(_49288,_49300),- (_49288=_49308)],n),ext(- (_49224=_49226),[_49236=k2_tarski(_49242,_49226),r2_hidden(_49224,_49236),- (_49224=_49242)],n),ext(- (_49128=k2_tarski(_49134,_49136)),[r2_hidden(1^[_49128,_49136,_49134],_49128),1^[_49128,_49136,_49134]=_49134],n),ext(- (_49032=k2_tarski(_49038,_49040)),[r2_hidden(1^[_49032,_49040,_49038],_49032),1^[_49032,_49040,_49038]=_49040],n),ext(- (_48888=k2_tarski(_48894,_48896)),[-r2_hidden(1^[_48888,_48896,_48894],_48888),- (1^[_48888,_48896,_48894]=_48894),- (1^[_48888,_48896,_48894]=_48896)],n),para([1],1^[_49598,_49604,_49578],_49578,[- (_49598=k2_tarski(_49578,_49604)),-r2_hidden(1^[_49598,_49604,_49578],_49598),- (1^[_49598,_49604,_49578]=_49604)],l2r),para([1],1^[_49454,_49434,_49466],_49434,[- (_49454=k2_tarski(_49466,_49434)),-r2_hidden(1^[_49454,_49434,_49466],_49454),- (1^[_49454,_49434,_49466]=_49466)],l2r)],[[[3^[]=_48460],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[k2_tarski(3^[],4^[])=k2_tarski(_48460,_48462),r1_xboole_0(k2_tarski(3^[],4^[]),5^[])]]],[ext([k2_tarski(3^[],4^[])=k2_tarski(_48760,_48762),[- (k2_tarski(_48788,_48790)=k2_tarski(_48794,_48796)),_48788=_48794,_48790=_48796]]-[k2_tarski(3^[],4^[])=k2_tarski(_48460,_48462),[- (k2_tarski(3^[],4^[])=k2_tarski(_48460,_48462)),3^[]=_48460,4^[]=_48462]]),ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_48562,_48564),_48564=k2_tarski(_48580,_48582),_48562=_48580]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(_48460,_48462),3^[]=_48460]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_48644,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_48684,_48686),r1_xboole_0(_48696,_48686),r2_hidden(_48684,_48696)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([k2_tarski(3^[],4^[])=k2_tarski(_36894,_36896),3^[]=_36894],[r2_hidden(3^[],k2_tarski(3^[],4^[])),-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(- (k2_tarski(_37696,_37698)=k2_tarski(_37702,_37704)),[_37696=_37702,_37698=_37704],n),ext(- (_37672=_37672),[],n),ext(- (_37642=_37644),[_37644=_37642],n),ext(- (_37600=_37602),[_37600=_37614,_37614=_37602],n),ext(- (_37536=_37538),[_37548=k2_tarski(_37538,_37556),r2_hidden(_37536,_37548),- (_37536=_37556)],n),ext(- (_37472=_37474),[_37484=k2_tarski(_37490,_37474),r2_hidden(_37472,_37484),- (_37472=_37490)],n),ext(- (_37376=k2_tarski(_37382,_37384)),[r2_hidden(1^[_37376,_37384,_37382],_37376),1^[_37376,_37384,_37382]=_37382],n),ext(- (_37280=k2_tarski(_37286,_37288)),[r2_hidden(1^[_37280,_37288,_37286],_37280),1^[_37280,_37288,_37286]=_37288],n),ext(- (_37136=k2_tarski(_37142,_37144)),[-r2_hidden(1^[_37136,_37144,_37142],_37136),- (1^[_37136,_37144,_37142]=_37142),- (1^[_37136,_37144,_37142]=_37144)],n),para([1,0],1^[_38212,_38218,_38186],_38186,[- (_38212=k2_tarski(_38186,_38218)),-r2_hidden(1^[_38212,_38218,_38186],_38212),- (1^[_38212,_38218,_38186]=_38218)],l2r),para([1,1],1^[_38062,_38068,_38036],_38036,[- (_38062=k2_tarski(_38036,_38068)),-r2_hidden(1^[_38062,_38068,_38036],_38062),- (1^[_38062,_38068,_38036]=_38068)],l2r),para([1,0],1^[_37912,_37886,_37924],_37886,[- (_37912=k2_tarski(_37924,_37886)),-r2_hidden(1^[_37912,_37886,_37924],_37912),- (1^[_37912,_37886,_37924]=_37924)],l2r),para([1,1],1^[_37762,_37736,_37774],_37736,[- (_37762=k2_tarski(_37774,_37736)),-r2_hidden(1^[_37762,_37736,_37774],_37762),- (1^[_37762,_37736,_37774]=_37774)],l2r)],[],[ext([r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(_37066,_37068),_37068=k2_tarski(_37084,_37086),_37066=_37084]]-[r2_hidden(3^[],k2_tarski(3^[],4^[])),[-r2_hidden(3^[],k2_tarski(3^[],4^[])),k2_tarski(3^[],4^[])=k2_tarski(_36894,_36896),3^[]=_36894]]),red([#,- #]-[#,- #]),ext([r1_xboole_0(_36940,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_36980,_36982),r1_xboole_0(_36992,_36982),r2_hidden(_36980,_36992)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([r2_hidden(3^[],k2_tarski(3^[],4^[]))],[-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(-r2_hidden(_31538,_31540),[r2_hidden(_31550,_31552),_31550=_31538,_31552=_31540],n),ext(-r2_hidden(_31490,_31492),[_31492=k2_tarski(_31508,_31510),_31490=_31508],n),ext(-r2_hidden(_31442,_31444),[_31444=k2_tarski(_31460,_31462),_31442=_31462],n)],[],[red([#,- #]-[#,- #]),ext([r1_xboole_0(_31370,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_31282,_31284),r1_xboole_0(_31294,_31284),r2_hidden(_31282,_31294)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([r2_hidden(3^[],k2_tarski(3^[],4^[]))],[-r2_hidden(3^[],5^[]),- #],[r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],[ext(-r2_hidden(_31538,_31540),[r2_hidden(_31550,_31552),_31550=_31538,_31552=_31540],n),ext(-r2_hidden(_31490,_31492),[_31492=k2_tarski(_31508,_31510),_31490=_31508],n),ext(-r2_hidden(_31442,_31444),[_31444=k2_tarski(_31460,_31462),_31442=_31462],n)],[],[red([#,- #]-[#,- #]),ext([r1_xboole_0(_31370,5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]-[r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),#]]),ext([-r2_hidden(3^[],5^[]),[r2_hidden(_31282,_31284),r1_xboole_0(_31294,_31284),r2_hidden(_31282,_31294)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),r2_hidden(3^[],k2_tarski(3^[],4^[]))]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([r1_xboole_0(_30478,5^[]),r2_hidden(3^[],_30478)],[-r2_hidden(3^[],5^[]),- #],[],[ext(-r1_xboole_0(k2_tarski(3^[],4^[]),5^[]),[#],g),ext(-r1_xboole_0(_30716,_30718),[r1_xboole_0(_30728,_30730),_30728=_30716,_30730=_30718],n),ext(-r1_xboole_0(_30664,_30666),[-r2_hidden(2^[_30666,_30664],_30664)],n),ext(-r1_xboole_0(_30612,_30614),[-r2_hidden(2^[_30614,_30612],_30614)],n),para([0],1^[_30974,_30980,_30954],_30954,[- (_30974=k2_tarski(_30954,_30980)),-r2_hidden(1^[_30974,_30980,_30954],_30974),- (1^[_30974,_30980,_30954]=_30980)],l2r),para([0],1^[_30830,_30810,_30842],_30810,[- (_30830=k2_tarski(_30842,_30810)),-r2_hidden(1^[_30830,_30810,_30842],_30830),- (1^[_30830,_30810,_30842]=_30842)],l2r)],[],[ext([-r2_hidden(3^[],5^[]),[r2_hidden(_30548,_30550),r1_xboole_0(_30560,_30550),r2_hidden(_30548,_30560)]]-[-r2_hidden(3^[],5^[]),[r2_hidden(3^[],5^[]),r1_xboole_0(_30478,5^[]),r2_hidden(3^[],_30478)]]),ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([-r2_hidden(3^[],5^[])],[- #],[],[ext(r2_hidden(_5346,_5348),[-r2_hidden(_5362,_5364),_5346=_5362,_5348=_5364],n),ext(r2_hidden(_5308,_5310),[r1_xboole_0(_5310,_5322),r2_hidden(_5308,_5322)],n),ext(r2_hidden(_5270,_5272),[r1_xboole_0(_5282,_5272),r2_hidden(_5270,_5282)],n),ext(r2_hidden(_5206,_5208),[_5208=k2_tarski(_5224,_5226),- (_5206=_5224),- (_5206=_5226)],n)],[],[ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([-r2_hidden(3^[],5^[])],[- #],[],[ext(r2_hidden(_5346,_5348),[-r2_hidden(_5362,_5364),_5346=_5362,_5348=_5364],n),ext(r2_hidden(_5308,_5310),[r1_xboole_0(_5310,_5322),r2_hidden(_5308,_5322)],n),ext(r2_hidden(_5270,_5272),[r1_xboole_0(_5282,_5272),r2_hidden(_5270,_5282)],n),ext(r2_hidden(_5206,_5208),[_5208=k2_tarski(_5224,_5226),- (_5206=_5224),- (_5206=_5226)],n)],[],[ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([-r2_hidden(3^[],5^[])],[- #],[],[ext(r2_hidden(_5346,_5348),[-r2_hidden(_5362,_5364),_5346=_5362,_5348=_5364],n),ext(r2_hidden(_5308,_5310),[r1_xboole_0(_5310,_5322),r2_hidden(_5308,_5322)],n),ext(r2_hidden(_5270,_5272),[r1_xboole_0(_5282,_5272),r2_hidden(_5270,_5282)],n),ext(r2_hidden(_5206,_5208),[_5208=k2_tarski(_5224,_5226),- (_5206=_5224),- (_5206=_5226)],n)],[],[ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([-r2_hidden(3^[],5^[])],[- #],[],[ext(r2_hidden(_5346,_5348),[-r2_hidden(_5362,_5364),_5346=_5362,_5348=_5364],n),ext(r2_hidden(_5308,_5310),[r1_xboole_0(_5310,_5322),r2_hidden(_5308,_5322)],n),ext(r2_hidden(_5270,_5272),[r1_xboole_0(_5282,_5272),r2_hidden(_5270,_5282)],n),ext(r2_hidden(_5206,_5208),[_5208=k2_tarski(_5224,_5226),- (_5206=_5224),- (_5206=_5226)],n)],[],[ext([- #,[#,-r2_hidden(3^[],5^[])]]-[- #,[#,-r2_hidden(3^[],5^[])]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],g),ext(#,[-r2_hidden(3^[],5^[])],g)],[],[init(-# - -#)],0)state([- #],[],[],[ext(#,[-r1_xboole_0(k2_tarski(3^[],4^[]),5^[])],g),ext(#,[-r2_hidden(3^[],5^[])],g)],[],[init(-# - -#)],0)Policy data saved
+Training data saved
+Execution time: 9.052 sec
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t49_zfmisc_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

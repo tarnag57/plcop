@@ -22,6 +22,10 @@
 
 :- dynamic mc_param/2.
 
+neuro_embed(State, EmbStateP, EmbStateV, EmbActions):-
+    State=state(Goal,Path,Lem,Actions,Todos,_Proof,_Result).
+
+
 %% EmbType in [both, state_only]
 logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     State=state(Goal,Path,Lem,Actions,Todos,_Proof,_Result),

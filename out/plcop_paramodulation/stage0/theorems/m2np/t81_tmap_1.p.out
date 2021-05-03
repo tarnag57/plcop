@@ -1,0 +1,30 @@
+Prolog query: 
+ mc_run("theorems/m2np/t81_tmap_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t81_tmap_1.p...
+Successfully opened file theorems/m2np/t81_tmap_1.p
+200000 playouts remaining
+Moving root from 0 to 1795
+Moving root from 1795 to 1796
+195000 playouts remaining
+Moving root from 1796 to 1797
+Moving root from 1797 to 1839
+Moving root from 1839 to 3848
+190000 playouts remaining
+Moving root from 3848 to 5011
+Moving root from 5011 to 8890
+185000 playouts remaining
+Moving root from 8890 to 10502
+Moving root from 10502 to 10867
+Moving root from 10867 to 12539
+180000 playouts remaining
+Moving root from 12539 to 15186
+Moving root from 15186 to 15787
+175000 playouts remaining
+Moving root from 15787 to 20457
+Moving root from 20457 to 21592
+Moving root from 21592 to 24968
+170000 playouts remaining
+Moving root from 24968 to 26568
+Moving root from 26568 to 29141
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t81_tmap_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

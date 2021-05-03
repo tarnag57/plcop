@@ -1,0 +1,25 @@
+Prolog query: 
+ mc_run("theorems/m2np/t6_subset_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t6_subset_1.p...
+Successfully opened file theorems/m2np/t6_subset_1.p
+200000 playouts remaining
+Moving root from 0 to 27
+Moving root from 27 to 205
+195000 playouts remaining
+Moving root from 205 to 487
+Moving root from 487 to 2368
+Moving root from 2368 to 2369
+190000 playouts remaining
+Moving root from 2369 to 2370
+Moving root from 2370 to 8013
+185000 playouts remaining
+Moving root from 8013 to 8014
+Moving root from 8014 to 12217
+Moving root from 12217 to 13419
+180000 playouts remaining
+Moving root from 13419 to 15301
+Moving root from 15301 to 21071
+175000 playouts remaining
+Moving root from 21071 to 23141
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t6_subset_1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

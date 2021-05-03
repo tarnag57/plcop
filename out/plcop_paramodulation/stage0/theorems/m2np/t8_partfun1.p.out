@@ -1,0 +1,17 @@
+Prolog query: 
+ mc_run("theorems/m2np/t8_partfun1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime)
+Trying to open file theorems/m2np/t8_partfun1.p...
+Successfully opened file theorems/m2np/t8_partfun1.p
+200000 playouts remaining
+Moving root from 0 to 10
+Moving root from 10 to 62
+Inference limit reached with 195608 playouts remaining
+Created 4296 nodes
+Performed 200536 inferences
+Bigstep Nodes: 3, [0,10,62]
+Training data collected
+state([-v5_relat_1(5^[],4^[])],[-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[]))),- #],[],[ext(v5_relat_1(_49308,_49310),[-v5_relat_1(_49324,_49326),_49308=_49324,_49310=_49326],n)],[],[ext([-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[]))),[m1_subset_1(_49246,k1_zfmisc_1(k2_zfmisc_1(_49256,_49258))),-v5_relat_1(_49246,_49258)]]-[-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[]))),[m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[]))),-v5_relat_1(5^[],4^[])]]),ext([- #,[#,-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))]]-[- #,[#,-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))]]),init(-# - -#)],0)state([-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))],[- #],[],[ext(m1_subset_1(_8792,k1_zfmisc_1(k2_zfmisc_1(_8802,_8804))),[-v1_relat_1(_8792)],n),ext(m1_subset_1(_8752,k1_zfmisc_1(k2_zfmisc_1(_8762,_8764))),[-v4_relat_1(_8752,_8762)],n),ext(m1_subset_1(_8712,k1_zfmisc_1(k2_zfmisc_1(_8722,_8724))),[-v5_relat_1(_8712,_8724)],n),ext(m1_subset_1(_8666,k1_zfmisc_1(_8672)),[-m1_subset_1(_8686,_8672),r2_hidden(_8686,_8666)],n),ext(m1_subset_1(_8612,_8614),[-m1_subset_1(_8628,_8630),_8612=_8628,_8614=_8630],n)],[],[ext([- #,[#,-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))]]-[- #,[#,-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))]]),init(-# - -#)],0)state([- #],[],[],[ext(#,[-v1_funct_1(5^[])],g),ext(#,[-m1_subset_1(5^[],k1_zfmisc_1(k2_zfmisc_1(3^[],4^[])))],g),ext(#,[v2_funct_1(5^[])],g),ext(#,[m1_subset_1(_2242,3^[]),m1_subset_1(_2260,3^[]),- (_2242=_2260),r2_hidden(_2242,k1_relset_1(3^[],5^[])),r2_hidden(_2260,k1_relset_1(3^[],5^[])),k1_funct_1(5^[],_2242)=k1_funct_1(5^[],_2260)],n)],[],[init(-# - -#)],0)Value data saved
+Training data saved
+Execution time: 13.409 sec
+Full query: 
+ swipl -g '["core/montecarlo.pl"], mc_run("theorems/m2np/t8_partfun1.p",[guided(0),cp(1),sim_depth(0),playout_count(200000),min_visit_count(1),n_dim(10000),playout_time(300), output_format(svmlight), leancop_settings([conj,nodef,comp(1000),eager_reduction(1),paramodulation(1)]),return_to_root(0),save_all_proofs(0),temperature(2),save_all_policy(0),save_all_value(1),lemma_features(0),inference_limit(200000),collapse_vars(0),bigstep_frequency(2000)],"results/plcop_paramodulation/train_value","results/plcop_paramodulation/train_policy","results/plcop_paramodulation/clauses","results/plcop_paramodulation/proofs",ExecutionTime), halt.'

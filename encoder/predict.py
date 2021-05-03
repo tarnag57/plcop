@@ -6,26 +6,31 @@ import preprocess
 from model_context import ModelContext
 
 
-def preprocess_clause(clause, context, numbered=True):
+def preprocess_clause(clause, tokenizer, vocab_size, numbered=True):
+    print(f"Original clause: {clause}")
     clause = preprocess.preprocess_sentence(clause, numbered)
-    tokenized = preprocess.tokenize(clause, context.tokenizer)
-    vocab_size = len(context.tokenizer.word_index) + 1
-    return tf.one_hot(tokenized, depth=vocab_size)
+    print(f"Stripped down clause: {clause}")
+    tokenized = preprocess.tokenize(clause, tokenizer)
+    print(f"Tokenized: {tokenized}")
+    one_hot = tf.one_hot(tokenized, depth=vocab_size)
+    return tf.reshape(one_hot, [1, len(tokenized), vocab_size])
 
 
 def encode_clause(clause, numbered=True):
     context = ModelContext.get_context()
-    input_tensor = preprocess_clause(clause, context, numbered)
+    vocab_size = len(context.tokenizer.word_index) + 1
+    input_tensor = preprocess_clause(clause, context.tokenizer, numbered)
+    print(f"One-hot encoded clause: {input_tensor.shape}")
     print(input_tensor)
 
     model = models.get_encoder_part(context.seq_to_seq_model)
     print(f"Encoder input shape: {input_tensor.shape}")
     encoder_states = model.predict(input_tensor)
 
-    return encoder_states[-1]
+    return encoder_states
 
 
-def decode_clause(clause, encoder_states, max_len=200, numbered=True):
+def decode_clause(encoded_clause, encoder_state, max_len=200, numbered=True):
     context = ModelContext.get_context()
     model = models.get_decoder_part(
         context.seq_to_seq_model, context.args.units)
@@ -35,8 +40,7 @@ def decode_clause(clause, encoder_states, max_len=200, numbered=True):
     target = np.zeros((1, 1, vocab_size))
     target[0, 0, context.tokenizer.word_index['<start>']] = 1.0
 
-    hidden_states = [encoder_states[i].reshape(
-        1, len(encoder_states[i])) for i in range(2)]
+    hidden_states = [encoded_clause, encoder_state]
 
     sequence = ""
     should_stop = False

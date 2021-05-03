@@ -29,7 +29,7 @@ OUT_DIR=$3
 CORENUM=$4
 
 SOLVER_TIMEOUT=1200
-ERROR_FILE = "/dev/null"
+ERROR_FILE="/dev/null"
 
 mkdir -p "$OUT_DIR/$PROBLEM_DIR" # TODO make this more elegant
 
@@ -46,6 +46,7 @@ export OMP_NUM_THREADS=1
 echo "Building montecarlo tree for each problem in $PROBLEM_DIR"
 
 SCRIPT="/usr/bin/timeout --preserve-status -k 5 ${SOLVER_TIMEOUT} python montecarlo.py ${INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> ${ERROR_FILE}"
+echo ${SCRIPT}
 find ${PROBLEM_DIR} -type f -name "*.p" | shuf | parallel -j $CORENUM --no-notice $SCRIPT
 
 END=$(date +%s.%N)

@@ -93,6 +93,10 @@ def lang_file_name(args):
     return args.save_dir + "/" + args.lang_name + '.json'
 
 
+def flat_buffer_name(args):
+    return args.save_dir + "/" + args.save_name + '.tflite'
+
+
 def save_model():
     context = ModelContext.get_context()
 
