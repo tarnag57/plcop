@@ -98,10 +98,8 @@ def create_tokenizer(lang):
 
 
 def tokenize(input_tokens, tokenizer):
-    print(input_tokens)
+    print(f"Input tokens: {input_tokens}")
     tensor = tokenizer.texts_to_sequences(input_tokens)
-    print("Middle step:")
-    print(tensor)
     tensor = tf.keras.preprocessing.sequence.pad_sequences(tensor,
                                                            padding='post')
     return tensor

@@ -74,6 +74,9 @@ if [[ $# -ne 4 ]]; then
     grep -rl "SUCCESS" $OUT_DIR/$EVAL_PROBLEM_DIR/*.out | wc -l
 fi
 
+echo "Exiting before xgboost training"
+exit
+
 echo "Training xgboost"
 export OMP_NUM_THREADS=32
 python train_xgboost.py ${INI_FILE} --target_model value >${OUT_DIR}/value_output 2>&1 &

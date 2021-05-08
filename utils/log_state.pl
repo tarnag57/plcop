@@ -50,6 +50,7 @@ write_svmlight_list([L|Ls], FHash, Stream):-
 
 write_svmlight([State, Target], FHash, Stream):-
     !,
+    writeln("Calling from write_svmlight 1"),
     logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV, _EmbActions),
     
     format(Stream,"~w ",[Target]),
@@ -61,6 +62,7 @@ write_svmlight([State, Target], FHash, Stream):-
     writeln(Stream,"").
 
 write_svmlight([State, ActionId, Target], FHash, Stream):-
+    writeln("Calling from write_svmlight 2"),
     logic_embed(State, FHash, both, EmbStateP, _EmbStateV, EmbActions),
     nth0(ActionId, EmbActions, EmbAction),
     append(EmbStateP, EmbAction, EmbState2),

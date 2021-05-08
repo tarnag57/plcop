@@ -41,4 +41,18 @@ def build_parser():
         type=str
     )
 
+    parser.add_argument(
+        '--log_requests',
+        default=None,
+        help="The file name to which the requests are logged. If None, no logging takes palce",
+        type=str
+    )
+
+    parser.add_argument(
+        '--empty_response',
+        default=None,
+        help="Send a constant 0 vector (with given dimension) response rather than running the model",
+        type=int
+    )
+
     return parser

@@ -128,6 +128,9 @@ dmypy.json
 # Output of the solver
 /results
 
+# Misc outputs
+/out
+
 # Training data for autoencoder
 # /encoder/data
 

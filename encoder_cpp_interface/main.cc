@@ -1,9 +1,11 @@
 #define PROLOG_MODLUE "encoder"
 #include <iostream>
 #include <boost/asio.hpp>
+#include <chrono>
 #include <SWI-Prolog.h>
 #include <SWI-cpp.h>
 #include <memory>
+#include <regex>
 
 #define PORT 2042
 #define HOST "127.0.0.1"
@@ -28,6 +30,37 @@ void send_(ip::tcp::socket &socket, const std::string &message)
     }
 }
 
+// Replaces each skolem function with SKLM and variable with VAR
+std::string process_skolemisation(std::string &clause)
+{
+    // Remove '#' (used internally in leancop)
+    std::regex match("#,|#");
+    clause = std::regex_replace(clause, match, "");
+
+    // Replace skolemized variables with VAR symbol
+    match = std::regex("[0-9]+\\^\\[\\]");
+    clause = std::regex_replace(clause, match, "VAR");
+
+    // Replace numbered variables with VAR symbol
+    // There are two types of numbered variables:
+    //     - _1234: Used by Prolog as an uninitialised var
+    //     - Q42: Used by leancop to mark substitutions in the extension steps
+    match = std::regex("([^a-zA-Z0-9])_[0-9]+");
+    clause = std::regex_replace(clause, match, "$1VAR");
+    match = std::regex("[A-Z][0-9]+");
+    clause = std::regex_replace(clause, match, "VAR");
+
+    // Replace (potentially nested) skolem functions with SKLM symbol
+    match = std::regex("[0-9]+\\^\\[[^\\[\\]]*\\]");
+    std::smatch sm;
+    while (std::regex_search(clause, sm, match))
+    {
+        clause = std::regex_replace(clause, match, "SKLM");
+    }
+
+    return clause;
+}
+
 std::unique_ptr<std::vector<double>> process_embedding(std::string &response)
 {
     auto result = std::make_unique<std::vector<double>>();
@@ -46,8 +79,10 @@ std::unique_ptr<std::vector<double>> process_embedding(std::string &response)
     return result;
 }
 
-std::unique_ptr<std::vector<double>> get_embedding(const std::string &clause)
+std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
 {
+
+    auto begin_time = std::chrono::high_resolution_clock::now();
 
     // Connect to server
     io_service service;
@@ -57,12 +92,22 @@ std::unique_ptr<std::vector<double>> get_embedding(const std::string &clause)
             ip::address::from_string(HOST),
             PORT));
 
+    // Reformat input clause (get rid off skolem functions and variables)
+    clause = process_skolemisation(clause);
+    std::cout << "Sending to server: " << clause << std::endl;
+
     // Query server
     send_(socket, clause);
 
     // Server response
     auto response = read_(socket);
-    return process_embedding(response);
+    auto result = process_embedding(response);
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_duration = end_time - begin_time;
+    std::cout << "Elapsed (ms): " << ms_duration.count() << std::endl;
+
+    return result;
 }
 
 PREDICATE(test2, 2)
@@ -82,7 +127,7 @@ PREDICATE(test2, 2)
 PREDICATE(encode_clause, 2)
 {
     PlTerm e(A1);
-    std::cout << "The receved term: " << (char *)e << std::endl;
+    std::cout << "The received term: " << (char *)e << std::endl;
     std::string clause_str((char *)e);
     auto embedding = get_embedding(clause_str);
 

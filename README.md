@@ -56,3 +56,8 @@ To run a few iterations of learning on a directory of problems, see e.g.:
 ```
 bash baseline.sh
 ```
+
+To run MCTS with pre-trained guidance run:
+```
+python montecarlo.py ini/plcop1.ini --problem_file theorems/m2n140/l1_zfmisc_1.p
+```

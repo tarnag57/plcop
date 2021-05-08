@@ -7,11 +7,9 @@ from model_context import ModelContext
 
 
 def preprocess_clause(clause, tokenizer, vocab_size, numbered=True):
-    print(f"Original clause: {clause}")
     clause = preprocess.preprocess_sentence(clause, numbered)
-    print(f"Stripped down clause: {clause}")
+    clause = clause.split(" ")
     tokenized = preprocess.tokenize(clause, tokenizer)
-    print(f"Tokenized: {tokenized}")
     one_hot = tf.one_hot(tokenized, depth=vocab_size)
     return tf.reshape(one_hot, [1, len(tokenized), vocab_size])
 
@@ -20,11 +18,8 @@ def encode_clause(clause, numbered=True):
     context = ModelContext.get_context()
     vocab_size = len(context.tokenizer.word_index) + 1
     input_tensor = preprocess_clause(clause, context.tokenizer, numbered)
-    print(f"One-hot encoded clause: {input_tensor.shape}")
-    print(input_tensor)
 
     model = models.get_encoder_part(context.seq_to_seq_model)
-    print(f"Encoder input shape: {input_tensor.shape}")
     encoder_states = model.predict(input_tensor)
 
     return encoder_states

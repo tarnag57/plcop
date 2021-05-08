@@ -2,6 +2,7 @@
 
 
 :- use_module(library(assoc)).
+:- load_foreign_library('encoder_cpp_interface/encoder.so').
 
 %% enigma_features(+Formula,-Assoc,-Pairs)
 %%
@@ -17,6 +18,38 @@
 
 :- [hashtbl/prolog/nb_hashtbl].
 
+cached_rnn_embed_list([], _, _, _, []). 
+cached_rnn_embed_list([H|T], FHash, FDim, Offset, [F|Fs]) :-
+    Offset1 is Offset + FDim,
+    cached_rnn_embed(H, FHash, Offset, F),
+    cached_rnn_embed_list(T, FHash, FDim, Offset1, Fs).
+
+cached_rnn_embed([], _, _, []) :- !, true.
+cached_rnn_embed(X, FHash, Offset, Pairs):-
+    (nb_hashtbl_get(FHash, X, Features) -> true
+    ;   writeln("Encoding:"),
+        writeln(X),
+        encoder:encode_clause(X, Features)
+    ),
+    features_to_pairs(Features, Offset, [], Pairs).
+
+rnn_embed_todos([], _, _, _, []).
+rnn_embed_todos([H|T], FHash, FDim, Offset, Res) :-
+    Offset1 is Offset + FDim * 3,
+    % writeln("Sending in:"),
+    % writeln(H),
+    cached_rnn_embed_list(H, FHash, FDim, Offset, Pairs),
+    merge_features_list(Pairs, [], MergedPairs),
+    % writeln("Here's the state encoded:"),
+    % writeln(MergedPairs),
+    rnn_embed_todos(T, FHash, FDim, Offset1, TRes),
+    merge_features_list([MergedPairs, TRes], [], Res).
+
+features_to_pairs([], _Offset, Pairs, Pairs).
+features_to_pairs([H|T], Offset, Accum, Pairs) :-
+    Offset1 is Offset + 1,
+    features_to_pairs(T, Offset1, [[Offset, H] | Accum], Pairs).
+
 % X must be ground!!!
 cached_embed_list([],_,_,_,[]).
 cached_embed_list([X|Xs],FHash,Range,Offset,[F|Fs]):-
@@ -26,7 +59,12 @@ cached_embed_list([X|Xs],FHash,Range,Offset,[F|Fs]):-
 
 cached_embed([],_,_,_,Pairs,Pairs):- !.
 cached_embed(X,FHash,Range,Offset,Pairs):-
-    ( nb_hashtbl_get(FHash,X-Offset,Pairs) -> true
+    ( nb_hashtbl_get(FHash,X-Offset,Pairs) -> 
+        % writeln("Embedding:"),
+        % writeln(X-Offset),
+        % writeln(Pairs), 
+        % writeln("====="), 
+        true
     ; X = [H|T] ->
       ( nb_hashtbl_get(FHash,H-Offset,HPairs) -> true
       ; enigma_features_ground(H,Range,Offset,_,HPairs) ->
@@ -38,6 +76,10 @@ cached_embed(X,FHash,Range,Offset,Pairs):-
     ; enigma_features_ground(X,Range,Offset,_,Pairs),
       nb_hashtbl_set(FHash,X-Offset,Pairs)
     ).
+    % writeln("Embedding:"),
+    % writeln(X-Offset),
+    % writeln(Pairs),
+    % writeln("=====").
 
 enigma_features_ground(X,Range,Offset,Assoc,Pairs):-
     empty_assoc(Assoc),

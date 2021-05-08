@@ -54,14 +54,8 @@ PREDICATE(write_list, 1)
 PREDICATE(predictor, 2)
 {
   BoosterHandle b;
-  XGBoosterCreate(NULL, 0, &b);
-  auto model_name = (char *)A1;
-  auto status = XGBoosterLoadModel(b, (char *)A1);
-  if (status != 0)
-  {
-    A2 = "failXGBoosterLoadModel";
-    return TRUE;
-  }
+  safe_xgboost(XGBoosterCreate(NULL, 0, &b));
+  safe_xgboost(XGBoosterLoadModel(b, (char *)A1));
   indices = (unsigned int *)malloc(max_nr_attr * sizeof(unsigned int));
   data = (float *)malloc(max_nr_attr * sizeof(float));
   A2 = b;
@@ -96,7 +90,7 @@ PREDICATE(xpredict, 3)
       data = (float *)realloc(data, max_nr_attr * sizeof(float));
     }
     indices[i] = (long)e[1];
-    data[i] = (long)e[2][1];
+    data[i] = atof((char *)e[2][1]);
     // printf("@%i: %i:%.0f\n", i, indices[i], data[i]);
     ++i;
   }

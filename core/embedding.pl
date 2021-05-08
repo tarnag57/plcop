@@ -22,9 +22,6 @@
 
 :- dynamic mc_param/2.
 
-neuro_embed(State, EmbStateP, EmbStateV, EmbActions):-
-    State=state(Goal,Path,Lem,Actions,Todos,_Proof,_Result).
-
 
 %% EmbType in [both, state_only]
 logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
@@ -32,6 +29,7 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     goals_list(State, AllGoals),
     copy_term([AllGoals,Goal,Path,Lem,Actions,Todos],[AllGoals1,Goal1,Path1,Lem1,Actions1,Todos1]),
     % copy_term([AllGoals,Path,Lem,Actions,Todos],[Goal1,Path1,Lem1,Actions1,Todos1]),
+    top_N(Todos1, 10, TopTodos),
 
     ( mc_param(collapse_vars,1) ->
       collapse_vars([AllGoals1,Goal1,Path1,Lem1,Actions1,Todos1])
@@ -41,17 +39,32 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     mc_param(n_dim,FDim),
     FDim2 is 2*FDim,
     FDim3 is 3*FDim,
-    FDim4 is 4*FDim,
-    cached_embed(AllGoals1,FHash,FDim,0,EAllGoals),
-    cached_embed(Goal1,FHash,FDim,0,EGoal),
-    cached_embed(Path1,FHash,FDim,FDim,EPath),
-    cached_embed(Lem1,FHash,FDim,FDim2,ELem),
-    cached_embed(Todos1,FHash,FDim,FDim3,ETodos),
+    length(TopTodos, LenTodos),
+    FinalOffset is FDim3 + LenTodos * FDim,
+
+    cached_rnn_embed(AllGoals1,FHash,0,EAllGoals),
+    cached_rnn_embed(Goal1,FHash,0,EGoal),        % Only one of these will be used
+    cached_rnn_embed(Path1,FHash,FDim,EPath),
+    cached_rnn_embed(Lem1,FHash,FDim2,ELem),
+    % writeln("Embedding Todos"),
+    rnn_embed_todos(TopTodos, FHash, FDim, FDim3, ETodos),
+    % writeln("------------"),
+    % writeln("Goals:"),
+    % writeln(AllGoals),
+    % writeln(EAllGoals),
+    % writeln("Path:"),
+    % writeln(Path1),
+    % writeln(EPath),
+    % writeln("Top Todos:"),
+    % writeln(TopTodos),
+    % writeln(ETodos),
+    length(Path1, PathLen),
+    (PathLen < 4 -> true ; writeln("PathLenExceeded"), halt, true),
 
     ( mc_param(lemma_features,1) ->
       merge_features_list([EGoal,EPath,ELem,ETodos],[],EmbStateP0),
       merge_features_list([EAllGoals,EPath,ELem,ETodos],[],EmbStateV0),
-      I1 is FDim4
+      I1 is FinalOffset
     ; merge_features_list([EGoal,EPath],[],EmbStateP0),
       merge_features_list([EAllGoals,EPath],[],EmbStateV0),
       I1 is FDim2
@@ -81,10 +94,17 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
 		      [I9, TopFrequency2]],
     append(EmbStateP0, GlobalFeatures, EmbStateP),
     append(EmbStateV0, GlobalFeatures, EmbStateV),
+    % writeln("EmbStateP:"),
+    % writeln(EmbStateP),
+    writeln(EmbType),
 
     ( EmbType = both ->
       Offset = I9,
-      cached_embed_list(Actions1, FHash, FDim, Offset, EmbActions)
+      writeln("Embedding actions:"),
+      writeln(Actions1),
+      cached_rnn_embed_list(Actions1, FHash, FDim, Offset, EmbActions)
+      % writeln("EmabActions:"),
+      % writeln(EmbActions)
     %% length(Actions, ALen), 
     %% logic_embed_successors(0, ALen, State, FHash, EmbActions)
     ; true
@@ -107,3 +127,9 @@ goalStats(Goals, GoalsSymbolSize, MaxGoalSize, MaxGoalDepth, TopSymbol1,  TopSym
     max_list(GoalSizes, MaxGoalSize),
     max_list(GoalDepths, MaxGoalDepth),
     top_two_symbols(Goals, _, _, TopFrequency1, TopFrequency2, TopSymbol1, TopSymbol2).
+
+top_N([], _, []) :- !.
+top_N(_, 0, []) :- !. 
+top_N([H|T], N, [H|Res]) :-
+  N1 is N-1,
+  top_N(T, N1, Res).
