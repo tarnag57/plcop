@@ -8,8 +8,9 @@
 :- dynamic mc_param/2.
 :- dynamic xgb_handle/2.
 
-guidance_action_probs(State,_FHash,Probs):-
+guidance_action_probs(State,FHash,Probs):-
     mc_param(guided,0), !, % no guidance
+    logic_embed(State, FHash, both, _, _, _),
     action_count(State,AC),
     ( AC = 0 ->  Probs = []
     ; Prob is 1/AC,
@@ -21,7 +22,7 @@ guidance_action_probs(State,FHash,Probs):-
     mc_param(guided,2), !,      % c guidance
     xgb_handle(policy,Handle), !,
 
-    writeln("Calling from guidance_action_probs"),
+    % writeln("Calling from guidance_action_probs"),
     logic_embed(State, FHash, both, EmbStateP, _EmbStateV, EmbActions),
     mc_param(temperature,Temp),
     findall(ExpScore, (

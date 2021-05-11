@@ -58,8 +58,8 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     % writeln("Top Todos:"),
     % writeln(TopTodos),
     % writeln(ETodos),
-    length(Path1, PathLen),
-    (PathLen < 4 -> true ; writeln("PathLenExceeded"), halt, true),
+    % length(Path1, PathLen),
+    % (PathLen < 4 -> true ; writeln("PathLenExceeded"), halt, true),
 
     ( mc_param(lemma_features,1) ->
       merge_features_list([EGoal,EPath,ELem,ETodos],[],EmbStateP0),
@@ -96,12 +96,12 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     append(EmbStateV0, GlobalFeatures, EmbStateV),
     % writeln("EmbStateP:"),
     % writeln(EmbStateP),
-    writeln(EmbType),
+    % writeln(EmbType),
 
     ( EmbType = both ->
       Offset = I9,
-      writeln("Embedding actions:"),
-      writeln(Actions1),
+      % writeln("Embedding actions:"),
+      % writeln(Actions1),
       cached_rnn_embed_list(Actions1, FHash, FDim, Offset, EmbActions)
       % writeln("EmabActions:"),
       % writeln(EmbActions)

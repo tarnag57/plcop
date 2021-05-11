@@ -28,7 +28,7 @@ PROBLEM_DIR=$2
 OUT_DIR=$3
 CORENUM=$4
 
-SOLVER_TIMEOUT=1200
+SOLVER_TIMEOUT=15
 ERROR_FILE="/dev/null"
 
 mkdir -p "$OUT_DIR/$PROBLEM_DIR" # TODO make this more elegant

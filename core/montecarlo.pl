@@ -138,12 +138,12 @@ mc_init(File,ChildHash,ParentHash,NodeHash,FHash):-
 
     mc_param(leancop_settings,Settings),
     logic_init(File,Settings,StartState),
-    writeln("Getting value"),
+    % writeln("Getting value"),
     guidance_get_value(StartState, FHash, Value),
     % mc_simulate(StartState,FHash,Value),
-    writeln("Getting action"),
+    % writeln("Getting action"),
     guidance_action_probs(StartState,FHash,ChildProbs),
-    writeln("Finished"),
+    % writeln("Finished"),
 
     nb_hashtbl_set(NodeHash, 0, [StartState, 1, 1, Value, ChildProbs]),
     flag(nodecount, _, 1).

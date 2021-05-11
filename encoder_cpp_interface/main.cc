@@ -94,7 +94,7 @@ std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
 
     // Reformat input clause (get rid off skolem functions and variables)
     clause = process_skolemisation(clause);
-    std::cout << "Sending to server: " << clause << std::endl;
+    // std::cout << "Sending to server: " << clause << std::endl;
 
     // Query server
     send_(socket, clause);
@@ -105,7 +105,7 @@ std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
 
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> ms_duration = end_time - begin_time;
-    std::cout << "Elapsed (ms): " << ms_duration.count() << std::endl;
+    // std::cout << "Elapsed (ms): " << ms_duration.count() << std::endl;
 
     return result;
 }
@@ -127,7 +127,7 @@ PREDICATE(test2, 2)
 PREDICATE(encode_clause, 2)
 {
     PlTerm e(A1);
-    std::cout << "The received term: " << (char *)e << std::endl;
+    // std::cout << "The received term: " << (char *)e << std::endl;
     std::string clause_str((char *)e);
     auto embedding = get_embedding(clause_str);
 

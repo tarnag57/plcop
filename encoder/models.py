@@ -1,5 +1,7 @@
 import tensorflow as tf
 import tensorflow.keras.layers as layers
+from tensorflow_model_optimization.python.core.sparsity.keras import prune, pruning_schedule, pruning_callbacks
+from tensorflow_model_optimization.python.core.quantization.keras import quantize
 import os
 
 from model_context import ModelContext
@@ -113,9 +115,27 @@ def lstm_training(model):
         context.args.checkpoint_dir,
         save_freq=context.args.checkpoint_freq
     )
+    callbacks = [logger, checkpoint]
+
+    if context.args.pruning:
+        print("Pruning enabled")
+        model = prune.prune_low_magnitude(model, pruning_schedule.PolynomialDecay(
+            initial_sparsity=0.3,
+            final_sparsity=0.7,
+            begin_step=1000,
+            end_step=3000
+        ))
+        # It is important that we do the optimization steps before logging and checkpointing
+        callbacks = [pruning_callbacks.UpdatePruningStep()] + callbacks
+
+    if context.args.quant_aware:
+        print("Quant-aware training enabled")
+        model = quantize.quantize_model(model)
 
     model.compile(
         optimizer="adam", loss=loss_function, metrics=['accuracy'])
+
+    model.summary()
 
     vocab_size = len(context.tokenizer.word_index) + 1
     train_dataset = utils.generate_model_datset(
@@ -128,7 +148,7 @@ def lstm_training(model):
         batch_size=context.args.batch_size,
         validation_data=val_dataset,
         epochs=context.args.epochs,
-        callbacks=[logger, checkpoint]
+        callbacks=callbacks
     )
 
 

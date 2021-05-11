@@ -26,23 +26,18 @@ guidance_get_value(State,FHash,Value):-
      ; Result == -1 -> Value = 0
      ; mc_param(guided,1) ->
        logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV,_),
-       writeln("Embedded"),
-       writeln(EmbStateV),
        python_value(EmbStateV,Value2),
        Value is Value2 / 1e10
     ; mc_param(guided,2) ->
-       writeln("QWERTY"),
        logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV,_),
-       writeln("Embedded"),
        xgb_handle(value,Handle), !,
-       writeln("Handle Created"),
        xgb:xpredict(Handle,EmbStateV,V),
-       writeln("Handle done"),
        % Value is V
        Value0 is 1 / (1 + exp(-V)),
        goals_length(State, GoalsLength),
        Value is (Value0 ** 0.5) ** GoalsLength       
-    ; guidance_default_value(State,Value)
+    ; guidance_default_value(State,Value),
+       logic_embed(State, FHash, state_only, _EmbStateP, _,_)
     ).
 
 % taken from RLCoP paper

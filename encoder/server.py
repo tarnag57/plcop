@@ -57,7 +57,7 @@ def main():
                 data = conn.recv(4096)
                 recieve_start = time.perf_counter()
                 data = data.decode('ascii')
-                print(f"Received: {data}")
+                # print(f"Received: {data}")
 
                 if args.log_requests is not None:
                     log_request(data, args.log_requests)
@@ -81,7 +81,7 @@ def main():
                 message = ",".join(map(str, encoded)) + "\n"
                 conn.send(message.encode('ascii'))
                 send_end = time.perf_counter()
-                print(f"Total time it took: {send_end - recieve_start}")
+                # print(f"Total time it took: {send_end - recieve_start}")
 
 
 if __name__ == "__main__":

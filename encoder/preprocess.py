@@ -43,7 +43,7 @@ def unicode_to_ascii(s):
 
 
 # Numbered indicates whether the input data has a line number as the first token
-def preprocess_sentence(w, numbered=True):
+def preprocess_sentence(w, numbered=False):
     w = unicode_to_ascii(w.lower().strip())
 
     # Remove the number at the beginning of the line
@@ -98,7 +98,6 @@ def create_tokenizer(lang):
 
 
 def tokenize(input_tokens, tokenizer):
-    print(f"Input tokens: {input_tokens}")
     tensor = tokenizer.texts_to_sequences(input_tokens)
     tensor = tf.keras.preprocessing.sequence.pad_sequences(tensor,
                                                            padding='post')

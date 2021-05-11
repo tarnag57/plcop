@@ -27,9 +27,8 @@ cached_rnn_embed_list([H|T], FHash, FDim, Offset, [F|Fs]) :-
 cached_rnn_embed([], _, _, []) :- !, true.
 cached_rnn_embed(X, FHash, Offset, Pairs):-
     (nb_hashtbl_get(FHash, X, Features) -> true
-    ;   writeln("Encoding:"),
-        writeln(X),
-        encoder:encode_clause(X, Features)
+    ;   encoder:encode_clause(X, Features),
+        nb_hashtbl_set(FHash, X, Features)
     ),
     features_to_pairs(Features, Offset, [], Pairs).
 

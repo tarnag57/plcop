@@ -144,6 +144,18 @@ def build_parser():
         type=int,
     )
 
+    # Optimisation
+    parser.add_argument(
+        '--pruning',
+        help='Enable pruning during training',
+        type=bool
+    )
+    parser.add_argument(
+        '--quant_aware',
+        help='Enable quantisation aware training',
+        type=bool
+    )
+
     return parser
 
 
@@ -223,15 +235,14 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    # init_context(prediction_phase=False)
-    # context = ModelContext.get_context()
-    # print(f"Training example shape: {context.train_input[0].shape}")
+    init_context(prediction_phase=False)
+    context = ModelContext.get_context()
+    print(f"Training example shape: {context.train_input[0].shape}")
     # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
-    # context.seq_to_seq_model.summary()
-    # models.lstm_training(context.seq_to_seq_model)
+    models.lstm_training(context.seq_to_seq_model)
 
-    # print(f"Trining is complete, saving the model...")
-    # utils.save_model()
+    print(f"Trining is complete, saving the model...")
+    utils.save_model()
 
     # training.perform_training()
 
@@ -247,15 +258,15 @@ def main():
     # tf.print("Num GPUs Available: ", len(
     #     tf.config.list_physical_devices('GPU')))
 
-    init_context(prediction_phase=True)
-    context = ModelContext.get_context()
-    context.seq_to_seq_model.summary()
-    clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
-    enc_out, enc_hidden = predict.encode_clause(clause)
-    print(f"Enc output:")
-    print(enc_out.shape)
-    result = predict.decode_clause(enc_out, enc_hidden)
-    print(result)
+    # init_context(prediction_phase=True)
+    # context = ModelContext.get_context()
+    # context.seq_to_seq_model.summary()
+    # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    # enc_out, enc_hidden = predict.encode_clause(clause)
+    # print(f"Enc output:")
+    # print(enc_out.shape)
+    # result = predict.decode_clause(enc_out, enc_hidden)
+    # print(result)
 
     # tf.keras.models.save_model(context.encoder, './saved_model/encoder')
     # tf.keras.models.save_model(context.decoder, './saved_model/decoder')
