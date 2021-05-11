@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
@@ -273,7 +273,6 @@ def main():
     # res = preprocess.preprocess_sentence(
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)
-
 
     # init_context(prediction_phase=True)
     # context = ModelContext.get_context()
