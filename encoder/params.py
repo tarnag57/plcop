@@ -3,8 +3,8 @@ Default params
 '''
 
 # Data Parameters
-MAX_LENGTH = 100
-NUM_EXAMPLES = 100
+MAX_LENGTH = 300
+NUM_EXAMPLES = None
 PATH_TO_FILE = './data/training_input.txt'
 
 # Model Parameters
@@ -13,11 +13,11 @@ UNITS = 256
 
 # Training Parameters
 BUFFER_SIZE_MULT = 1
-BATCH_SIZE = 16
+BATCH_SIZE = 256
 EPOCHS = 2
 
 # Checkpointing
-CHECKPOINT_FREQ = 2
+CHECKPOINT_FREQ = 4
 CHECKPOINT_DIR = './new-u-256/training_checkpoints'
 CHECKPOINT_PREFIX = 'ckpt'
 

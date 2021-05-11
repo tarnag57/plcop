@@ -46,7 +46,7 @@ application="python3 $project_dir/encoder/main.py"
 
 units="128"
 max_len="300"
-epochs="50"
+epochs="20"
 
 prefix="u-$units"
 ckpt_prefix="ckpt-$prefix"
@@ -54,7 +54,7 @@ save_name="$prefix"
 lang_name="len-$max_len-lang"
 
 #! Run options for the application:
-data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/clauses.txt"
+data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/training_input.txt"
 model_options="--units $units"
 training_options="--batch_size 128 --epochs $epochs"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/$prefix/training_checkpoints --checkpoint_prefix $ckpt_prefix"
