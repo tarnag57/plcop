@@ -77,7 +77,7 @@ def create_raw_dataset(path, num_examples, max_length):
     # 2. Clean the sentences
     # 3. Return word pairs in the format: [ENGLISH, SPANISH]
     #    For autoencoding (same lang), it will be [WORDS, WORDS]
-    lines = io.open(path).read().strip().split('\n')[:num_examples]
+    lines = io.open(path).read().strip().split('\n')[-num_examples:]
 
     # Since we are using autoencoding, we need to duplicate the word
     word_pairs = [[preprocess_sentence(w) for _ in range(2)] for w in lines]

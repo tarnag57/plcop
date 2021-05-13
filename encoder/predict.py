@@ -17,7 +17,8 @@ def preprocess_clause(clause, tokenizer, vocab_size, numbered=True):
 def encode_clause(clause, numbered=True):
     context = ModelContext.get_context()
     vocab_size = len(context.tokenizer.word_index) + 1
-    input_tensor = preprocess_clause(clause, context.tokenizer, numbered)
+    input_tensor = preprocess_clause(
+        clause, context.tokenizer, vocab_size, numbered)
 
     model = models.get_encoder_part(context.seq_to_seq_model)
     encoder_states = model.predict(input_tensor)

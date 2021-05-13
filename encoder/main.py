@@ -1,5 +1,5 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
@@ -159,7 +159,7 @@ def build_parser():
     return parser
 
 
-def init_context(prediction_phase=False):
+def init_context(prediction_phase=False, load_data=True):
     # In prediction phase, we load the saved model and language tokenizer
     # and do NOT use the training datset
 
@@ -176,20 +176,26 @@ def init_context(prediction_phase=False):
     if prediction_phase:
         tokenizer = utils.load_lang(args)
         model = utils.load_model(args)
-    else:
+    
+    if load_data:
         input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
             args.path_to_file,
             args.num_examples,
             args.max_length,
             tokenizer
         )
+    
+    # Loading / Constructing the tokenizer
+    if prediction_phase:
+        tokenizer = utils.load_lang(args)
+        model = utils.load_model(args)
 
     vocab_size = len(tokenizer.word_index) + 1
 
     if prediction_phase:
         model = utils.load_model(args)
     else:
-        model = seq_to_seq_model = models.build_models(
+        model = models.build_models(
             vocab_size,
             args.embedding_dim,
             args.units
@@ -207,7 +213,7 @@ def init_context(prediction_phase=False):
     )
 
     # Finally create the dataset
-    if not prediction_phase:
+    if load_data:
 
         # Creating training and validation sets using an 80-20 split
         train_input, val_input, train_target, val_target = train_test_split(
@@ -235,14 +241,14 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    init_context(prediction_phase=False)
+    init_context(prediction_phase=True)
     context = ModelContext.get_context()
     print(f"Training example shape: {context.train_input[0].shape}")
     # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
     models.lstm_training(context.seq_to_seq_model)
 
-    print(f"Trining is complete, saving the model...")
-    utils.save_model()
+    # print(f"Trining is complete, saving the model...")
+    # utils.save_model()
 
     # training.perform_training()
 
@@ -261,10 +267,8 @@ def main():
     # init_context(prediction_phase=True)
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
-    # clause = "51 [v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
+    # clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
     # enc_out, enc_hidden = predict.encode_clause(clause)
-    # print(f"Enc output:")
-    # print(enc_out.shape)
     # result = predict.decode_clause(enc_out, enc_hidden)
     # print(result)
 
