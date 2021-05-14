@@ -111,11 +111,12 @@ def lstm_training(model):
     loss_function = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
     logger = tf.keras.callbacks.CSVLogger(
         train_log_name, separator=',', append=False)
-    checkpoint = tf.keras.callbacks.ModelCheckpoint(
-        context.args.checkpoint_dir,
-        save_freq=context.args.checkpoint_freq
-    )
-    callbacks = [logger, checkpoint]
+    # checkpoint = tf.keras.callbacks.ModelCheckpoint(
+    #     context.args.checkpoint_dir,
+    #     save_freq=context.args.checkpoint_freq
+    # )
+    # callbacks = [logger, checkpoint]
+    callbacks = [logger]
 
     if context.args.pruning:
         print("Pruning enabled")

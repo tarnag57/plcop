@@ -3,8 +3,8 @@ Default params
 '''
 
 # Data Parameters
-MAX_LENGTH = 100
-NUM_EXAMPLES = 1024
+MAX_LENGTH = 300
+NUM_EXAMPLES = None
 PATH_TO_FILE = './data/training_input.txt'
 
 # Model Parameters
@@ -18,7 +18,7 @@ EPOCHS = 1
 
 # Checkpointing
 CHECKPOINT_FREQ = 4
-CHECKPOINT_DIR = './new-u-256/training_checkpoints'
+CHECKPOINT_DIR = './u-128-pruning/training_checkpoints'
 CHECKPOINT_PREFIX = 'ckpt'
 
 # Model Save/Load Params

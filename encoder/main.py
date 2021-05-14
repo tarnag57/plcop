@@ -159,7 +159,7 @@ def build_parser():
     return parser
 
 
-def init_context(prediction_phase=False, load_data=True):
+def init_context(prediction_phase=False, load_data=True, load_tokenizer=False):
     # In prediction phase, we load the saved model and language tokenizer
     # and do NOT use the training datset
 
@@ -174,8 +174,10 @@ def init_context(prediction_phase=False, load_data=True):
 
     # Loading / Constructing the tokenizer
     if prediction_phase:
-        tokenizer = utils.load_lang(args)
         model = utils.load_model(args)
+
+    if load_tokenizer:
+        tokenizer = utils.load_lang(args)
     
     if load_data:
         input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
@@ -241,7 +243,7 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    init_context(prediction_phase=True)
+    init_context(prediction_phase=True, load_tokenizer=True)
     context = ModelContext.get_context()
     print(f"Training example shape: {context.train_input[0].shape}")
     # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
@@ -264,13 +266,13 @@ def main():
     # tf.print("Num GPUs Available: ", len(
     #     tf.config.list_physical_devices('GPU')))
 
-    # init_context(prediction_phase=True)
+    # init_context(prediction_phase=True, load_tokenizer=True)
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
-    # clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
-    # enc_out, enc_hidden = predict.encode_clause(clause)
-    # result = predict.decode_clause(enc_out, enc_hidden)
-    # print(result)
+    clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
+    enc_out, enc_hidden = predict.encode_clause(clause)
+    result = predict.decode_clause(enc_out, enc_hidden)
+    print(result)
 
     # tf.keras.models.save_model(context.encoder, './saved_model/encoder')
     # tf.keras.models.save_model(context.decoder, './saved_model/decoder')
@@ -278,7 +280,7 @@ def main():
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)
 
-    # init_context(prediction_phase=True)
+    # init_context(prediction_phase=True, load_tokenizer=True)
     # context = ModelContext.get_context()
     # encoder = models.get_encoder_part(context.seq_to_seq_model)
     # encoder.summary()
