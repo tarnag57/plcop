@@ -86,7 +86,7 @@ def restore_checkpoint(checkpoint, checkpoint_dir=None):
 
 
 def model_file_name(args):
-    return args.save_dir + "/" + args.save_name + '.h5'
+    return args.save_dir + "/" + args.load_name + '.h5'
 
 
 def lang_file_name(args):

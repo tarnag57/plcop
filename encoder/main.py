@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
@@ -129,6 +129,12 @@ def build_parser():
         type=str,
     )
     parser.add_argument(
+        '--load_name',
+        default=params.LOAD_NAME,
+        help='The name of the model file.',
+        type=str,
+    )
+    parser.add_argument(
         '--lang_name',
         default=params.LANG_NAME,
         help='The name of the language file.',
@@ -178,7 +184,7 @@ def init_context(prediction_phase=False, load_data=True, load_tokenizer=False):
 
     if load_tokenizer:
         tokenizer = utils.load_lang(args)
-    
+
     if load_data:
         input_tensor, target_tensor, tokenizer = preprocess.load_dataset(
             args.path_to_file,
@@ -186,7 +192,7 @@ def init_context(prediction_phase=False, load_data=True, load_tokenizer=False):
             args.max_length,
             tokenizer
         )
-    
+
     # Loading / Constructing the tokenizer
     if prediction_phase:
         tokenizer = utils.load_lang(args)

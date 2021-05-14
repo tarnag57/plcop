@@ -24,6 +24,7 @@ CHECKPOINT_PREFIX = 'ckpt'
 # Model Save/Load Params
 SAVE_DIR = './saved_models/newly_trained'
 SAVE_NAME = 'u-128-pruning'
+LOAD_NAME = 'u-128-pruning'
 LANG_NAME = 'len-300-lang'
 
 # Prediction
