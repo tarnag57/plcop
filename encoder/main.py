@@ -1,20 +1,22 @@
-import training
-import preprocess
-import predict
-import params
-from model_context import ModelContext
-import model_compression
-import models
-import dataset
-import utils
-import time
-import tensorflow_model_optimization as tfmot
-import tensorflow as tf
-from sklearn.model_selection import train_test_split
-import numpy as np
-import argparse
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
+import argparse
+import numpy as np
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
+import tensorflow_model_optimization as tfmot
+import time
+import utils
+
+import dataset
+import models
+import model_compression
+from model_context import ModelContext
+import params
+import predict
+import preprocess
+import training
 
 
 def build_parser():
