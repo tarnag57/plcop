@@ -137,6 +137,7 @@ dmypy.json
 # Intermediate checkpoint data
 **/variables.*
 **.h5
+**.tflite
 
 # Tensorflow cpp interface
 encoder/cpp_interface/include

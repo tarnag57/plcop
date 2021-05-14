@@ -1,5 +1,5 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import tensorflow as tf
 import time
@@ -71,9 +71,9 @@ def main():
                     encoding_start = time.perf_counter()
                     encoded = run_inference(interpreter, embedding, vocab_size)
                     encoding_end = time.perf_counter()
-                    print(
-                        f"Preprocess time: {encoding_start - preprocess_start}")
-                    print(f"Encoding time: {encoding_end - encoding_start}")
+                    # print(
+                    #     f"Preprocess time: {encoding_start - preprocess_start}")
+                    # print(f"Encoding time: {encoding_end - encoding_start}")
                 else:
                     encoded = [0] * args.empty_response
 

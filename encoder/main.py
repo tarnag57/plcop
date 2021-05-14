@@ -1,21 +1,20 @@
-import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
-import argparse
-import numpy as np
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
-import time
-import utils
-
-import dataset
-import models
-import model_compression
-from model_context import ModelContext
-import params
-import predict
-import preprocess
 import training
+import preprocess
+import predict
+import params
+from model_context import ModelContext
+import model_compression
+import models
+import dataset
+import utils
+import time
+import tensorflow_model_optimization as tfmot
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+import numpy as np
+import argparse
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 def build_parser():
@@ -249,14 +248,14 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    init_context(prediction_phase=True, load_tokenizer=True)
-    context = ModelContext.get_context()
-    print(f"Training example shape: {context.train_input[0].shape}")
-    # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
-    models.lstm_training(context.seq_to_seq_model)
+    # init_context(prediction_phase=True, load_tokenizer=True)
+    # context = ModelContext.get_context()
+    # print(f"Training example shape: {context.train_input[0].shape}")
+    # # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
+    # models.lstm_training(context.seq_to_seq_model)
 
-    print(f"Trining is complete, saving the model...")
-    utils.save_model()
+    # print(f"Trining is complete, saving the model...")
+    # utils.save_model()
 
     # training.perform_training()
 
@@ -286,12 +285,16 @@ def main():
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)
 
-    # init_context(prediction_phase=True, load_tokenizer=True)
-    # context = ModelContext.get_context()
-    # encoder = models.get_encoder_part(context.seq_to_seq_model)
-    # encoder.summary()
-    # tflite = model_compression.create_tflite(encoder)
-    # model_compression.export_tflite(tflite)
+    init_context(prediction_phase=True, load_tokenizer=True, load_data=False)
+    context = ModelContext.get_context()
+    encoder = models.get_encoder_part(context.seq_to_seq_model)
+    encoder.summary()
+
+    if context.args.pruning:
+        encoder = tfmot.sparsity.keras.strip_pruning(encoder)
+
+    tflite = model_compression.create_tflite(encoder)
+    model_compression.export_tflite(tflite)
 
 
 if __name__ == "__main__":

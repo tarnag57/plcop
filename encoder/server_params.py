@@ -26,7 +26,7 @@ def build_parser():
     parser.add_argument(
         '--model',
         '-m',
-        default='./u-256/saved_models/model.tflite',
+        default='./saved_models/newly_trained/u-128-pruning.tflite',
         help="The filename for the inference model.",
         metavar='model',
         type=str
@@ -35,7 +35,7 @@ def build_parser():
     parser.add_argument(
         '--lang',
         '-l',
-        default='./u-256/saved_models/lang.json',
+        default='./saved_models/newly_trained/len-300-lang.json',
         help="The filename for the model language.",
         metavar='lang',
         type=str
