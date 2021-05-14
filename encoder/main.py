@@ -255,8 +255,8 @@ def main():
     # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
     models.lstm_training(context.seq_to_seq_model)
 
-    # print(f"Trining is complete, saving the model...")
-    # utils.save_model()
+    print(f"Trining is complete, saving the model...")
+    utils.save_model()
 
     # training.perform_training()
 
@@ -275,10 +275,10 @@ def main():
     # init_context(prediction_phase=True, load_tokenizer=True)
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
-    clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
-    enc_out, enc_hidden = predict.encode_clause(clause)
-    result = predict.decode_clause(enc_out, enc_hidden)
-    print(result)
+    # clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
+    # enc_out, enc_hidden = predict.encode_clause(clause)
+    # result = predict.decode_clause(enc_out, enc_hidden)
+    # print(result)
 
     # tf.keras.models.save_model(context.encoder, './saved_model/encoder')
     # tf.keras.models.save_model(context.decoder, './saved_model/decoder')

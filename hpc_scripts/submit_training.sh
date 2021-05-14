@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #! Name of the job:
-#SBATCH -J tf_training_pruning_128
+#SBATCH -J tf_training_second_pruning_128
 #! Which project should be charged (NB Wilkes2 projects end in '-GPU'):
 #SBATCH -A HOLDEN-SL3-GPU
 #! How many whole nodes should be allocated?
@@ -49,8 +49,9 @@ max_len="300"
 epochs="20"
 
 prefix="u-$units-pruning"
-ckpt_prefix="ckpt-$prefix"
+ckpt_prefix="ckpt-$prefix-second_pass"
 save_name="$prefix"
+load_name="$prefix-second_pass"
 lang_name="len-$max_len-lang"
 
 #! Run options for the application:
@@ -58,7 +59,7 @@ data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/tra
 model_options="--units $units"
 training_options="--batch_size 128 --epochs $epochs"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/$prefix/training_checkpoints --checkpoint_prefix $ckpt_prefix"
-saving_options="--save_dir $project_dir/encoder/saved_models --save_name $save_name --lang_name $lang_name"
+saving_options="--save_dir $project_dir/encoder/saved_models --save_name $save_name --load_name $load_name --lang_name $lang_name"
 optimisation_options="--pruning True"
 options="$data_options $model_options $training_options $checkpointing $saving_options $optimisation_options"
 echo $options
