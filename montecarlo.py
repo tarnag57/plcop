@@ -1,6 +1,8 @@
 import subprocess
 import sys
+import signal
 import os
+import time
 # import pyswip
 import numpy as np
 import xgboost as xgb
@@ -34,6 +36,36 @@ os.makedirs(value_train_dir, exist_ok=True)
 os.makedirs(policy_train_dir, exist_ok=True)
 os.makedirs(clause_dir, exist_ok=True)
 os.makedirs(proof_dir, exist_ok=True)
+
+encoder_server = None
+
+
+def signal_handler(sig, frame):
+    if encoder_server is not None:
+        print("Shutting down server")
+        encoder_server.send_signal(signal.SIGINT)
+        time.sleep(3)
+    sys.exit(0)
+
+
+def start_server(args):
+    port = args.base_port + args.port_offset
+    process = subprocess.Popen(['python', args.encoder_server,
+                                '--port', str(port),
+                                '--log_file', args.log_file_base + str(port),
+                                '--model', args.model_file,
+                                '--lang', args.lang_file
+                                ])
+    print("Created server")
+    time.sleep(10)
+    return process
+
+
+signal.signal(signal.SIGTERM, signal_handler)
+
+# We should start the server at all times since the xgboost training requires the
+# embedding of states
+encoder_server = start_server(args)
 
 # If a trained xgboost model is passed, we should load it
 if args.model_type == "xgboost" and args.guided > 0:
@@ -112,6 +144,8 @@ Params = "{},save_all_value({})".format(Params, args.save_all_value)
 Params = "{},lemma_features({})".format(Params, args.lemma_features)
 Params = "{},inference_limit({})".format(Params, args.inference_limit)
 Params = "{},collapse_vars({})".format(Params, args.collapse_vars)
+Params = "{},encoder_port({})".format(
+    Params, args.base_port + args.port_offset)
 
 if args.guided == 2:  # using c interface, we need to pass the model files as well
     Params = "{},value_modelfile(\"{}\"),policy_modelfile(\"{}\")".format(
@@ -135,4 +169,11 @@ sys.stdout.flush()
 
 full_query = 'swipl -g \'["core/montecarlo.pl"], {}, halt.\''.format(query)
 print("Full query: \n", full_query)
+
 subprocess.call(full_query, shell=True)
+print("After call")
+sys.stdout.flush()
+
+# Shutting down server
+if encoder_server is not None:
+    encoder_server.send_signal(signal.SIGINT)

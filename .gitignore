@@ -130,6 +130,8 @@ dmypy.json
 
 # Misc outputs
 /out
+/error
+/encoder/server_log
 
 # Training data for autoencoder
 # /encoder/data
@@ -137,7 +139,6 @@ dmypy.json
 # Intermediate checkpoint data
 **/variables.*
 **.h5
-**.tflite
 
 # Tensorflow cpp interface
 encoder/cpp_interface/include

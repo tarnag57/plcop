@@ -273,10 +273,10 @@ def main():
     # tf.print("Num GPUs Available: ", len(
     #     tf.config.list_physical_devices('GPU')))
 
-    # init_context(prediction_phase=True, load_tokenizer=True)
+    # init_context(prediction_phase=True, load_tokenizer=True, load_data=False)
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
-    # clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
+    # clause = "51 ext(-r1_tarski(VAR,k2_tarski(VAR,VAR)),[VAR=k1_xboole_0],n)"
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
     # print(result)

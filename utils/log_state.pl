@@ -8,18 +8,18 @@
 save_training_data(File, FHash, ValueDir, PolicyDir, Value, Policy):-
     get_time(T), T2 is round(T), set_random(seed(T2)),
     
-    ( ( mc_param(save_all_value, SaveProbV), random(RandV), RandV < SaveProbV
+    ( ( mc_param(save_all_value, SaveProbV), random(RandV), writeln(SaveProbV), writeln(RandV), RandV < SaveProbV
       ; proof_found(_)
       ) -> 
       get_output_file(ValueDir,File,ValueFile),
       open(ValueFile, write, VStream),
+      mc_param(output_format, Format),
       ( mc_param(output_format, svmlight) -> 
         write_svmlight_list(Value, FHash, VStream)
       ; mc_param(output_format, string) ->
         write_string_list(Value, VStream)
       ),
-      close(VStream),
-      writeln("Value data saved")
+      close(VStream)
     ; true
     ),
     
@@ -33,8 +33,7 @@ save_training_data(File, FHash, ValueDir, PolicyDir, Value, Policy):-
       ; mc_param(output_format, string) ->
         write_string_list(Policy, PStream)
       ),
-      close(PStream),
-      writeln("Policy data saved")
+      close(PStream)
     ; true
     ).
 
@@ -52,7 +51,6 @@ write_svmlight([State, Target], FHash, Stream):-
     !,
     % writeln("Calling from write_svmlight 1"),
     logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV, _EmbActions),
-    
     format(Stream,"~w ",[Target]),
     (  member([Key,Value], EmbStateV),
        format(Stream, "~d:~1f ", [Key, Value]),

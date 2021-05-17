@@ -42,6 +42,13 @@ def build_parser():
     )
 
     parser.add_argument(
+        '--log_file',
+        default='./server_log/server_run0.txt',
+        help='Metadata generated during the running of the server is logged here.',
+        type=str
+    )
+
+    parser.add_argument(
         '--log_requests',
         default=None,
         help="The file name to which the requests are logged. If None, no logging takes palce",

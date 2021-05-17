@@ -18,16 +18,20 @@
 
 :- [hashtbl/prolog/nb_hashtbl].
 
+:- dynamic mc_param/2.
+
 cached_rnn_embed_list([], _, _, _, []). 
 cached_rnn_embed_list([H|T], FHash, FDim, Offset, [F|Fs]) :-
     Offset1 is Offset + FDim,
-    cached_rnn_embed(H, FHash, Offset, F),
+    cached_rnn_embed(H, FHash, Offset, FR),
+    reverse(FR, F),
     cached_rnn_embed_list(T, FHash, FDim, Offset1, Fs).
 
 cached_rnn_embed([], _, _, []) :- !, true.
 cached_rnn_embed(X, FHash, Offset, Pairs):-
     (nb_hashtbl_get(FHash, X, Features) -> true
-    ;   encoder:encode_clause(X, Features),
+    ;   mc_param(encoder_port, Port),
+        encoder:encode_clause(X, Port, Features),
         nb_hashtbl_set(FHash, X, Features)
     ),
     features_to_pairs(Features, Offset, [], Pairs).
@@ -35,8 +39,6 @@ cached_rnn_embed(X, FHash, Offset, Pairs):-
 rnn_embed_todos([], _, _, _, []).
 rnn_embed_todos([H|T], FHash, FDim, Offset, Res) :-
     Offset1 is Offset + FDim * 3,
-    % writeln("Sending in:"),
-    % writeln(H),
     cached_rnn_embed_list(H, FHash, FDim, Offset, Pairs),
     merge_features_list(Pairs, [], MergedPairs),
     % writeln("Here's the state encoded:"),

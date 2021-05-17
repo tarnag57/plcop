@@ -42,12 +42,16 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     length(TopTodos, LenTodos),
     FinalOffset is FDim3 + LenTodos * FDim,
 
-    cached_rnn_embed(AllGoals1,FHash,0,EAllGoals),
-    cached_rnn_embed(Goal1,FHash,0,EGoal),        % Only one of these will be used
-    cached_rnn_embed(Path1,FHash,FDim,EPath),
-    cached_rnn_embed(Lem1,FHash,FDim2,ELem),
-    % writeln("Embedding Todos"),
-    rnn_embed_todos(TopTodos, FHash, FDim, FDim3, ETodos),
+    cached_rnn_embed(AllGoals1,FHash,0,EAllGoalsR),
+    reverse(EAllGoalsR, EAllGoals),
+    cached_rnn_embed(Goal1,FHash,0,EGoalR),        % Only one of these will be used
+    reverse(EGoalR, EGoal),
+    cached_rnn_embed(Path1,FHash,FDim,EPathR),
+    reverse(EPathR, EPath),
+    cached_rnn_embed(Lem1,FHash,FDim2,ELemR),
+    reverse(ELemR, ELem),
+
+    rnn_embed_todos(TopTodos, FHash, FDim, FDim3, ETodosR),
     % writeln("------------"),
     % writeln("Goals:"),
     % writeln(AllGoals),
@@ -99,12 +103,10 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     % writeln(EmbType),
 
     ( EmbType = both ->
-      Offset = I9,
+      Offset is I9 + 1,
       % writeln("Embedding actions:"),
       % writeln(Actions1),
       cached_rnn_embed_list(Actions1, FHash, FDim, Offset, EmbActions)
-      % writeln("EmabActions:"),
-      % writeln(EmbActions)
     %% length(Actions, ALen), 
     %% logic_embed_successors(0, ALen, State, FHash, EmbActions)
     ; true
