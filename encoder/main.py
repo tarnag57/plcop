@@ -251,7 +251,7 @@ def main():
 
     init_context(prediction_phase=True, load_tokenizer=True)
     context = ModelContext.get_context()
-    print(f"Training example shape: {context.train_input[0].shape}")
+    # print(f"Training example shape: {context.train_input[0].shape}")
     # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
     models.lstm_training(context.seq_to_seq_model)
 

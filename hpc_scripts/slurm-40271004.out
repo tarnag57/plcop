@@ -1,0 +1,30 @@
+--max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/training_input.txt --units 256 --batch_size 128 --epochs 110 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/u-256/training_checkpoints --checkpoint_prefix ckpt-u-256-second_pass --save_dir ~/rds/hpc-work/plcop/encoder/saved_models --save_name u-256-pruning-third_pass --load_name u-256-pruning-second_pass --lang_name len-300-lang pruning True
+Changed directory to /rds/user/vt289/hpc-work/plcop/hpc_scripts.
+
+JobID: 40271004
+======
+Time: Sat 15 May 01:30:23 BST 2021
+Running on master node: gpu-e-87
+Current directory: /rds/user/vt289/hpc-work/plcop/hpc_scripts
+
+Nodes allocated:
+================
+gpu-e-87
+
+numtasks=1, numnodes=1, mpi_tasks_per_node=1
+
+Executing command:
+==================
+python3 ~/rds/hpc-work/plcop/encoder/main.py --max_length 300 --path_to_file ~/rds/hpc-work/plcop/encoder/data/training_input.txt --units 256 --batch_size 128 --epochs 110 --checkpoint_freq 5 --checkpoint_dir ~/rds/hpc-work/plcop/encoder/u-256/training_checkpoints --checkpoint_prefix ckpt-u-256-second_pass --save_dir ~/rds/hpc-work/plcop/encoder/saved_models --save_name u-256-pruning-third_pass --load_name u-256-pruning-second_pass --lang_name len-300-lang pruning True
+
+2021-05-15 01:30:26.693671: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+usage: main.py [-h] [--max_length len] [--num_examples num]
+               [--path_to_file file] [--embedding_dim dim] [--units units]
+               [--buffer_size_mult buff] [--batch_size batch]
+               [--epochs epochs] [--checkpoint_freq freq]
+               [--checkpoint_dir ckpt_dir] [--checkpoint_prefix ckpt_prefix]
+               [--save_dir SAVE_DIR] [--save_name SAVE_NAME]
+               [--load_name LOAD_NAME] [--lang_name LANG_NAME]
+               [--pred_max_len pred_len] [--pruning PRUNING]
+               [--quant_aware QUANT_AWARE]
+main.py: error: unrecognized arguments: pruning True
