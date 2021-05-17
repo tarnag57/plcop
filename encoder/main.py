@@ -1,10 +1,11 @@
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
+import tensorflow_model_optimization as tfmot
 import time
 import utils
 
@@ -249,14 +250,14 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    init_context(prediction_phase=True, load_tokenizer=True)
-    context = ModelContext.get_context()
+    # init_context(prediction_phase=True, load_tokenizer=True)
+    # context = ModelContext.get_context()
     # print(f"Training example shape: {context.train_input[0].shape}")
-    # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
-    models.lstm_training(context.seq_to_seq_model)
+    # # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
+    # models.lstm_training(context.seq_to_seq_model)
 
-    print(f"Trining is complete, saving the model...")
-    utils.save_model()
+    # print(f"Trining is complete, saving the model...")
+    # utils.save_model()
 
     # training.perform_training()
 
@@ -272,10 +273,10 @@ def main():
     # tf.print("Num GPUs Available: ", len(
     #     tf.config.list_physical_devices('GPU')))
 
-    # init_context(prediction_phase=True, load_tokenizer=True)
+    # init_context(prediction_phase=True, load_tokenizer=True, load_data=False)
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
-    # clause = "51 [k7_partfun1(VAR,VAR,VAR)=k1_funct_1(VAR,VAR)]"
+    # clause = "51 ext(-r1_tarski(VAR,k2_tarski(VAR,VAR)),[VAR=k1_xboole_0],n)"
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
     # print(result)
@@ -286,12 +287,16 @@ def main():
     #     "14 [-(k3_xcmplx_0(VAR,VAR)=k3_xcmplx_0(VAR,VAR)), VAR=VAR]")
     # print(res)
 
-    # init_context(prediction_phase=True, load_tokenizer=True)
-    # context = ModelContext.get_context()
-    # encoder = models.get_encoder_part(context.seq_to_seq_model)
-    # encoder.summary()
-    # tflite = model_compression.create_tflite(encoder)
-    # model_compression.export_tflite(tflite)
+    init_context(prediction_phase=True, load_tokenizer=True, load_data=False)
+    context = ModelContext.get_context()
+    encoder = models.get_encoder_part(context.seq_to_seq_model)
+    encoder.summary()
+
+    if context.args.pruning:
+        encoder = tfmot.sparsity.keras.strip_pruning(encoder)
+
+    tflite = model_compression.create_tflite(encoder)
+    model_compression.export_tflite(tflite)
 
 
 if __name__ == "__main__":

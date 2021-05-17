@@ -12,6 +12,7 @@ def create_tflite(model=None):
             context.args.checkpoint_dir
         ) if model is None else \
         tf.lite.TFLiteConverter.from_keras_model(model)
+    converter.optimizations = [tf.lite.Optimize.DEFAULT]
 
     return converter.convert()
 

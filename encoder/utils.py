@@ -85,7 +85,11 @@ def restore_checkpoint(checkpoint, checkpoint_dir=None):
     checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
 
-def model_file_name(args):
+def load_model_file_name(args):
+    return args.save_dir + "/" + args.load_name + '.h5'
+
+
+def save_model_file_name(args):
     return args.save_dir + "/" + args.load_name + '.h5'
 
 
@@ -103,7 +107,7 @@ def save_model():
     # Writing the model
     tf.keras.models.save_model(
         context.seq_to_seq_model,
-        model_file_name(context.args)
+        save_model_file_name(context.args)
     )
 
     # Writing the generated language
@@ -114,7 +118,7 @@ def save_model():
 
 
 def load_model(args):
-    return tf.keras.models.load_model(model_file_name(args))
+    return tf.keras.models.load_model(load_model_file_name(args))
 
 
 def load_lang(args):

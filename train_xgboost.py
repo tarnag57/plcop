@@ -29,6 +29,7 @@ def train(train_dir, modelfile, n_features, objective="reg:linear", oversample=F
     '''
 
     files = listdir_fullpath(train_dir)
+    print(f"Train dir: {train_dir}")
     print("Training from {} files".format(len(files)))
 
     # Parse SVMLight files
@@ -36,12 +37,16 @@ def train(train_dir, modelfile, n_features, objective="reg:linear", oversample=F
     ys = []
     for f in files:
         try:
+            print("Loading svmlight")
             d = load_svmlight_file(
                 f, n_features=n_features, zero_based=True)
+            print(d)
             xs.append(d[0])
             ys.append(d[1])
-        except:
-            pass
+        except Exception as e:
+            print(e)
+            print(f"Was looking at file {f}")
+    print(xs)
     x = vstack(xs)
     y = np.concatenate(ys)
 

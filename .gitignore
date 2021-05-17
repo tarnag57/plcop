@@ -130,6 +130,8 @@ dmypy.json
 
 # Misc outputs
 /out
+/error
+/encoder/server_log
 
 # Training data for autoencoder
 # /encoder/data

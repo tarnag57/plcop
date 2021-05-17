@@ -1,13 +1,13 @@
-import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
-import tensorflow as tf
-import time
-import socket
-
-import server_params
-import predict
 import preprocess
+import predict
+import server_params
+import sys
+import socket
+import signal
+import time
+import tensorflow as tf
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 def load_tokenizer(filename):
@@ -34,54 +34,94 @@ def run_inference(interpreter, input_data, vocab_size):
 def log_request(data, filename):
     with open(filename, 'a') as f:
         f.write(f"{data}\n")
+        f.flush()
+
+
+def write_log(args, log_data):
+    with open(args.log_file, 'a') as f:
+        for key in log_data:
+            f.write(f"{key}: {log_data[key]}\n")
+
+
+def generate_handler(server_socket, args, log_data):
+    def handler(sig, frame):
+        print("Handler received")
+        print("Handler received", file=sys.stderr)
+        server_socket.close()
+        write_log(args, log_data)
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sys.exit(0)
+    return handler
 
 
 def main():
+    print("Spinning up server")
+    print("Spinning up server", file=sys.stderr)
+    sys.stdout.flush()
+    sys.stderr.flush()
     parser = server_params.build_parser()
     args = parser.parse_args()
 
+    print(f"Port: {args.port}", file=sys.stderr)
     tokenizer = load_tokenizer(args.lang)
     vocab_size = len(tokenizer.word_index) + 1
 
     interpreter = tf.lite.Interpreter(model_path=args.model)
 
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((args.addr, args.port))
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        server_socket.bind((args.addr, args.port))
+    except Exception as e:
+        print(f"Error while binding to port {args.port}", file=sys.stderr)
+        print(e, file=sys.stderr)
+        sys.stdout.flush()
+        sys.stderr.flush()
+        sys.exit(0)
 
-        while (True):
-            s.listen()
-            conn, addr = s.accept()
+    log_data = {'total_reqs': 0, 'total_embedding_time': 0.,
+                'total_handling_time': 0.}
 
-            with conn:
-                # Receive clause
-                data = conn.recv(4096)
-                recieve_start = time.perf_counter()
-                data = data.decode('ascii')
-                # print(f"Received: {data}")
+    signal.signal(signal.SIGINT, generate_handler(
+        server_socket, args, log_data))
 
-                if args.log_requests is not None:
-                    log_request(data, args.log_requests)
+    while (True):
+        server_socket.listen()
+        conn, addr = server_socket.accept()
 
-                encoded = None
-                if args.empty_response is None:
-                    # Run prediction on the received clause
-                    preprocess_start = time.perf_counter()
-                    embedding = predict.preprocess_clause(
-                        data, tokenizer, vocab_size, numbered=False)
-                    encoding_start = time.perf_counter()
-                    encoded = run_inference(interpreter, embedding, vocab_size)
-                    encoding_end = time.perf_counter()
-                    print(
-                        f"Preprocess time: {encoding_start - preprocess_start}")
-                    print(f"Encoding time: {encoding_end - encoding_start}")
-                else:
-                    encoded = [0] * args.empty_response
+        with conn:
+            # Receive clause
+            data = conn.recv(4096)
+            recieve_start = time.perf_counter()
+            data = data.decode('ascii')
 
-                # Reply with result
-                message = ",".join(map(str, encoded)) + "\n"
-                conn.send(message.encode('ascii'))
-                send_end = time.perf_counter()
-                # print(f"Total time it took: {send_end - recieve_start}")
+            if args.log_requests is not None:
+                log_request(data, args.log_requests)
+
+            encoded = None
+            if args.empty_response is None:
+                # Run prediction on the received clause
+                preprocess_start = time.perf_counter()
+                embedding = predict.preprocess_clause(
+                    data, tokenizer, vocab_size, numbered=False)
+                encoding_start = time.perf_counter()
+                encoded = run_inference(interpreter, embedding, vocab_size)
+                encoding_end = time.perf_counter()
+                # print(
+                #     f"Preprocess time: {encoding_start - preprocess_start}")
+                # print(f"Encoding time: {encoding_end - encoding_start}")
+                log_data['total_reqs'] += 1
+                log_data['total_embedding_time'] += encoding_end - \
+                    preprocess_start
+            else:
+                encoded = [0] * args.empty_response
+
+            # Reply with result
+            message = ",".join(map(str, encoded)) + "\n"
+            conn.send(message.encode('ascii'))
+            send_end = time.perf_counter()
+            log_data['total_handling_time'] += send_end - recieve_start
+            # print(f"Total time it took: {send_end - recieve_start}")
 
 
 if __name__ == "__main__":

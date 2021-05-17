@@ -79,7 +79,7 @@ std::unique_ptr<std::vector<double>> process_embedding(std::string &response)
     return result;
 }
 
-std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
+std::unique_ptr<std::vector<double>> get_embedding(std::string &clause, int port)
 {
 
     auto begin_time = std::chrono::high_resolution_clock::now();
@@ -90,7 +90,7 @@ std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
     socket.connect(
         ip::tcp::endpoint(
             ip::address::from_string(HOST),
-            PORT));
+            port));
 
     // Reformat input clause (get rid off skolem functions and variables)
     clause = process_skolemisation(clause);
@@ -110,28 +110,18 @@ std::unique_ptr<std::vector<double>> get_embedding(std::string &clause)
     return result;
 }
 
-PREDICATE(test2, 2)
+PREDICATE(encode_clause, 3)
 {
-    PlTail tail(A1);
-    PlTerm e;
+    PlTerm e1(A1);
+    std::string clause_str((char *)e1);
+    // std::cout << "Encoding clause: " << clause_str << std::endl;
 
-    while (tail.next(e))
-    {
-        std::cout << "Received term: ";
-        std::cout << (char *)e << std::endl;
-    }
+    PlTerm e2(A2);
+    int port = atoi((char *)e2);
 
-    return TRUE;
-}
+    auto embedding = get_embedding(clause_str, port);
 
-PREDICATE(encode_clause, 2)
-{
-    PlTerm e(A1);
-    // std::cout << "The received term: " << (char *)e << std::endl;
-    std::string clause_str((char *)e);
-    auto embedding = get_embedding(clause_str);
-
-    PlTail l2(A2);
+    PlTail l2(A3);
     for (auto d : *embedding)
     {
         if (!l2.append(d))
