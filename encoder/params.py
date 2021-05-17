@@ -4,12 +4,12 @@ Default params
 
 # Data Parameters
 MAX_LENGTH = 300
-NUM_EXAMPLES = None
+NUM_EXAMPLES = 10
 PATH_TO_FILE = './data/training_input.txt'
 
 # Model Parameters
 EMBEDDING_DIM = 256
-UNITS = 1024
+UNITS = 128
 
 # Training Parameters
 BUFFER_SIZE_MULT = 1
@@ -23,8 +23,8 @@ CHECKPOINT_PREFIX = 'ckpt'
 
 # Model Save/Load Params
 SAVE_DIR = './saved_models/newly_trained'
-SAVE_NAME = 'u-128-second_pass'
-LOAD_NAME = 'u-128-second_pass'
+SAVE_NAME = 'u-128-thrid_pass'
+LOAD_NAME = 'u-128-third_pass'
 LANG_NAME = 'len-300-lang'
 
 # Prediction

@@ -53,11 +53,11 @@ def preprocess_sentence(w, numbered=False):
     # creating a space between a word and the punctuation following it
     # eg: "he is a boy." => "he is a boy ."
     # Reference:- https://stackoverflow.com/questions/3645931/python-padding-punctuation-with-white-spaces-keeping-punctuation
-    w = re.sub(r'([.,!?()=-])', r' \1 ', w)
+    w = re.sub(r'([.,!?()=\-\[\]])', r' \1 ', w)
     w = re.sub(r'\s{2,}', ' ', w)
 
     # replacing everything with space except (a-z, A-Z, ".", "?", "!", ",")
-    w = re.sub(r"[^a-zA-Z0-9_(),=-]+", " ", w)
+    w = re.sub(r"[^a-zA-Z0-9_(),=\-\[\]]+", " ", w)
 
     w = w.strip()
 

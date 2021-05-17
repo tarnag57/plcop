@@ -6,7 +6,7 @@ import preprocess
 from model_context import ModelContext
 
 
-def preprocess_clause(clause, tokenizer, vocab_size, numbered=True):
+def preprocess_clause(clause, tokenizer, vocab_size, numbered=False):
     clause = preprocess.preprocess_sentence(clause, numbered)
     clause = clause.split(" ")
     tokenized = preprocess.tokenize(clause, tokenizer)
@@ -14,7 +14,7 @@ def preprocess_clause(clause, tokenizer, vocab_size, numbered=True):
     return tf.reshape(one_hot, [1, len(tokenized), vocab_size])
 
 
-def encode_clause(clause, numbered=True):
+def encode_clause(clause, numbered=False):
     context = ModelContext.get_context()
     vocab_size = len(context.tokenizer.word_index) + 1
     input_tensor = preprocess_clause(
