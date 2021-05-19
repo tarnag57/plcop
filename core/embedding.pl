@@ -51,7 +51,7 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
     cached_rnn_embed(Lem1,FHash,FDim2,ELemR),
     reverse(ELemR, ELem),
 
-    rnn_embed_todos(TopTodos, FHash, FDim, FDim3, ETodosR),
+    % rnn_embed_todos(TopTodos, FHash, FDim, FDim3, ETodosR),
     % writeln("------------"),
     % writeln("Goals:"),
     % writeln(AllGoals),
@@ -106,7 +106,7 @@ logic_embed(State,FHash,EmbType, EmbStateP,EmbStateV,EmbActions):-
       Offset is I9 + 1,
       % writeln("Embedding actions:"),
       % writeln(Actions1),
-      cached_rnn_embed_list(Actions1, FHash, FDim, Offset, EmbActions)
+      cached_rnn_embed_list(Actions1, FHash, 0, Offset, EmbActions)
     %% length(Actions, ALen), 
     %% logic_embed_successors(0, ALen, State, FHash, EmbActions)
     ; true

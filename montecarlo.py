@@ -44,7 +44,7 @@ def signal_handler(sig, frame):
     if encoder_server is not None:
         print("Shutting down server")
         encoder_server.send_signal(signal.SIGINT)
-        time.sleep(3)
+        time.sleep(10)
     sys.exit(0)
 
 
@@ -177,3 +177,4 @@ sys.stdout.flush()
 # Shutting down server
 if encoder_server is not None:
     encoder_server.send_signal(signal.SIGINT)
+    time.sleep(10)
