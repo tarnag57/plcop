@@ -132,6 +132,7 @@ dmypy.json
 /out
 /error
 /encoder/server_log
+/tmp
 
 # Training data for autoencoder
 # /encoder/data

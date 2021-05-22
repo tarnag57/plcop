@@ -23,8 +23,8 @@ CHECKPOINT_PREFIX = 'ckpt'
 
 # Model Save/Load Params
 SAVE_DIR = './saved_models/newly_trained'
-SAVE_NAME = 'u-128-reduction'
-LOAD_NAME = 'u-128-reduction'
+SAVE_NAME = 'u-128-red'
+LOAD_NAME = 'u-128-red'
 LANG_NAME = 'len-300-reduction-lang'
 
 # Prediction
