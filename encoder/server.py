@@ -94,6 +94,7 @@ def main():
             data = conn.recv(4096)
             recieve_start = time.perf_counter()
             data = data.decode('ascii')
+            print(f"Received: {data}")
 
             if args.log_requests is not None:
                 log_request(data, args.log_requests)

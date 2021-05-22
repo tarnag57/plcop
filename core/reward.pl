@@ -25,7 +25,6 @@ guidance_get_value(State,FHash,Value):-
     (  Result == 1 -> Value = 1
      ; Result == -1 -> Value = 0
      ; mc_param(guided,1) ->
-       logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV,_),
        python_value(EmbStateV,Value2),
        Value is Value2 / 1e10
     ; mc_param(guided,2) ->
@@ -36,7 +35,8 @@ guidance_get_value(State,FHash,Value):-
        Value0 is 1 / (1 + exp(-V)),
        goals_length(State, GoalsLength),
        Value is (Value0 ** 0.5) ** GoalsLength       
-    ; guidance_default_value(State,Value)
+    ; guidance_default_value(State,Value),
+       logic_embed(State, FHash, state_only, _EmbStateP, EmbStateV,_)
     ).
 
 % taken from RLCoP paper

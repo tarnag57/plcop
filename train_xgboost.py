@@ -16,6 +16,35 @@ args = params.getArgs()
 # if oversample=True then make sure that values >0 and =0 are balanced
 
 
+def load_data(files, n_features):
+
+    # Parse SVMLight files
+    xs = []
+    ys = []
+    for f in files:
+        try:
+            print("Loading svmlight")
+            d = load_svmlight_file(
+                f, n_features=n_features, zero_based=True)
+            print(d)
+            xs.append(d[0])
+            ys.append(d[1])
+        except Exception as e:
+            print(e)
+            print(f"Was looking at file {f}")
+    x = vstack(xs)
+    y = np.concatenate(ys)
+
+    print("Input shape: ", x.shape)
+    print("Output shape: ", y.shape)
+    print("Avg output: ", np.mean(y))
+
+    if args.remove_duplicates == 1:
+        x, y = remove_duplicates(x, y)
+
+    return x, y
+
+
 def train(train_dir, modelfile, n_features, objective="reg:linear", oversample=False):
     '''
     Trains the XGBoost model. The input data should be found in the [train_dir] in SVMLight format.
@@ -32,30 +61,11 @@ def train(train_dir, modelfile, n_features, objective="reg:linear", oversample=F
     print(f"Train dir: {train_dir}")
     print("Training from {} files".format(len(files)))
 
-    # Parse SVMLight files
-    xs = []
-    ys = []
-    for f in files:
-        try:
-            print("Loading svmlight")
-            d = load_svmlight_file(
-                f, n_features=n_features, zero_based=True)
-            print(d)
-            xs.append(d[0])
-            ys.append(d[1])
-        except Exception as e:
-            print(e)
-            print(f"Was looking at file {f}")
-    print(xs)
-    x = vstack(xs)
-    y = np.concatenate(ys)
+    x, y = load_data(files, n_features)
 
     print("Input shape: ", x.shape)
     print("Output shape: ", y.shape)
     print("Avg output: ", np.mean(y))
-
-    if args.remove_duplicates == 1:
-        x, y = remove_duplicates(x, y)
 
     if oversample:
         pos = x[y > 0]

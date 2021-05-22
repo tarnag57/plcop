@@ -10,6 +10,7 @@
 
 guidance_action_probs(State,FHash,Probs):-
     mc_param(guided,0), !, % no guidance
+    logic_embed(State, FHash, both, EmbStateP, _EmbStateV, EmbActions),
     action_count(State,AC),
     ( AC = 0 ->  Probs = []
     ; Prob is 1/AC,

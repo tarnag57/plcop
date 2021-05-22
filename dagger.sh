@@ -68,7 +68,7 @@ solver() {
     STAGE=$7
     let "BASE = 2100*(${STAGE} + 1)"
     ENCODER_PARAMS="--port_offset ${INDEX} --base_port ${BASE} --encoder_server ./encoder/server.py --log_file_base ./encoder/server_log/stage${STAGE}/p-"
-    SCRIPT="/usr/bin/timeout --preserve-status -k 5 ${SOLVER_TIMEOUT} python montecarlo.py ${INI_FILE} ${ENCODER_PARAMS} --problem_file ./${F} >${OUT_DIR}/${F}.out 2>error/stage${STAGE}/error-${INDEX}.txt"
+    SCRIPT="/usr/bin/timeout --preserve-status -k 20 ${SOLVER_TIMEOUT} python montecarlo.py ${INI_FILE} ${ENCODER_PARAMS} --problem_file ./${F} >${OUT_DIR}/${F}.out 2>error/stage${STAGE}/error-${INDEX}.txt"
     echo ${SCRIPT}
     eval ${SCRIPT}
 }
@@ -94,7 +94,7 @@ if [[ $# -ne 5 ]]; then
     EVAL_START=$(date +%s.%N)
     echo "Building montecarlo tree for each problem in $EVAL_PROBLEM_DIR"
     # SCRIPT="/usr/bin/timeout --preserve-status -k 5 600 python montecarlo.py ${EVAL_INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> ${OUT_DIR}/{}.err"
-    SCRIPT="/usr/bin/timeout --preserve-status -k 5 1200 python montecarlo.py ${EVAL_INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> /dev/null"
+    SCRIPT="/usr/bin/timeout --preserve-status -k 20 1200 python montecarlo.py ${EVAL_INI_FILE} --problem_file {} > ${OUT_DIR}/{}.out 2> /dev/null"
     find ${EVAL_PROBLEM_DIR} -type f -name "*.p" | shuf | parallel -j $CORENUM --no-notice $SCRIPT
     EVAL_END=$(date +%s.%N)
     EVAL_DIFF=$(echo "$EVAL_END - $EVAL_START" | bc)
