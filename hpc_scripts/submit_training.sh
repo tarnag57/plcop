@@ -49,13 +49,13 @@ max_len="300"
 epochs="120"
 
 prefix="u-$units"
-ckpt_prefix="ckpt-$prefix-final"
+ckpt_prefix="ckpt-$prefix-red-big"
 save_name="$prefix-red"
 load_name="$prefix-red"
 lang_name="len-$max_len-reduction-lang"
 
 #! Run options for the application:
-data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/clauses_reduction.txt"
+data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/training_input_red"
 model_options="--units $units"
 training_options="--batch_size 128 --epochs $epochs"
 checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/final_training/$prefix --checkpoint_prefix $ckpt_prefix"
