@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import argparse
 import numpy as np
@@ -250,14 +250,14 @@ def main():
     # For consistency throughout test runs
     tf.random.set_seed(987654)
 
-    # init_context(prediction_phase=True, load_tokenizer=True)
-    # context = ModelContext.get_context()
-    # print(f"Training example shape: {context.train_input[0].shape}")
-    # # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
-    # models.lstm_training(context.seq_to_seq_model)
+    init_context(prediction_phase=False, load_tokenizer=False)
+    context = ModelContext.get_context()
+    print(f"Training example shape: {context.train_input[0].shape}")
+    # utils.restore_checkpoint(context.checkpoint, context.args.checkpoint_dir)
+    models.lstm_training(context.seq_to_seq_model)
 
-    # print(f"Trining is complete, saving the model...")
-    # utils.save_model()
+    print(f"Trining is complete, saving the model...")
+    utils.save_model()
 
     # training.perform_training()
 
@@ -277,7 +277,7 @@ def main():
     # context = ModelContext.get_context()
     # context.seq_to_seq_model.summary()
     # clause = "[v1_xboole_0(u1_struct_0(SKLM)), m1_subset_1(u1_struct_0(SKLM),k1_zfmisc_1(u1_struct_0(SKLM))), v12_waybel_0(u1_struct_0(SKLM),SKLM), v1_waybel_0(u1_struct_0(SKLM),SKLM)]"
-    # # clause = "ext(-r1_tarski(VAR,k2_tarski(VAR,VAR)),[VAR=k1_xboole_0],n)"
+    # clause = "ext(-r1_tarski(VAR,k2_tarski(VAR,VAR)),[VAR=k1_xboole_0],n)"
     # enc_out, enc_hidden = predict.encode_clause(clause)
     # result = predict.decode_clause(enc_out, enc_hidden)
     # print(result)
