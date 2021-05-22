@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #! Name of the job:
-#SBATCH -J tf_training_third_pruning_1024
+#SBATCH -J tf_training_final_1024
 #! Which project should be charged (NB Wilkes2 projects end in '-GPU'):
 #SBATCH -A HOLDEN-SL3-GPU
 #! How many whole nodes should be allocated?
@@ -46,21 +46,21 @@ application="python3 $project_dir/encoder/main.py"
 
 units="1024"
 max_len="300"
-epochs="110"
+epochs="120"
 
 prefix="u-$units"
-ckpt_prefix="ckpt-$prefix-second_pass"
-save_name="$prefix-pruning-third_pass"
-load_name="$prefix-pruning-second_pass"
-lang_name="len-$max_len-lang"
+ckpt_prefix="ckpt-$prefix-final"
+save_name="$prefix-final"
+load_name="$prefix-final"
+lang_name="len-$max_len-final-lang"
 
 #! Run options for the application:
 data_options="--max_length $max_len --path_to_file $project_dir/encoder/data/training_input.txt"
 model_options="--units $units"
 training_options="--batch_size 128 --epochs $epochs"
-checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/$prefix/training_checkpoints --checkpoint_prefix $ckpt_prefix"
+checkpointing="--checkpoint_freq 5 --checkpoint_dir $project_dir/encoder/final_training/$prefix --checkpoint_prefix $ckpt_prefix"
 saving_options="--save_dir $project_dir/encoder/saved_models --save_name $save_name --load_name $load_name --lang_name $lang_name"
-optimisation_options="pruning True"
+optimisation_options=""
 options="$data_options $model_options $training_options $checkpointing $saving_options $optimisation_options"
 echo $options
 

@@ -4,7 +4,7 @@ Default params
 
 # Data Parameters
 MAX_LENGTH = 300
-NUM_EXAMPLES = 10
+NUM_EXAMPLES = None
 PATH_TO_FILE = './data/training_input.txt'
 
 # Model Parameters
