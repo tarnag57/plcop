@@ -29,7 +29,7 @@ OUT_DIR=$3
 CORENUM=$4
 STAGE=$5
 
-SOLVER_TIMEOUT=40
+SOLVER_TIMEOUT=1000
 ERROR_FILE="./error.txt"
 
 mkdir -p "$OUT_DIR/$PROBLEM_DIR" # TODO make this more elegant
@@ -82,6 +82,8 @@ parallel -j $CORENUM --no-notice --link solver ::: ${INDICIES[@]} ::: ${FILES[@]
 END=$(date +%s.%N)
 DIFF=$(echo "$END - $START" | bc)
 echo "MCTS time: $DIFF sec"
+echo "Wating on logs to be written"
+sleep 10
 
 echo "FAILURE COUNT:"
 grep -rl "FAILURE" $OUT_DIR/$PROBLEM_DIR/*.out | wc -l

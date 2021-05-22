@@ -23,8 +23,8 @@ CHECKPOINT_PREFIX = 'ckpt'
 
 # Model Save/Load Params
 SAVE_DIR = './saved_models/newly_trained'
-SAVE_NAME = 'u-128-thrid_pass'
-LOAD_NAME = 'u-128-third_pass'
+SAVE_NAME = 'u-128-final'
+LOAD_NAME = 'u-128-final'
 LANG_NAME = 'len-300-lang'
 
 # Prediction

@@ -26,7 +26,7 @@ def build_parser():
     parser.add_argument(
         '--model',
         '-m',
-        default='./saved_models/newly_trained/u-128-pruning.tflite',
+        default='./saved_models/newly_trained/u-128-final.tflite',
         help="The filename for the inference model.",
         metavar='model',
         type=str
