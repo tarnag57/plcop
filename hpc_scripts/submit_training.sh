@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #! Name of the job:
-#SBATCH -J tf_training_reduction_128
+#SBATCH -J tf_training_reduction_256
 #! Which project should be charged (NB Wilkes2 projects end in '-GPU'):
 #SBATCH -A HOLDEN-SL3-GPU
 #! How many whole nodes should be allocated?
@@ -44,7 +44,7 @@ module load python/3.6 cuda/11.0 cudnn/8.0_cuda-11.1
 project_dir="~/rds/hpc-work/plcop"
 application="python3 $project_dir/encoder/main.py"
 
-units="128"
+units="256"
 max_len="300"
 epochs="120"
 
